@@ -46,6 +46,9 @@ master.menu.administrator.shut-down = Shut down
 master.menu.administrator.list-risks = List risks
 master.menu.administrator.list.banner = Banner List
 
+master.menu.administrator.system-configuration = System configuration
+
+
 # master.menu.provider ########################################################
 
 master.menu.provider = Provider
