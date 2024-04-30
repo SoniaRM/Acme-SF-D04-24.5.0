@@ -49,6 +49,9 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/system/shut-down"/>
 			<acme:menu-suboption code="master.menu.administrator.list-risks" action="/administrator/risk/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.objective" action="/administrator/objective/create"/>
+			
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">

@@ -21,11 +21,11 @@ authenticated.objective.form.label.duration-end = End Duration
 authenticated.objective.form.label.link = Link
 
 
-authenticated.objective.list.label.instantiationMoment = Instantiation Moment
+authenticated.objective.list.label.instantiation-moment = Instantiation Moment
 authenticated.objective.list.label.title = Title
 authenticated.objective.list.label.description = Description
 authenticated.objective.list.label.priority = Priority
 authenticated.objective.list.label.status = Status
-authenticated.objective.list.label.durationStart = Start Duration
-authenticated.objective.list.label.durationEnd = End Duration
+authenticated.objective.list.label.duration-start = Start Duration
+authenticated.objective.list.label.duration-end = End Duration
 authenticated.objective.list.label.link = Link
