@@ -27,6 +27,10 @@
 			<acme:menu-suboption code="master.menu.anonymous.rubpergar-link" action="https://www.hltv.org"/>
 			<acme:menu-separator/>	
 			<acme:menu-suboption code="master.menu.anonymous.list-sponsorship" action="/any/sponsorship/list"/>
+			<acme:menu-suboption code="master.menu.anonymous.training-module-list" action="/any/training-module/list"/>	
+			<acme:menu-suboption code="master.menu.anonymous.project-list" action="/any/project/list"/>	
+			<acme:menu-suboption code="master.menu.anonymous.claim-list" action="/any/claim/list"/>
+			
 					
 		</acme:menu-option>
 		
@@ -35,6 +39,7 @@
 			<acme:menu-suboption code="master.menu.autheticated.list-sponsorship" action="/any/sponsorship/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.claim-list" action="/any/claim/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.training-module-list" action="/any/training-module/list"/>	
+			<acme:menu-suboption code="master.menu.anonymous.project-list" action="/any/project/list"/>	
 			<acme:menu-suboption code="master.menu.authenticated.objective" action="/authenticated/objective/list"/>
 		</acme:menu-option>
 

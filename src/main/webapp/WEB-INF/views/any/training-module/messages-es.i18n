@@ -12,7 +12,6 @@ any.training-module.list.label.project = Proyecto
 any.training-module.list.label.draft-mode = Borrador
 
 
-any.training-module.list.button.create = Crear
 
 any.training-module.form.label.code = Codigo
 any.training-module.form.label.creation-moment = Momento de creacion
@@ -23,18 +22,3 @@ any.training-module.form.label.link = URL
 any.training-module.form.label.estimated-total-time = Tiempo total estimado
 any.training-module.form.label.project = Proyecto
 any.training-module.form.label.draft-mode = Borrador
-
-any.training-module.form.button.create = Crear
-any.training-module.form.button.delete = Eliminar
-any.training-module.form.button.update = Actualizar
-any.training-module.form.button.publish = Publicar
-any.training-module.form.button.training-sessions = Training Sessions
-
-
-
-
-developer.training-module.form.error.duplicated = Este codigo ya esta en uso
-developer.training-module.form.error.invalid-creation-moment = Momento de creacion invalido
-developer.training-module.form.error.invalid-update-moment = Momento de actualizacion invalido
-developer.training-module.form.error.code =  Este codigo ya esta en uso
-developer.training-module.form.error.trainingModuleWithOutTrainingSessions = No podemos publicar el Traninig Module porque no tiene Training Sessions

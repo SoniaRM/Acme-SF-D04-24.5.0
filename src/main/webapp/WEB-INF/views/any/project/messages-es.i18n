@@ -1,0 +1,19 @@
+any.project.list.title = Lista de Proyectos
+any.project.form.title = Detalles de proyectos
+
+any.project.list.label.code = Codigo
+any.project.list.label.title = Titulo
+any.project.list.label.abstract-project = AbstractProject
+any.project.list.label.indication = Indicacion
+any.project.list.label.cost = Coste
+any.project.list.label.link = URL
+any.project.list.label.draft-mode = Borrador
+
+
+any.project.form.label.code = Codigo
+any.project.form.label.title = Titulo
+any.project.form.label.abstract-project = AbstractProject
+any.project.form.label.indication = Indicacion
+any.project.form.label.cost = Coste
+any.project.form.label.link = URL
+any.project.form.label.draft-mode = Borrador
