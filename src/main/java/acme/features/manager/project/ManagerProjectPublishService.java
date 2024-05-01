@@ -53,7 +53,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	public void bind(final Project object) {
 		assert object != null;
 
-		super.bind(object, "code", "title", "abstractProject", "cost", "link");
+		super.bind(object, "code", "title", "abstractProject", "indication", "cost", "link");
 	}
 
 	@Override
@@ -69,6 +69,8 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 			draftModeProjectUserStories = userStories.stream().anyMatch(userStory -> !userStory.isDraftMode());
 			super.state(draftModeProjectUserStories, "*", "manager.project.form.error.userStoriesInDraftMode");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("indication"))
+			super.state(object.isIndication() == false, "indication", "manager.project.form.error.existing-fatal-errors");
 	}
 
 	@Override
@@ -83,7 +85,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	public void unbind(final Project object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "title", "abstractProject", "cost", "link", "draftMode");
+		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode");
 		super.getResponse().addData(dataset);
 	}
 }

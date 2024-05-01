@@ -9,7 +9,7 @@
 # they accept any liabilities with respect to them.
 
 authenticated.objective.form.title = Detalles del objetivo
-authenticated.objective.list.title = Listado de mis objetivos
+authenticated.objective.list.title = Lista de mis objetivos
 
 authenticated.objective.form.label.instantiation-moment = Momento de creacion
 authenticated.objective.form.label.title = Titulo
