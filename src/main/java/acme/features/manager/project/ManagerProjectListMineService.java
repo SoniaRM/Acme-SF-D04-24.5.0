@@ -21,10 +21,6 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 	// AbstractService interface ----------------------------------------------
 
 
-	public void check() {
-		super.getResponse().setChecked(true);
-	}
-
 	@Override
 	public void authorise() {
 		boolean status;

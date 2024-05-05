@@ -22,10 +22,6 @@ public class ClientProgressLogListMineService extends AbstractService<Client, Pr
 	// AbstractService interface ----------------------------------------------
 
 
-	public void check() {
-		super.getResponse().setChecked(true);
-	}
-
 	@Override
 	public void authorise() {
 		boolean status;
