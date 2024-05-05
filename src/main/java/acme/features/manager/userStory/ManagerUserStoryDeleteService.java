@@ -50,7 +50,7 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 	public void bind(final UserStory object) {
 		assert object != null;
 
-		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
+		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
 	}
 
 	@Override
@@ -78,7 +78,7 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 
 		choicesPriority = SelectChoices.from(Priority.class, object.getPriority());
 
-		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
 		dataset.put("priority", choicesPriority.getSelected().getKey());
 		dataset.put("priorities", choicesPriority);
 		dataset.put("manager", object.getManager());

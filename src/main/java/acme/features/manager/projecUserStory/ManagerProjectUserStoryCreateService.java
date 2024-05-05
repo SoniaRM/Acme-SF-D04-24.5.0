@@ -33,6 +33,7 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		project = this.repository.findOneProjectById(masterId);
+
 		status = project != null && super.getRequest().getPrincipal().hasRole(project.getManager()) && project.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
@@ -46,6 +47,7 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		project = this.repository.findOneProjectById(masterId);
+		System.out.println(masterId);
 
 		object = new ProjectUserStory();
 		object.setProject(project);
@@ -57,11 +59,13 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 	public void bind(final ProjectUserStory object) {
 
 		assert object != null;
+
 		int userStoryId;
 		UserStory userStory;
 		userStoryId = super.getRequest().getData("userStory", int.class);
 		userStory = this.repository.findOneUserStoryById(userStoryId);
 		object.setUserStory(userStory);
+
 	}
 
 	@Override
@@ -72,11 +76,21 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		project = object.getProject();
 		userStory = object.getUserStory();
 		if (!super.getBuffer().getErrors().hasErrors("project"))
-			super.state(project.isDraftMode(), "project", "manager.project-user-story.form.error.project");
-		if (!super.getBuffer().getErrors().hasErrors("userStory")) {
-			super.state(!userStory.isDraftMode(), "userStory", "manager.project-user-story.form.error.user-story");
-			super.state(userStory.getManager().equals(project.getManager()), "userStory", "manager.project-user-story.form.error.same-manager");
+			super.state(project.isDraftMode(), "*", "manager.project-user-story.form.error.project-is-not-draft-mode");
+		/*
+		 * if (!super.getBuffer().getErrors().hasErrors("userStory")) {
+		 * super.state(!userStory.isDraftMode(), "userStory", "manager.project-user-story.form.error.user-story");
+		 * super.state(userStory.getManager().equals(project.getManager()), "userStory", "manager.project-user-story.form.error.same-manager");
+		 * }
+		 */
+
+		//CAMBIAR NOMBRES
+		if (!super.getBuffer().getErrors().hasErrors("*") && !super.getBuffer().getErrors().hasErrors("userStory")) {
+			ProjectUserStory existing = this.repository.findAssociationBetweenProjectIdAndUserStoryId(object.getProject().getId(), object.getUserStory().getId());
+			super.state(existing == null, "*", "manager.project-user-story.form.error.duplicatedRelation");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("project") && !super.getBuffer().getErrors().hasErrors("userStory"))
+			super.state(userStory.getManager().equals(project.getManager()), "*", "manager.project-user-story.form.error.same-manager");
 
 	}
 
@@ -97,17 +111,25 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		int masterId;
 		Project project;
 
+		dataset = super.unbind(object, "userStory", "project");
+
 		masterId = super.getRequest().getData("masterId", int.class);
 		project = this.repository.findOneProjectById(masterId);
+		dataset.put("masterId", masterId);
+		dataset.put("project", project);
 
 		userStories = this.repository.findManyAvailableUserStoriesToAdd(project.getManager(), project);
 		choices = SelectChoices.from(userStories, "title", object.getUserStory());
 
 		dataset = new Dataset();
+
 		dataset.put("userStory", choices.getSelected().getKey());
 		dataset.put("userStories", choices);
-		dataset.put("masterId", masterId);
+
 		dataset.put("draftMode", project.isDraftMode());
 		super.getResponse().addData(dataset);
+		super.getResponse().addGlobal("masterId", masterId);
+		System.out.println("ddddddd" + masterId);
+
 	}
 }

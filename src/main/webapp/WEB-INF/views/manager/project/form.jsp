@@ -25,6 +25,8 @@
 			<acme:submit code="manager.project.form.button.publish" action="/manager/project/publish"/>
 			<acme:button code="manager.project.form.button.user-stories" action="/manager/user-story/list-mine?masterId=${id}"/>
 			<acme:button code="manager.project.form.button.user-storiees" action="/manager/project-user-story/list?masterId=${id}"/>
+			<acme:button code="manager.project.form.button.user-storieees" action="/manager/project-user-story/create?masterId=${id}"/>
+			
 			
 			
 		</jstl:when>

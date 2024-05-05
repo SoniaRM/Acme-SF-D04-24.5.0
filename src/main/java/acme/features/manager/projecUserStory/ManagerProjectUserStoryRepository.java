@@ -24,7 +24,7 @@ public interface ManagerProjectUserStoryRepository extends AbstractRepository {
 	@Query("select us from UserStory us where us.draftMode = true and us.manager = :manager")
 	Collection<UserStory> findManyUserStoriesAvailableByManager(Manager manager);
 
-	@Query("select pus.userStory from ProjectUserStory pus where pus.userStory.draftMode = false and pus.userStory.manager = :manager and pus.project = :project")
+	@Query("select pus.userStory from ProjectUserStory pus where pus.userStory.draftMode = false or pus.userStory.manager = :manager and pus.project = :project")
 	Collection<UserStory> findManyUserStoriesNotAvailableByManagerAndProject(Manager manager, Project project);
 
 	default Collection<UserStory> findManyAvailableUserStoriesToAdd(final Manager manager, final Project project) {
@@ -39,5 +39,8 @@ public interface ManagerProjectUserStoryRepository extends AbstractRepository {
 
 	@Query("select pus from ProjectUserStory pus where pus.userStory.manager = :manager and pus.project = :project")
 	Collection<ProjectUserStory> findManyProjectUserStoryByProjectAndManager(Manager manager, Project project);
+
+	@Query("select pu from ProjectUserStory pu where (pu.project.id = :projectId and pu.userStory.id = :userStoryId)")
+	ProjectUserStory findAssociationBetweenProjectIdAndUserStoryId(int projectId, int userStoryId);
 
 }

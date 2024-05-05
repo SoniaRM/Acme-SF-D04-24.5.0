@@ -51,18 +51,23 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 		Collection<UserStory> userStories;
 		userStories = objects.stream().map(ProjectUserStory::getUserStory).collect(Collectors.toList());
 
+		System.out.println(objects.stream().map(ProjectUserStory::getUserStory).collect(Collectors.toList()));
 		super.getBuffer().addData(userStories);
 	}
 
 	@Override
 	public void unbind(final UserStory object) {
 		assert object != null;
+		int masterId;
+		masterId = super.getRequest().getData("masterId", int.class);
 
 		Dataset dataset;
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
 
 		super.getResponse().addData(dataset);
+		super.getResponse().addGlobal("masterId", masterId);
+
 	}
 
 }
