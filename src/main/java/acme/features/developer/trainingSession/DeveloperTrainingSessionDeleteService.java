@@ -51,7 +51,7 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 	public void bind(final TrainingSession object) {
 		assert object != null;
 
-		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "draftMode");
+		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link");
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 		trainingModules = this.repository.findAllTrainingModules();
 		choices = SelectChoices.from(trainingModules, "code", object.getTrainingModule());
 
-		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "draftMode");
+		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link");
 		dataset.put("trainingModule", choices.getSelected().getKey());
 		dataset.put("trainingModules", choices);
 		super.getResponse().addData(dataset);
