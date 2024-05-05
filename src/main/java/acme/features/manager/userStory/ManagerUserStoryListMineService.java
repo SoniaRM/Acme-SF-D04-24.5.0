@@ -24,10 +24,6 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 	// AbstractService interface ----------------------------------------------
 
 
-	public void check() {
-		super.getResponse().setChecked(true);
-	}
-
 	@Override
 	public void authorise() {
 		boolean status;

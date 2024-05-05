@@ -11,7 +11,6 @@ any.training-module.list.label.estimated-total-time = Estimated Total Time
 any.training-module.list.label.project = Project
 any.training-module.list.label.draft-mode = Draft
 
-any.training-module.list.button.create = Create
 
 any.training-module.form.label.code = Code
 any.training-module.form.label.creation-moment = Creation Moment
@@ -22,19 +21,3 @@ any.training-module.form.label.link = Link
 any.training-module.form.label.estimated-total-time = Estimated Total Time
 any.training-module.form.label.project = Project
 any.training-module.form.label.draft-mode = Draft
-
-
-any.training-module.form.button.create = Create
-any.training-module.form.button.delete = Delete
-any.training-module.form.button.update = Update
-any.training-module.form.button.publish = Publish
-any.training-module.form.button.training-sessions = Training Sessions
-
-
-
-
-developer.training-module.form.error.duplicated = This code is already used
-developer.training-module.form.error.invalid-creation-moment = Invalid creation moment
-developer.training-module.form.error.invalid-update-moment = Invalid update moment
-developer.training-module.form.error.code =  This code is already used
-developer.training-module.form.error.trainingModuleWithOutTrainingSessions = Cannot publish Traninig Module because it has not Training Sessions

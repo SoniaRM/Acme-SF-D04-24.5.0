@@ -27,6 +27,10 @@
 			<acme:menu-suboption code="master.menu.anonymous.rubpergar-link" action="https://www.hltv.org"/>
 			<acme:menu-separator/>	
 			<acme:menu-suboption code="master.menu.anonymous.list-sponsorship" action="/any/sponsorship/list"/>
+			<acme:menu-suboption code="master.menu.anonymous.training-module-list" action="/any/training-module/list"/>	
+			<acme:menu-suboption code="master.menu.anonymous.project-list" action="/any/project/list"/>	
+			<acme:menu-suboption code="master.menu.anonymous.claim-list" action="/any/claim/list"/>
+			
 					
 		</acme:menu-option>
 		
@@ -34,11 +38,14 @@
 			<acme:menu-suboption code="master.menu.authenticated.all-risks" action="/authenticated/risk/list"/>
 			<acme:menu-suboption code="master.menu.autheticated.list-sponsorship" action="/any/sponsorship/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.claim-list" action="/any/claim/list"/>
-			<acme:menu-suboption code="master.menu.anonymous.training-module-list" action="/any/training-module/list"/>		
+			<acme:menu-suboption code="master.menu.anonymous.training-module-list" action="/any/training-module/list"/>	
+			<acme:menu-suboption code="master.menu.anonymous.project-list" action="/any/project/list"/>	
+			<acme:menu-suboption code="master.menu.authenticated.objective" action="/authenticated/objective/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
+			<acme:menu-suboption code="master.menu.administrator.system-configuration" action="/administrator/system-configuration/show"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/system/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/system/populate-sample"/>			
@@ -47,6 +54,9 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/system/shut-down"/>
 			<acme:menu-suboption code="master.menu.administrator.list-risks" action="/administrator/risk/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.objective" action="/administrator/objective/create"/>
+			
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">
@@ -72,6 +82,7 @@
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
 			<acme:menu-suboption code="master.menu.manager.projects" action="/manager/project/list"/>
 			<acme:menu-suboption code="master.menu.manager.user-stories" action="/manager/user-story/list-all"/>
+			<acme:menu-suboption code="master.menu.manager.project-user-stories" action="/manager/project-user-story/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.manager.show-manager-dashboard" action="/manager/manager-dashboard/show"/>
 		</acme:menu-option>

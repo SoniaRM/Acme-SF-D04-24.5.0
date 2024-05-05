@@ -27,14 +27,17 @@ master.menu.anonymous.javramnun-link = 49126810Y: Ramírez Núñez, Javier
 master.menu.anonymous.rubpergar-link = 77863706N: Pérez Garrido, Rubén
 master.menu.anonymous.claim-list = Lista de Claims
 master.menu.anonymous.training-module-list = Lista de Training Modules
+master.menu.anonymous.project-list = Lista de Proyectos
 
 
 
 # master.menu.authenticated ###################################################
 
-master.menu.authenticated = Autentificado
+master.menu.authenticated = Autenticado
 master.menu.authenticated.all-risks = Lista de riesgos
 master.menu.anonymous.list-sponsorship = Patrocinios publicados
+master.menu.authenticated.objective = Lista de objetivos
+
 
 # master.menu.administrator ###################################################
 
@@ -46,6 +49,9 @@ master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
 master.menu.administrator.list-risks = Lista de riesgos
 master.menu.administrator.list.banner = Lista de Banners
+master.menu.administrator.objective = Lista de objetivos
+master.menu.administrator.system-configuration = Configuración del sistema
+
 
 # master.menu.provider ########################################################
 

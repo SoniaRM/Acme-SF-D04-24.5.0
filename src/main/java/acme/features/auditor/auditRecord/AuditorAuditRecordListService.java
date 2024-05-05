@@ -22,10 +22,6 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 	// AbstractService interface ----------------------------------------------
 
 
-	public void check() {
-		super.getResponse().setChecked(true);
-	}
-
 	@Override
 	public void authorise() {
 		boolean status;

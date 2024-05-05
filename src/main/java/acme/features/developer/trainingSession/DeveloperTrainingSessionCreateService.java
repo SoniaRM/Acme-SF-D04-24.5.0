@@ -43,7 +43,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 	public void bind(final TrainingSession object) {
 		assert object != null;
 
-		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "draftMode", "trainingModule");
+		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "trainingModule");
 	}
 
 	@Override
@@ -78,8 +78,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 
 		trainingModules = this.repository.findManyTrainingModulesAvailable2();
 		choices = SelectChoices.from(trainingModules, "code", object.getTrainingModule());
-		System.out.println(choices.getSelected().getKey());
-		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "draftMode", "trainingModule");
+		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "trainingModule");
 		dataset.put("trainingModule", choices.getSelected().getKey());
 		dataset.put("trainingModules", choices);
 		super.getResponse().addData(dataset);

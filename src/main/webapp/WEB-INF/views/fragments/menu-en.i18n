@@ -25,14 +25,18 @@ master.menu.anonymous.sonrusmor-link = 77868455T: Rus Morales, Sonia Maria
 master.menu.anonymous.manpalpin-link = 29511597K: Palacios Pineda, Manuel 
 master.menu.anonymous.javramnun-link = 49126810Y: Ramírez Núñez, Javier
 master.menu.anonymous.rubpergar-link = 77863706N: Perez Garrido, Ruben
-master.menu.anonymous.claim-list = Claim list
-master.menu.anonymous.training-module-list = Training Module list
+master.menu.anonymous.claim-list = List Claim
+master.menu.anonymous.training-module-list = List Training Module 
+master.menu.anonymous.project-list = List Project
+
 
 # master.menu.authenticated ###################################################
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.all-risks = List risks
 master.menu.autheticated.list-sponsorship = Published sponsorships
+master.menu.authenticated.objective = List of Objectives
+
 
 # master.menu.administrator ###################################################
 
@@ -44,7 +48,12 @@ master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
 
 master.menu.administrator.list-risks = List risks
-master.menu.administrator.list.banner = Banner List
+master.menu.administrator.list.banner = List Banner
+master.menu.administrator.objective = List of my objectives
+
+
+master.menu.administrator.system-configuration = System configuration
+
 
 # master.menu.provider ########################################################
 

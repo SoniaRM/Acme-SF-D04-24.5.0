@@ -21,10 +21,6 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 	// AbstractService interface ----------------------------------------------
 
 
-	public void check() {
-		super.getResponse().setChecked(true);
-	}
-
 	@Override
 	public void authorise() {
 		boolean status;
@@ -52,7 +48,7 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "abstractProject", "cost", "link", "draftMode");
+		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}
