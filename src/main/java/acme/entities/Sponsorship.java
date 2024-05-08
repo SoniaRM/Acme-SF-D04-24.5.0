@@ -46,17 +46,14 @@ public class Sponsorship extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				moment;
 
-	// Must be after moment. This requirements will be implemented soon.
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				durationStart;
 
-	// Must be at least one month later than durationStart. This requirements will be implemented soon.
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				durationEnd;
 
-	// Must be positive. This requirement will be implemented soon.
 	@Valid
 	@NotNull
 	private Money				amount;
