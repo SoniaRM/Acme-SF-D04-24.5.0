@@ -15,6 +15,8 @@
         <acme:input-textbox code="manager.userStory.form.label.lectureNature" path="userStory.acceptanceCriteria" readonly="true"/>
         <acme:input-textbox code="manager.userStory.form.label.acceptanceCriteria" path="userStory.priority" readonly="true"/>
         <acme:input-textbox code="manager.userStory.form.label.link" path="userStory.link" readonly="true"/>
+        
+        
     </jstl:if>
 
     <jstl:choose>

@@ -73,10 +73,9 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		userStory = object.getUserStory();
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(project.isDraftMode(), "project", "manager.project-user-story.form.error.project");
-		if (!super.getBuffer().getErrors().hasErrors("userStory")) {
-			super.state(!userStory.isDraftMode(), "userStory", "manager.project-user-story.form.error.user-story");
+		if (!super.getBuffer().getErrors().hasErrors("userStory"))
+			//super.state(|userStory.isDraftMode(), "userStory", "manager.project-user-story.form.error.user-story");
 			super.state(userStory.getManager().equals(project.getManager()), "userStory", "manager.project-user-story.form.error.same-manager");
-		}
 
 	}
 
@@ -100,7 +99,7 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		masterId = super.getRequest().getData("masterId", int.class);
 		project = this.repository.findOneProjectById(masterId);
 
-		userStories = this.repository.findManyAvailableUserStoriesToAdd(project.getManager(), project);
+		userStories = this.repository.findManyAvailableUserStoriesToAdd(project.getManager(), project.getCode());
 		choices = SelectChoices.from(userStories, "title", object.getUserStory());
 
 		dataset = new Dataset();
