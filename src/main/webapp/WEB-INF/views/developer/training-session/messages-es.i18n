@@ -32,5 +32,8 @@ developer.training-session.form.button.update = Actualizar
 developer.training-session.form.button.publish = Publicar
 
 developer.training-session.form.error.duplicated = Este codigo ya esta en uso
-developer.training-session.form.error.invalid-creation-moment = Momento de creacion invalido
-developer.training-session.form.error.invalid-update-moment = Momento de actualizacion invalido
+developer.training-session.form.error.not-one-week-ahead-trainingModule = La fecha de inicio debe ser, al menos, una semana posterior a la fecha de creacion del Training Module
+developer.training-session.form.error.invalid-date-start-period = La fecha debe ser anterior a 2200/12/24 23:59
+developer.training-session.form.error.invalid-date-end-period = La fecha debe ser anterior a 2200/12/31 23:59
+developer.training-session.form.error.not-one-week-long = El periodo de TrainingSession debe durar al menos una semana
+developer.training-session.form.error.invalidEndPeriod = La fecha de finalizacion debe empezar despues de la fecha de inicio
