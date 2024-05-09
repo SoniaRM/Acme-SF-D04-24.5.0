@@ -36,4 +36,7 @@ developer.training-session.form.button.publish = Publish
 
 developer.training-session.form.error.duplicated = This code is already used
 developer.training-session.form.error.not-one-week-ahead-trainingModule = 
-developer.training-session.form.error.invalid-datee = 
+developer.training-session.form.error.invalid-date = 
+developer.training-session.form.error.not-one-week-long
+
+
