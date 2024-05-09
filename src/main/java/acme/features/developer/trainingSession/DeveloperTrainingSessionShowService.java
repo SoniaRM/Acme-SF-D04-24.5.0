@@ -55,7 +55,7 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 		Collection<TrainingModule> trainingModules;
 		SelectChoices choices;
 
-		trainingModules = this.repository.findAllTrainingModules();
+		trainingModules = this.repository.findManyTrainingModulesAvailable2();
 		choices = SelectChoices.from(trainingModules, "code", object.getTrainingModule());
 
 		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "draftMode");

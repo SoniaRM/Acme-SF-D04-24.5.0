@@ -35,5 +35,5 @@ developer.training-session.form.button.publish = Publish
 
 
 developer.training-session.form.error.duplicated = This code is already used
-developer.training-session.form.error.invalid-creation-moment = Invalid creation moment
-developer.training-session.form.error.invalid-update-moment = Invalid update moment
+developer.training-session.form.error.not-one-week-ahead-trainingModule = 
+developer.training-session.form.error.invalid-datee = 

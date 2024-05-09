@@ -1,3 +1,7 @@
 validation.risk.reference = A risk reference must follow the following pattern: R-XXX, where X is a number from 0 to 9
-validation.sponsorship.code = A sponsorship code mus follow one of the following patterns: A-XXX, AA-XXX ó AAA-XXX, where A is a capital letter and X a number from 0 to 9
+validation.sponsorship.code = A sponsorship code must follow one of the following patterns: A-XXX, AA-XXX or AAA-XXX, where A is a capital letter and X a number from 0 to 9
 validation.invoice.code = An invoice code must follow the following pattern: IN-XXXX-XXXX, where X is a number from 0 to 9
+
+# Developer
+validation.trainingModule.code = A training-module code must follow the following pattern: X-YYY, XX-YYY or XXX-YYY, where X is a capital letter and Y is a number form 0 to 9
+validation.trainingSession.code = A training-session code must follow the following pattern: TS-X-YYY, TS-XX-YYY or TS-XXX-YYY, where X is a capital letter and Y is a number form 0 to 9
