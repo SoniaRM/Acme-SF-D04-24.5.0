@@ -69,5 +69,6 @@ public class ManagerProjectUserStoryListService extends AbstractService<Manager,
 		final Project project = this.repository.findOneProjectById(masterId);
 		super.getResponse().addGlobal("masterId", masterId);
 		super.getResponse().addGlobal("draftMode", project.isDraftMode());
+
 	}
 }

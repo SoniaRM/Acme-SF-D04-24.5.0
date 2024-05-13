@@ -1,11 +1,14 @@
 
 package acme.features.manager.projecUserStory;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.Project;
 import acme.entities.ProjectUserStory;
 import acme.entities.UserStory;
@@ -26,11 +29,15 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 	public void authorise() {
 		boolean status;
 		int id;
-		ProjectUserStory pus;
+		ProjectUserStory object;
+		Manager manager;
 
 		id = super.getRequest().getData("id", int.class);
-		pus = this.repository.findOneProjectUserStoryById(id);
-		status = pus != null && super.getRequest().getPrincipal().hasRole(pus.getProject().getManager()) && pus.getProject().isDraftMode();
+		object = this.repository.findOneProjectUserStoryById(id);
+		manager = object == null ? null : object.getProject().getManager();
+
+		System.out.println(object);
+		status = object != null && object.getProject().isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -49,6 +56,7 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 	@Override
 	public void bind(final ProjectUserStory object) {
 		assert object != null;
+		super.bind(object, "project", "userStory");
 
 	}
 
@@ -62,9 +70,12 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(project.isDraftMode(), "project", "manager.project-user-story.form.error.project");
 		if (!super.getBuffer().getErrors().hasErrors("userStory"))
-			//super.state(!userStory.isDraftMode(), "userStory", "manager.project-user-story.form.error.user-story");
 			super.state(userStory.getManager().equals(project.getManager()), "userStory", "manager.project-user-story.form.error.same-manager");
-
+		Boolean state;
+		if (object.getProject() != null && object.getUserStory() != null && !super.getBuffer().getErrors().hasErrors("*")) {
+			state = !this.repository.findRelationByProjectIdAndUserStoryId(object.getProject().getId(), object.getUserStory().getId()).isEmpty();
+			super.state(state, "*", "manager.relation.form.error.not-exist-relation");
+		}
 	}
 
 	@Override
@@ -79,14 +90,22 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 		assert object != null;
 
 		Dataset dataset;
+		Collection<Project> projects;
+		Collection<UserStory> userStories;
+		SelectChoices choicesP;
+		SelectChoices choicesUS;
 		int id;
-		ProjectUserStory pus;
 
-		id = super.getRequest().getData("id", int.class);
-		pus = this.repository.findOneProjectUserStoryById(id);
+		id = super.getRequest().getPrincipal().getActiveRoleId();
+		projects = this.repository.findManyProjectsToAddByManager(id);
+		userStories = this.repository.findManyUserStoriesToAddByManager(id);
 
-		dataset = super.unbind(object, "project", "userStory", "userStory.title", "userStory.description", "userStory.estimatedCost", "userStory.acceptanceCriteria", "userStory.priority", "userStory.link");
-		dataset.put("draftMode", pus.getProject().isDraftMode());
+		choicesP = SelectChoices.from(projects, "code", object.getProject());
+		choicesUS = SelectChoices.from(userStories, "title", object.getUserStory());
+
+		dataset = super.unbind(object, "project", "userStory");
+		dataset.put("projects", choicesP);
+		dataset.put("userStories", choicesUS);
 
 		super.getResponse().addData(dataset);
 	}
