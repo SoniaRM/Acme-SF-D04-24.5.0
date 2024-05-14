@@ -11,3 +11,5 @@
 </acme:list>
 
 <acme:button code="manager.project.list.button.create" action="/manager/project/create"/>
+<acme:button code="manager.project.list.button.project-user-stories" action="/manager/project-user-story/create"/>
+

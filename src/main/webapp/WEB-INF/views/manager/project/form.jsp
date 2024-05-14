@@ -23,12 +23,16 @@
 			<acme:submit code="manager.project.form.button.delete" action="/manager/project/delete"/>
 			<acme:submit code="manager.project.form.button.publish" action="/manager/project/publish"/>
 			<acme:button code="manager.project.form.button.user-stories" action="/manager/user-story/list-mine?masterId=${id}"/>		
-			<acme:button code="manager.project.form.button.user-storiees" action="/manager/project-user-story/list?masterId=${id}"/>
+			<acme:button code="manager.userStory.list.button.remove" action="/manager/project-user-story/delete?projectId=${id}" />
 		
 		</jstl:when>
 		
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="manager.project.form.button.create" action="/manager/project/create"/>
 		</jstl:when>			
+	
+		
 	</jstl:choose>
+
+	
 </acme:form>

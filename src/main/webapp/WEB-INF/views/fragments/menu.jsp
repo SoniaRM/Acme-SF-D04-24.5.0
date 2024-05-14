@@ -81,9 +81,7 @@
     
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
 			<acme:menu-suboption code="master.menu.manager.projects" action="/manager/project/list"/>
-			<acme:menu-suboption code="master.menu.manager.user-stories" action="/manager/user-story/list-all"/>
-			<acme:menu-suboption code="master.menu.manager.project-user-stories" action="/manager/project-user-story/create"/>
-			
+			<acme:menu-suboption code="master.menu.manager.user-stories" action="/manager/user-story/list-all"/>			
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.manager.show-manager-dashboard" action="/manager/manager-dashboard/show"/>
 		</acme:menu-option>

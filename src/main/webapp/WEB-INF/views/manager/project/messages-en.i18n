@@ -11,6 +11,8 @@ manager.project.list.label.link = Link
 manager.project.list.label.draft-mode = Draft
 
 manager.project.list.button.create = Create
+manager.project.list.button.project-user-stories = Add Project User Story Relation
+manager.userStory.list.button.remove = Detach User Story
 
 manager.project.form.label.code = Code
 manager.project.form.label.title = Title

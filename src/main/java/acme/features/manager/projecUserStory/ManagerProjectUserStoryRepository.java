@@ -52,4 +52,13 @@ public interface ManagerProjectUserStoryRepository extends AbstractRepository {
 	@Query("select pu from ProjectUserStory pu where pu.project.id = :projectId and pu.userStory.id = :userStoryId")
 	Collection<ProjectUserStory> findRelationByProjectIdAndUserStoryId(int projectId, int userStoryId);
 
+	@Query("select pus from ProjectUserStory pus where pus.project.id = :id and pus.userStory.id = :id2")
+	ProjectUserStory findRelationByProjectIdAndUserStoryId2(int id, int id2);
+
+	@Query("select pus.userStory from ProjectUserStory pus where pus.project.id = :projectId")
+	Collection<UserStory> findManyUserStoriesByProjectId(int projectId);
+
+	@Query("select pus from ProjectUserStory pus where pus.project.id = :projectId and pus.project.draftMode = true")
+	Collection<ProjectUserStory> findManyProjectUserStoriesByProjectId(int projectId);
+
 }

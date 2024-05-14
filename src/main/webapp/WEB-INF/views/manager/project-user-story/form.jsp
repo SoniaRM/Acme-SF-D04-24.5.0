@@ -9,8 +9,21 @@
         <acme:input-select code="manager.project.userStory.form.label.user-stories" path="userStory" choices="${userStories}"/>
     
     </jstl:if>
-
-    <acme:submit code="manager.project.userStory.form.button.delete" action="/manager/project-user-story/delete"/>
-
+    
+       <jstl:choose>	
+		<jstl:when test="${_command == 'create'}">
     <acme:submit code="manager.project.userStory.form.button.create" action="/manager/project-user-story/create"/>
+		</jstl:when> 	
+	</jstl:choose>
+    
+    
+       <jstl:if test="${_command == 'delete'}">
+        <acme:input-select code="manager.project.userStory.form.label.user-stories" path="userStory" choices="${userStories}"/>
+
+    </jstl:if>
+    <jstl:choose>	
+		<jstl:when test="${_command == 'delete'}">
+			<acme:submit code="manager.projectUserStory.form.button.remove" action="/manager/project-user-story/delete?projectId=${projectId}"/>
+		</jstl:when> 	
+	</jstl:choose>
 </acme:form>
