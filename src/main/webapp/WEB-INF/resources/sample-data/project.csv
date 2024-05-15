@@ -1,6 +1,8 @@
 key,code,title,abstract-project,indication,cost,link,draft-mode,key:manager
-project-01,AAA-0001,Lorem ipsum,Lorem ipsum,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
+# Datos para code
+project-01,AAA-0001,Lorem ipsum,Lorem ipsum,false,4,https://es.wikipedia.org/wiki/Curso,false,manager-01
 project-02,ZZZ-0002,lorem ipsum,Lorem ipsum,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
+# Datos para title
 project-03,AAA-0003,L,Lorem ipsum,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
 project-04,AAA-0004,Lo,Lorem ipsum,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
 project-05,AAA-0005,LoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoren,Lorem ipsum,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
@@ -11,6 +13,8 @@ project-09,AAA-0009,<p>This text is in HTML</p>,Lorem ipsum,false,4,https://es.w
 project-10,AAA-0010,<script>alert('Hi')</script>,Lorem ipsum,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
 project-11,AAA-0011,' or 'A'='A',Lorem ipsum,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
 project-12,AAA-0012,SELECT c FROM Contract OR 1=1,Lorem ipsum,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
+project-12.1,AAA-1012,العظمى واعتلاء,Lorem ipsum,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
+# Datos para abstract-project
 project-13,AAA-0013,Lorem ipsum,L,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
 project-14,AAA-0014,Lorem ipsum,Lo,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
 project-15,AAA-0015,Lorem ipsum,LoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsum,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
@@ -19,12 +23,17 @@ project-17,AAA-0017,Lorem ipsum,æ¨£æœ¬æ¨™é¡Œ,false,4,https://es.wik
 project-18,AAA-0018,Lorem ipsum,<p>This text is in HTML</p>,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
 project-19,AAA-0019,Lorem ipsum,<script>alert('Hi')</script>,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
 project-20,AAA-0020,Lorem ipsum,' or 'A'='A',false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
-project-21,AAA-0021,Lorem ipsum,SELECT c FROM Contract OR 1=1,true,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
+project-21,AAA-0021,Lorem ipsum,SELECT c FROM Contract OR 1=1,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
+project-21.1,AAA-1021,Lorem ipsum,العظمى واعتلاء,true,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
+# Datos para indication
+project-21.2,AAA-2021,Lorem ipsum,SELECT c FROM Contract OR 1=1,true,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
+# Datos para cost
 project-22,AAA-0022,Lorem ipsum,Lorem ipsum,false,0,https://es.wikipedia.org/wiki/Curso,true,manager-01
 project-22.1,AAA-1022,Lorem ipsum,Lorem ipsum,false,1,https://es.wikipedia.org/wiki/Curso,true,manager-02
 project-23,AAA-0023,Lorem ipsum,Lorem ipsum,false,100,https://es.wikipedia.org/wiki/Curso,true,manager-01
-project-23.1,AAA-1023,Lorem ipsum,Lorem ipsum,false,10000,https://es.wikipedia.org/wiki/Curso,true,manager-02
-project-23.2,AAA-2023,Lorem ipsum,Lorem ipsum,false,9999,https://es.wikipedia.org/wiki/Curso,true,manager-02
+project-23.1,AAA-1023,Lorem ipsum,Lorem ipsum,false,9999,https://es.wikipedia.org/wiki/Curso,true,manager-02
+project-23.2,AAA-2023,Lorem ipsum,Lorem ipsum,false,10000,https://es.wikipedia.org/wiki/Curso,true,manager-02
+# Datos para link
 project-24,AAA-0024,Lorem ipsum,Lorem ipsum,false,4,,true,manager-01
 project-25,AAA-0025,Lorem ipsum,Lorem ipsum,false,4,null,true,manager-01
 project-26,AAA-0026,Lorem ipsum,Lorem ipsum,false,4,https://es.wikipedia.org/wiki/CursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCurso,true,manager-01
@@ -34,3 +43,20 @@ project-28.1,AAA-1028,Lorem ipsum,Lorem ipsum,false,4,ftp://www.example.com/myPr
 project-28.2,AAA-2028,Lorem ipsum,Lorem ipsum,false,4,https://www.example.com?ejemplo=ejemplo&id=4,true,manager-01
 project-28.3,AAA-3028,Lorem ipsum,Lorem ipsum,false,4,https://www.example.com?,true,manager-01
 project-28.4,AAA-4028,Lorem ipsum,Lorem ipsum,false,4,https://www.んい建濯よ芝.com,true,manager-01
+project-29,AAA-0029,Lorem ipsum,Lorem ipsum,false,4,http://www.lorem-ipsum.org,true,manager-01
+project-30,AAA-0030,Lorem ipsum,Lorem ipsum,false,4,ftp://www.lorem-ipsum.org,true,manager-01
+project-31,AAA-0031,Lorem ipsum,Lorem ipsum,false,4,http://www.lorem-ipsum.org/dolor/sit.html,true,manager-01
+project-32,AAA-0032,Lorem ipsum,Lorem ipsum,false,4,http://www.lorem-ipsum.org/dolor/sit.html#dolor,true,manager-01
+project-33,AAA-0033,Lorem ipsum,Lorem ipsum,false,4,http://example.org?a=1&b=2,true,manager-01
+project-34,AAA-0034,Lorem ipsum,Lorem ipsum,false,4,http://example.org?,true,manager-01
+project-35,AAA-0035,Lorem ipsum,Lorem ipsum,false,4,http://example.org?a,true,manager-01
+project-36,AAA-0036,Lorem ipsum,Lorem ipsum,false,4,http://example.org?a&b,true,manager-01
+project-37,AAA-0037,Lorem ipsum,Lorem ipsum,false,4,http://example.org/,true,manager-01
+project-38,AAA-0038,Lorem ipsum,Lorem ipsum,false,4,http://example.org/a,true,manager-01
+project-39,AAA-0039,Lorem ipsum,Lorem ipsum,false,4,http://example.org/a/b,true,manager-01
+project-40,AAA-0040,Lorem ipsum,Lorem ipsum,false,4,http://example.org/a/b?,true,manager-01
+project-41,AAA-0041,Lorem ipsum,Lorem ipsum,false,4,http://example.org/a/b?a&b,true,manager-01
+# Datos para draft-mode
+project-42,AAA-0042,Lorem ipsum,Lo,false,4,https://es.wikipedia.org/wiki/Curso,false,manager-01
+# Datos para key:manager
+project-43,AAA-0043,Lorem ipsum,Lo,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-02

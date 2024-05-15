@@ -11,6 +11,8 @@ manager.project.list.label.link = URL
 manager.project.list.label.draft-mode = Borrador
 
 manager.project.list.button.create = Crear
+manager.project.list.button.project-user-stories = Añadir relacion Project con User Story
+manager.userStory.list.button.remove = Desasociar User Story
 
 manager.project.form.label.code = Codigo
 manager.project.form.label.title = Titulo
@@ -29,3 +31,8 @@ manager.project.form.button.update = Actualizar
 manager.project.form.button.publish = Publicar
 
 manager.project.form.error.code = Codigo duplicado
+
+manager.project.form.error.projectWithOutUserStories = Project sin User Stories
+manager.project.form.error.userStoriesInDraftMode = Hay User Stories en modo borrador
+manager.project.form.error.existing-fatal-errors = Existen errores fatales
+

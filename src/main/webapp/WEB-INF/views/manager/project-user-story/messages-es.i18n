@@ -1,31 +1,16 @@
+manager.project-user-story.form.title = Relacion Project con User Story
 
-manager.project.list.title = Lista de Proyectos
-manager.project.form.title = Detalles del Proyecto
+manager.project.userStory.form.label.projects = Elige Project
+manager.project.userStory.form.label.user-stories = Elige User Story
 
-manager.project.list.label.code = Codigo
-manager.project.list.label.title = Titulo
-manager.project.list.label.abstract-project = Resumen
-manager.project.list.label.indication = Indicacion
-manager.project.list.label.cost = Coste
-manager.project.list.label.link = URL
-manager.project.list.label.draft-mode = Borrador
+manager.project.userStory.form.button.create = Añadir relacion
 
-manager.project.list.button.create = Crear
+manager.projectUserStory.form.button.remove = Desasociar con Project
 
-manager.project.form.label.code = Codigo
-manager.project.form.label.title = Titulo
-manager.project.form.label.abstract-project = Resumen
-manager.project.form.label.indication = Indicacion
-manager.project.form.label.cost = Coste
-manager.project.form.label.link = URL
-manager.project.form.label.draft-mode = Borrador
-
-manager.project.form.button.user-stories = UserStories
-
-
-manager.project.form.button.create = Crear
-manager.project.form.button.delete = Eliminar
-manager.project.form.button.update = Actualizar
-manager.project.form.button.publish = Publicar
-
-manager.project.form.error.code = Codigo duplicado
+manager.project-user-story.form.error.user-story-must-not-be-null = User Story no puede ser null
+manager.project-user-story.form.error.project-must-not-be-null = Project no puede ser null
+manager.project-user-story.form.error.project = Project en modo borrador
+manager.project-user-story.form.error.not-same-manager = Manager diferente
+manager.project-user-story.form.error.unassigning-user-story-not-assigned-to-project = User Story no asociada con Project
+manager.project-user-story.form.error.project-is-null = Project no puede ser null
+manager.project-user-story.form.error.project-is-published = Project publicado
