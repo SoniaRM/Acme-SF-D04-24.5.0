@@ -5,12 +5,8 @@
 
 <acme:list>
 	<acme:list-column code="developer.training-session.list.label.code" path="code" width="10%"/>
-	<acme:list-column code="developer.training-session.list.label.start-period" path="startPeriod" width="10%"/>
-	<acme:list-column code="developer.training-session.list.label.end-period" path="endPeriod" width="10%"/>
 	<acme:list-column code="developer.training-session.list.label.location" path="location" width="10%"/>
 	<acme:list-column code="developer.training-session.list.label.instructor" path="instructor" width="10%"/>
-	<acme:list-column code="developer.training-session.list.label.email" path="email" width="10%"/>
-	<acme:list-column code="developer.training-session.list.label.link" path="link" width="10%"/>
 	<acme:list-column code="developer.training-session.list.label.draft-mode" path="draftMode" width="10%"/>
 	<acme:list-column code="developer.training-session.list.label.training-module" path="trainingModule" width="10%"/>
 </acme:list>

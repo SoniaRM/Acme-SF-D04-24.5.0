@@ -17,9 +17,12 @@
 			<acme:submit code="manager.user-story.form.button.update" action="/manager/user-story/update"/>
 			<acme:submit code="manager.user-story.form.button.delete" action="/manager/user-story/delete"/>
 			<acme:submit code="manager.user-story.form.button.publish" action="/manager/user-story/publish"/>
+			<acme:submit code="manager.project.userStory.form.button.create" action="/manager/project-user-story/create?masterId=${masterId}"/>
+			
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="manager.user-story.form.button.create" action="/manager/user-story/create"/>
-		</jstl:when>			
+		</jstl:when>
+					
 	</jstl:choose>
 </acme:form>

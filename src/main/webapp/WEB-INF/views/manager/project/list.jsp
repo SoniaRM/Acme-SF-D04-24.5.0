@@ -6,11 +6,10 @@
 <acme:list>
 	<acme:list-column code="manager.project.list.label.code" path="code" width="10%"/>
 	<acme:list-column code="manager.project.list.label.title" path="title" width="10%"/>
-	<acme:list-column code="manager.project.list.label.abstract-project" path="abstractProject" width="10%"/>
-	<acme:list-column code="manager.project.list.label.indication" path="indication" width="10%"/>
 	<acme:list-column code="manager.project.list.label.cost" path="cost" width="10%"/>
-	<acme:list-column code="manager.project.list.label.link" path="link" width="10%"/>
 	<acme:list-column code="manager.project.list.label.draft-mode" path="draftMode" width="10%"/>
 </acme:list>
 
 <acme:button code="manager.project.list.button.create" action="/manager/project/create"/>
+<acme:button code="manager.project.list.button.project-user-stories" action="/manager/project-user-story/create"/>
+
