@@ -31,3 +31,8 @@ manager.project.form.button.update = Actualizar
 manager.project.form.button.publish = Publicar
 
 manager.project.form.error.code = Codigo duplicado
+
+manager.project.form.error.projectWithOutUserStories = Project sin User Stories
+manager.project.form.error.userStoriesInDraftMode = Hay User Stories en modo borrador
+manager.project.form.error.existing-fatal-errors = Existen errores fatales
+

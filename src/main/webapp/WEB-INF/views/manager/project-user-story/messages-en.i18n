@@ -6,3 +6,11 @@ manager.project.userStory.form.label.user-stories = Choose User Story
 manager.project.userStory.form.button.create = Add relation
 
 manager.projectUserStory.form.button.remove = Detach from Project
+
+manager.project-user-story.form.error.user-story-must-not-be-null = User Story must not be null
+manager.project-user-story.form.error.project-must-not-be-null = Project must not be null
+manager.project-user-story.form.error.project = Project in draftMode
+manager.project-user-story.form.error.not-same-manager = Not same manager
+manager.project-user-story.form.error.unassigning-user-story-not-assigned-to-project = User Story not assigned to Project
+manager.project-user-story.form.error.project-is-null = Project must not be null
+manager.project-user-story.form.error.project-is-published = Project is published

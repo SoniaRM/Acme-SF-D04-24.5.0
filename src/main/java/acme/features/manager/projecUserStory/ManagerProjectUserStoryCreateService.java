@@ -55,15 +55,23 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		UserStory userStory;
 		project = object.getProject();
 		userStory = object.getUserStory();
-		if (!super.getBuffer().getErrors().hasErrors("project"))
-			super.state(project.isDraftMode(), "project", "manager.project-user-story.form.error.project");
-		if (!super.getBuffer().getErrors().hasErrors("userStory"))
-			super.state(userStory.getManager().equals(project.getManager()), "userStory", "manager.project-user-story.form.error.not-same-manager");
-		Boolean state;
-		if (object.getProject() != null && object.getUserStory() != null && !super.getBuffer().getErrors().hasErrors("*")) {
-			state = this.repository.findRelationByProjectIdAndUserStoryId(object.getProject().getId(), object.getUserStory().getId()).isEmpty();
-			super.state(state, "*", "manager.relation.form.error.existing-relation");
+		super.state(object.getUserStory() != null, "userStory", "manager.project-user-story.form.error.user-story-must-not-be-null");
+
+		if (object.getProject() == null)
+			super.state(object.getProject() != null, "project", "manager.project-user-story.form.error.project-must-not-be-null");
+		else {
+			if (!super.getBuffer().getErrors().hasErrors("project"))
+				super.state(project.isDraftMode(), "project", "manager.project-user-story.form.error.project");
+			Boolean state;
+			if (object.getProject() != null && object.getUserStory() != null && !super.getBuffer().getErrors().hasErrors("*")) {
+				state = this.repository.findRelationByProjectIdAndUserStoryId(object.getProject().getId(), object.getUserStory().getId()).isEmpty();
+				super.state(state, "*", "manager.relation.form.error.existing-relation");
+			}
+			if (!super.getBuffer().getErrors().hasErrors("userStory"))
+				super.state(userStory.getManager().equals(project.getManager()), "userStory", "manager.project-user-story.form.error.not-same-manager");
+
 		}
+
 	}
 
 	@Override
@@ -76,49 +84,6 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 	@Override
 	public void unbind(final ProjectUserStory object) {
 		assert object != null;
-		/*
-		 * Dataset dataset;
-		 * Collection<UserStory> userStories;
-		 * Collection<Project> projects;
-		 * 
-		 * SelectChoices choicesUS;
-		 * SelectChoices choicesP;
-		 * dataset = new Dataset();
-		 * 
-		 * int masterId;
-		 * Project project;
-		 * Manager manager;
-		 * manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
-		 * 
-		 * projects = this.repository.findManyProjectsToAddByManager(manager);
-		 * 
-		 * if (object.getProject() == null) {
-		 * choicesP = SelectChoices.from(projects, "code", object.getProject());
-		 * 
-		 * dataset.put("project", choicesP.getSelected().getKey());
-		 * dataset.put("projects", choicesP);
-		 * 
-		 * userStories = this.repository.findManyUserStoriesToAddByManager(manager);
-		 * choicesUS = SelectChoices.from(userStories, "title", object.getUserStory());
-		 * 
-		 * dataset.put("userStory", choicesUS.getSelected().getKey());
-		 * dataset.put("userStories", choicesUS);
-		 * super.getResponse().addData(dataset);
-		 * 
-		 * } else {
-		 * 
-		 * masterId = super.getRequest().getData("masterId", int.class);
-		 * project = this.repository.findOneProjectById(masterId);
-		 * userStories = this.repository.findManyAvailableUserStoriesToAdd(project.getManager(), project.getCode());
-		 * choicesUS = SelectChoices.from(userStories, "title", object.getUserStory());
-		 * 
-		 * dataset.put("userStory", choicesUS.getSelected().getKey());
-		 * dataset.put("userStories", choicesUS);
-		 * dataset.put("masterId", masterId);
-		 * dataset.put("draftMode", project.isDraftMode());
-		 * super.getResponse().addData(dataset);
-		 * }
-		 */
 
 		Dataset dataset;
 		Collection<Project> projects;

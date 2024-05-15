@@ -20,18 +20,25 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		final boolean status;
+		int projectId;
+		Project object;
+		Manager manager;
+
+		projectId = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneProjectById(projectId);
+		manager = object == null ? null : object.getManager();
+		status = object != null && object.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		Project object;
-		Manager manager;
+		int id;
 
-		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
-		object = new Project();
-		object.setManager(manager);
-		object.setDraftMode(true);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneProjectById(id);
 
 		super.getBuffer().addData(object);
 	}

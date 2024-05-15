@@ -3,5 +3,5 @@ validation.sponsorship.code = El código de un patrocionio debe seguir uno de lo
 validation.invoice.code = El código de una factura debe seguir el siguiente patrón: IN-XXXX-XXXX, siendo X un número del 0 al 9
 
 
-
+#Manager
 validation.project.code = El código de un proyecto debe seguir el siguiente patrón: XXX-YYYY, siendo X una letra mayúscula y Y un número del 0 al 9

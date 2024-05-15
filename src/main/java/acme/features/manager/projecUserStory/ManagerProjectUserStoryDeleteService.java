@@ -31,6 +31,7 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 		Manager manager;
 		int projectId;
 		Project project;
+
 		projectId = super.getRequest().getData("projectId", int.class);
 		project = this.repository.findOneProjectById(projectId);
 		manager = project == null ? null : project.getManager();
@@ -55,7 +56,9 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 
 			object = new ProjectUserStory();
 			object.setProject(project);
-		} else
+		}
+
+		else
 			object = puss.stream().findFirst().get();
 
 		super.getBuffer().addData(object);
@@ -86,7 +89,9 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 			super.state(userStoriesAssigned.contains(object.getUserStory()), "userStory", "manager.project-user-story.form.error.unassigning-user-story-not-assigned-to-project");
 			super.state(object.getProject() != null, "project", "manager.project-user-story.form.error.project-is-null");
 			if (object.getProject() != null)
-				super.state(object.getProject().isDraftMode(), "project", "manager.user-story-assign.form.error.project-is-published");
+				super.state(object.getProject().isDraftMode(), "project", "manager.project-user-story.form.error.project-is-published");
+			super.state(object.getUserStory() != null, "userStory", "manager.project-user-story.form.error.user-story-must-not-be-null");
+
 		}
 	}
 

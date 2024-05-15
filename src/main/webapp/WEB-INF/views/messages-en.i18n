@@ -10,3 +10,7 @@ validation.invoice.code = An invoice code must follow the following pattern: IN-
 
 # Manager
 validation.project.code = A project code must follow the following pattern: XXX-YYYY, where X is a capital letter and Y is a number from 0 to 9
+
+
+
+
