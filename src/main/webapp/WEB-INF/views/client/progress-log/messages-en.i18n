@@ -2,23 +2,23 @@
 client.progress-log.list.title = Progress Log List
 client.progress-log.form.title = Progress Log Form
 
-client.progress-log.list.label.recordId = Record Id
+client.progress-log.list.label.record-id = Record Id
 client.progress-log.list.label.completeness = Completeness
 client.progress-log.list.label.comment = Comment
-client.progress-log.list.label.registrationMoment = Registration Moment
-client.progress-log.list.label.responsiblePerson = Responsible Person
+client.progress-log.list.label.registration-moment = Registration Moment
+client.progress-log.list.label.responsible-person = Responsible Person
 client.progress-log.list.label.draft-mode = Draft
 client.progress-log.list.label.contract = Contract
 
 client.progress-log.list.button.create = Create
 
-client.progress-log.form.label.recordId = Record Id
+client.progress-log.form.label.record-id = Record Id
 client.progress-log.form.label.completeness = Completeness
 client.progress-log.form.label.comment = Comment
-client.progress-log.form.label.registrationMoment = Registration Moment
-client.progress-log.form.label.responsiblePerson = Responsible Person
+client.progress-log.form.label.registration-moment = Registration Moment
+client.progress-log.form.label.responsible-person = Responsible Person
 client.progress-log.form.label.draft-mode = Draft
-client.progress-log.form.label.Contract = Contract
+client.progress-log.form.label.contract = Contract
 
 client.progress-log.form.button.create = Create
 client.progress-log.form.button.delete = Delete

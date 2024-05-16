@@ -2,23 +2,23 @@
 client.progress-log.list.title = Lista de Registro de Progreso
 client.progress-log.form.title = Formulario de Registro de Progreso
 
-client.progress-log.list.label.recordId = Identificador de Registro
+client.progress-log.list.label.record-id = Identificador de Registro
 client.progress-log.list.label.completeness = Compleción
 client.progress-log.list.label.comment = Comentario
-client.progress-log.list.label.registrationMoment = Momento de Registro
-client.progress-log.list.label.responsiblePerson = Persona Responsable
+client.progress-log.list.label.registration-moment = Momento de Registro
+client.progress-log.list.label.responsible-person = Persona Responsable
 client.progress-log.list.label.draft-mode = Borrador
 client.progress-log.list.label.contract = Contrato
 
 client.progress-log.list.button.create = Crear
 
-client.progress-log.form.label.recordId = Identificador de Registro
+client.progress-log.form.label.record-id = Identificador de Registro
 client.progress-log.form.label.completeness = Compleción
 client.progress-log.form.label.comment = Comentario
-client.progress-log.form.label.registrationMoment = Momento de Registro
-client.progress-log.form.label.responsiblePerson = Persona Responsable
+client.progress-log.form.label.registration-moment = Momento de Registro
+client.progress-log.form.label.responsible-person = Persona Responsable
 client.progress-log.form.label.draft-mode = Borrador
-client.progress-log.form.label.training-module = Módulo de Entrenamiento
+client.progress-log.form.label.contract = Contrato
 
 client.progress-log.form.button.create = Crear
 client.progress-log.form.button.delete = Eliminar

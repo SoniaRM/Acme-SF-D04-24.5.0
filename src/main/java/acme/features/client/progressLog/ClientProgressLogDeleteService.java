@@ -51,7 +51,7 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 	public void bind(final ProgressLog object) {
 		assert object != null;
 
-		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftmode");
+		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 		contracts = this.repository.findAllContracts();
 		choices = SelectChoices.from(contracts, "code", object.getContract());
 
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftmode");
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
 		dataset.put("contract", choices.getSelected().getKey());
 		dataset.put("contracts", choices);
 		super.getResponse().addData(dataset);
