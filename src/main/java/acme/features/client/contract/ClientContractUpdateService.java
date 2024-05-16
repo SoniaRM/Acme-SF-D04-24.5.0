@@ -52,7 +52,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 	public void bind(final Contract object) {
 		assert object != null;
 
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode", "project");
+		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project");
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 
 		choices = SelectChoices.from(projects, "title", object.getProject());
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode", "project");
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 
