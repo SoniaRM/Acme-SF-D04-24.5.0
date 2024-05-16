@@ -135,7 +135,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		SelectChoices choices;
 		Dataset dataset;
 
-		allProjects = this.repository.findAllProjects();
+		allProjects = this.repository.findManyPublishedProjects();
 		projects = SelectChoices.from(allProjects, "code", object.getProject());
 		choices = SelectChoices.from(ProjectType.class, object.getProjectType());
 
