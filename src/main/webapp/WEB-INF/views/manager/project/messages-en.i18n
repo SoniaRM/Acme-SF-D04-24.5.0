@@ -11,6 +11,8 @@ manager.project.list.label.link = Link
 manager.project.list.label.draft-mode = Draft
 
 manager.project.list.button.create = Create
+manager.project.list.button.project-user-stories = Add Project User Story Relation
+manager.userStory.list.button.remove = Detach User Story
 
 manager.project.form.label.code = Code
 manager.project.form.label.title = Title
@@ -28,3 +30,8 @@ manager.project.form.button.update = Update
 manager.project.form.button.publish = Publish
 
 manager.project.form.error.code = Duplicated code
+
+manager.project.form.error.projectWithOutUserStories = Project without User Stories
+manager.project.form.error.userStoriesInDraftMode = User Stories in draftmode
+manager.project.form.error.existing-fatal-errors = Existing fatal errors
+

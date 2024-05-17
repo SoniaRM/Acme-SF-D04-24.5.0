@@ -42,9 +42,7 @@ public class DeveloperTrainingModuleListMineService extends AbstractService<Deve
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode", "project");
-		final int estimatedTotalTime = this.repository.findEstimatedTotalTimeOfTrainingModule(object.getId());
-		dataset.put("estimatedTotalTime", estimatedTotalTime);
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime", "draftMode", "project");
 
 		super.getResponse().addData(dataset);
 	}

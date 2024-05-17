@@ -5,25 +5,25 @@
 
 <acme:form>
     <jstl:if test="${_command == 'create'}">
+        <acme:input-select code="manager.project.userStory.form.label.projects" path="project" choices="${projects}"/>
         <acme:input-select code="manager.project.userStory.form.label.user-stories" path="userStory" choices="${userStories}"/>
+    
     </jstl:if>
+    
+       <jstl:choose>	
+		<jstl:when test="${_command == 'create'}">
+    <acme:submit code="manager.project.userStory.form.button.create" action="/manager/project-user-story/create"/>
+		</jstl:when> 	
+	</jstl:choose>
+    
+    
+       <jstl:if test="${_command == 'delete'}">
+        <acme:input-select code="manager.project.userStory.form.label.user-stories" path="userStory" choices="${userStories}"/>
 
-    <jstl:if test="${acme:anyOf(_command, 'show|delete')}">
-        <acme:input-textbox code="manager.userStory.form.label.title" path="userStory.title" readonly="true"/>
-        <acme:input-textarea code="manager.userStory.form.label.description" path="userStory.description" readonly="true"/>
-        <acme:input-textbox code="manager.userStory.form.label.estimatedCost" path="userStory.estimatedCost" readonly="true"/>
-        <acme:input-textbox code="manager.userStory.form.label.lectureNature" path="userStory.acceptanceCriteria" readonly="true"/>
-        <acme:input-textbox code="manager.userStory.form.label.acceptanceCriteria" path="userStory.priority" readonly="true"/>
-        <acme:input-textbox code="manager.userStory.form.label.link" path="userStory.link" readonly="true"/>
     </jstl:if>
-
-    <jstl:choose>
-    <jstl:when test="${acme:anyOf(_command, 'show|delete')}">
-        <acme:submit code="manager.project.userStory.form.button.delete" action="/manager/project-user-story/delete"/>
-    </jstl:when>
-
-    <jstl:when test="${_command == 'create'}">
-        <acme:submit code="manager.project.userStory.form.button.create" action="/manager/project-user-story/create?masterId=${masterId}"/>
-    </jstl:when>
-</jstl:choose>
+    <jstl:choose>	
+		<jstl:when test="${_command == 'delete'}">
+			<acme:submit code="manager.projectUserStory.form.button.remove" action="/manager/project-user-story/delete?projectId=${projectId}"/>
+		</jstl:when> 	
+	</jstl:choose>
 </acme:form>

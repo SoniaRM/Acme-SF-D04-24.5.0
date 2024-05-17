@@ -5,14 +5,10 @@
 
 <acme:list>
 	<acme:list-column code="developer.training-module.list.label.code" path="code" width="10%"/>
-	<acme:list-column code="developer.training-module.list.label.creation-moment" path="creationMoment" width="10%"/>
-	<acme:list-column code="developer.training-module.list.label.details" path="details" width="10%"/>	
 	<acme:list-column code="developer.training-module.list.label.difficulty-level" path="difficultyLevel" width="10%"/>
 	<acme:list-column code="developer.training-module.list.label.estimated-total-time" path="estimatedTotalTime" width="10%"/>
-	<acme:list-column code="developer.training-module.list.label.update-moment" path="updateMoment" width="10%"/>
-	<acme:list-column code="developer.training-module.list.label.link" path="link" width="10%"/>
-	<acme:list-column code="developer.training-module.list.label.project" path="project" width="10%"/>
 	<acme:list-column code="developer.training-module.list.label.draft-mode" path="draftMode" width="10%"/>
+	<acme:list-column code="developer.training-module.list.label.project" path="project" width="10%"/>
 </acme:list>
 
 <acme:button code="developer.training-module.list.button.create" action="/developer/training-module/create"/>
