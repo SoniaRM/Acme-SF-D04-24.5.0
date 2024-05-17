@@ -59,15 +59,20 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 			super.state(existing == null, "code", "developer.training-session.form.error.duplicated");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("trainingModule"))
+			super.state(object.getTrainingModule() != null, "trainingModule", "developer.training-session.form.error.null-training-module.");
+
 		if (!super.getBuffer().getErrors().hasErrors("startPeriod") && object.getStartPeriod() != null) {
 
 			Date maxStartPeriod;
 			maxStartPeriod = MomentHelper.parse("2200/12/24 23:59", "yyyy/MM/dd HH:mm");
 
-			Date minEndPeriod;
-			minEndPeriod = MomentHelper.deltaFromMoment(object.getTrainingModule().getCreationMoment(), 7, ChronoUnit.DAYS);
+			if (object.getTrainingModule() != null) {
+				Date minEndPeriod;
+				minEndPeriod = MomentHelper.deltaFromMoment(object.getTrainingModule().getCreationMoment(), 7, ChronoUnit.DAYS);
 
-			super.state(MomentHelper.isAfterOrEqual(object.getStartPeriod(), minEndPeriod), "startPeriod", "developer.training-session.form.error.not-one-week-ahead-trainingModule");
+				super.state(MomentHelper.isAfterOrEqual(object.getStartPeriod(), minEndPeriod), "startPeriod", "developer.training-session.form.error.not-one-week-ahead-trainingModule");
+			}
 			super.state(MomentHelper.isBeforeOrEqual(object.getStartPeriod(), maxStartPeriod), "startPeriod", "developer.training-session.form.error.invalid-date-start-period");
 
 		}
@@ -80,7 +85,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 			Date minEndPeriod;
 			minEndPeriod = MomentHelper.deltaFromMoment(object.getStartPeriod(), 7, ChronoUnit.DAYS);
 
-			super.state(MomentHelper.isAfter(object.getEndPeriod(), minEndPeriod), "endPeriod", "developer.training-session.form.error.not-one-week-long");
+			super.state(MomentHelper.isAfterOrEqual(object.getEndPeriod(), minEndPeriod), "endPeriod", "developer.training-session.form.error.not-one-week-long");
 			super.state(MomentHelper.isAfterOrEqual(object.getEndPeriod(), object.getStartPeriod()), "endPeriod", "developer.training-session.form.error.invalidEndPeriod");
 			super.state(MomentHelper.isBeforeOrEqual(object.getEndPeriod(), maxStartPeriod), "endPeriod", "developer.training-session.form.error.invalid-date-end-period");
 		}
@@ -106,7 +111,6 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "trainingModule");
 		dataset.put("trainingModule", choices.getSelected().getKey());
 		dataset.put("trainingModules", choices);
-		System.out.println(object.getTrainingModule());
 		super.getResponse().addData(dataset);
 	}
 }
