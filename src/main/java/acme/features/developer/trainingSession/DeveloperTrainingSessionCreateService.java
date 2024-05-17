@@ -79,15 +79,18 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 
 		if (!super.getBuffer().getErrors().hasErrors("endPeriod") && object.getEndPeriod() != null) {
 
-			Date maxStartPeriod;
-			maxStartPeriod = MomentHelper.parse("2200/12/31 23:59", "yyyy/MM/dd HH:mm");
+			Date maxEndPeriod;
+			maxEndPeriod = MomentHelper.parse("2200/12/31 23:59", "yyyy/MM/dd HH:mm");
 
-			Date minEndPeriod;
-			minEndPeriod = MomentHelper.deltaFromMoment(object.getStartPeriod(), 7, ChronoUnit.DAYS);
+			if (object.getStartPeriod() != null) {
+				Date minEndPeriod;
+				minEndPeriod = MomentHelper.deltaFromMoment(object.getStartPeriod(), 7, ChronoUnit.DAYS);
 
-			super.state(MomentHelper.isAfterOrEqual(object.getEndPeriod(), minEndPeriod), "endPeriod", "developer.training-session.form.error.not-one-week-long");
-			super.state(MomentHelper.isAfterOrEqual(object.getEndPeriod(), object.getStartPeriod()), "endPeriod", "developer.training-session.form.error.invalidEndPeriod");
-			super.state(MomentHelper.isBeforeOrEqual(object.getEndPeriod(), maxStartPeriod), "endPeriod", "developer.training-session.form.error.invalid-date-end-period");
+				super.state(MomentHelper.isAfterOrEqual(object.getEndPeriod(), minEndPeriod), "endPeriod", "developer.training-session.form.error.not-one-week-long");
+				super.state(MomentHelper.isAfterOrEqual(object.getEndPeriod(), object.getStartPeriod()), "endPeriod", "developer.training-session.form.error.invalidEndPeriod");
+
+			}
+			super.state(MomentHelper.isBeforeOrEqual(object.getEndPeriod(), maxEndPeriod), "endPeriod", "developer.training-session.form.error.invalid-date-end-period");
 		}
 
 	}
