@@ -1,13 +1,18 @@
 key,code,start-period,end-period,location,instructor,email,link,draft-mode,key:training-module
+# Datos para code
 training-session-01,TS-AAA-001,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession01@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-01
 training-session-02,TS-AA-002,2000/12/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession02@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-02
 training-session-03,TS-A-003,2000/12/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession03@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-03
+training-session-03.4,TS-ZZZ-999,2000/12/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession03@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-03
+training-session-03.5,TS-Z-999,2000/12/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession03@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-03
+# Datos para end-period
 training-session-03.1,TS-A-103,2000/12/12 00:00,2022/07/30 00:00,Lorem ipsum,Lorem ipsum,trainingsession03@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-05.2
 training-session-03.2,TS-A-203,2000/12/12 00:00,2022/07/29 23:59,Lorem ipsum,Lorem ipsum,trainingsession03@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-05.3
 training-session-03.3,TS-A-303,2004/02/29 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession03@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-05.1
 training-session-04,TS-AAA-004,2000/01/01 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession04@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-04
 training-session-05,TS-AAA-005,2000/01/01 00:01,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession05@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-05
 training-session-06,TS-AAA-006,2000/10/12 00:00,2000/12/19 00:00,Lorem ipsum,Lorem ipsum,trainingsession06@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-06
+# Datos para location
 training-session-07,TS-AAA-007,2000/10/12 00:00,2000/12/19 00:01,L,Lorem ipsum,trainingsession07@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-07
 training-session-08,TS-AAA-008,2000/10/12 00:00,2020/03/26 08:00,Lo,Lorem ipsum,trainingsession08@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-08
 training-session-09,TS-AAA-009,2000/10/12 00:00,2020/03/26 08:00,LoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLorem,Lorem ipsum,trainingsession09@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-09
@@ -18,6 +23,10 @@ training-session-13,TS-AAA-013,2000/10/12 00:00,2020/03/26 08:00,<p>This text is
 training-session-14,TS-AAA-014,2000/10/12 00:00,2020/03/26 08:00,<script>alert('Hi')</script>,Lorem ipsum,trainingsession14@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-14
 training-session-15,TS-AAA-015,2000/10/12 00:00,2020/03/26 08:00,' or 'A'='A',Lorem ipsum,trainingsession15@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-15
 training-session-16,TS-AAA-016,2000/10/12 00:00,2020/03/26 08:00,SELECT c FROM Contract OR 1=1,Lorem ipsum,trainingsession16@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-16
+training-session-16.1,TS-AAA-116,2000/10/12 00:00,2020/03/26 08:00,<h1>!</h1>,Lorem ipsum,trainingsession16@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-16
+training-session-16.2,TS-AAA-216,2000/10/12 00:00,2020/03/26 08:00,국민경제의 발전을,Lorem ipsum,trainingsession16@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-16
+training-session-16.3,TS-AAA-316,2000/10/12 00:00,2020/03/26 08:00,العظمى واعتلاء,Lorem ipsum,trainingsession16@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-16
+# Datos para instructor
 training-session-17,TS-AAA-017,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,L,trainingsession17@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-17
 training-session-18,TS-AAA-018,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lo,trainingsession18@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-18
 training-session-19,TS-AAA-019,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,LoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLorem,trainingsession19@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-19
@@ -28,6 +37,10 @@ training-session-23,TS-AAA-023,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,<p>
 training-session-24,TS-AAA-024,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,<script>alert('Hi')</script>,trainingsession24@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-24
 training-session-25,TS-AAA-025,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,' or 'A'='A',trainingsession25@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-24
 training-session-26,TS-AAA-026,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,SELECT c FROM Contract OR 1=1,trainingsession26@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-14
+training-session-26.1,TS-AAA-126,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,<h1>!</h1>,trainingsession26@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-14
+training-session-26.2,TS-AAA-226,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,국민경제의 발전을,trainingsession26@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-14
+training-session-26.3,TS-AAA-326,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,العظمى واعتلاء,trainingsession26@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-14
+# Datos para email
 training-session-27,TS-AAA-027,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,t@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-15
 training-session-27.1,TS-AAA-127,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,c@e.c,https://es.wikipedia.org/wiki/Curso,true,training-module-15
 training-session-27.2,TS-AAA-227,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,co@ex.co,https://es.wikipedia.org/wiki/Curso,true,training-module-15
@@ -37,6 +50,10 @@ training-session-27.5,TS-AAA-527,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,L
 training-session-27.6,TS-AAA-627,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,¨£æœ¬æ¨™é@example.com,https://es.wikipedia.org/wiki/Curso,true,training-module-15
 training-session-27.7,TS-AAA-727,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,f@email.com,https://es.wikipedia.org/wiki/Curso,true,training-module-15
 training-session-27.8,TS-AAA-827,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,fff@email.com,https://es.wikipedia.org/wiki/Curso,true,training-module-15
+training-session-27.9,TS-AAA-927,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,a@b.es,https://es.wikipedia.org/wiki/Curso,true,training-module-15
+training-session-27.10,TS-AA-027,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,a@b.esx,https://es.wikipedia.org/wiki/Curso,true,training-module-15
+training-session-27.11,TS-AA-127,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,acme.password@lorem-ipsum.org,https://es.wikipedia.org/wiki/Curso,true,training-module-15
+# Datos para link
 training-session-28,TS-AAA-028,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession28@gmail.com,https://es.wikipedia.org/wiki/CursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCurso,true,training-module-01
 training-session-29,TS-AAA-029,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession29@gmail.com,https://es.wikipedia.org/wiki/CursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCurs,true,training-module-01
 training-session-30,TS-AAA-030,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,null,true,training-module-16
@@ -45,3 +62,18 @@ training-session-31.1,TS-AAA-131,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,L
 training-session-31.2,TS-AAA-231,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,https://www.example.com?ejemplo=ejemplo&id=4,true,training-module-19.3
 training-session-31.3,TS-AAA-331,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,https://www.example.com?,true,training-module-19.2
 training-session-31.4,TS-AAA-431,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,https://www.んい建濯よ芝.com,true,training-module-19.1
+training-session-31.5,TS-AAA-531,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,https://www.lorem-ipsum.org,true,training-module-19.1
+training-session-31.6,TS-AAA-631,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,ftp://www.lorem-ipsum.org,true,training-module-19.1
+training-session-31.7,TS-AAA-731,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,http://www.lorem-ipsum.org/dolor/sit.html,true,training-module-19.1
+training-session-31.8,TS-AAA-831,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,http://www.lorem-ipsum.org/dolor/sit.html#dolor,true,training-module-19.1
+training-session-31.9,TS-AAA-931,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,http://example.org?a=1&b=2,true,training-module-19.1
+training-session-31.10,TS-AA-031,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,http://example.org?,true,training-module-19.1
+training-session-31.11,TS-AA-131,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,http://example.org?a,true,training-module-19.1
+training-session-31.12,TS-AA-231,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,http://example.org?a&b,true,training-module-19.1
+training-session-31.13,TS-AA-331,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,http://example.org/,true,training-module-19.1
+training-session-31.14,TS-AA-431,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,http://example.org/a,true,training-module-19.1
+training-session-31.15,TS-AA-531,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,http://example.org/a/b,true,training-module-19.1
+training-session-31.16,TS-AA-631,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,http://example.org/a/b?,true,training-module-19.1
+training-session-31.17,TS-AA-731,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,http://example.org/a/b?a&b,true,training-module-19.1
+# Datos para draft-mode
+training-session-32,TS-AAA-032,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession01@gmail.com,https://es.wikipedia.org/wiki/Curso,false,training-module-01

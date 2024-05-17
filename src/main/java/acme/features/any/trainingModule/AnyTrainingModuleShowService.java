@@ -41,7 +41,7 @@ public class AnyTrainingModuleShowService extends AbstractService<Any, TrainingM
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "draftMode", "project");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime", "draftMode", "project");
 		dataset.put("readonly", true);
 
 		super.getResponse().addData(dataset);

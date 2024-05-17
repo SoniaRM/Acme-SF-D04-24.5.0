@@ -10,6 +10,7 @@
 	<acme:input-select code="developer.training-module.form.label.difficulty-level" path="difficultyLevel" choices="${difficultyLevel}"/>
 	<acme:input-moment code="developer.training-module.form.label.update-moment" path="updateMoment" readonly="true"/>
 	<acme:input-url code="developer.training-module.form.label.link" path="link"/>
+	<acme:input-url code="developer.training-module.form.label.estimated-total-time" path="estimatedTotalTime"/>
 	<acme:input-select code="developer.training-module.form.label.project" path="project" choices="${projects}"/>	
 	
 		

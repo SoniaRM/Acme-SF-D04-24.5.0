@@ -1,32 +1,66 @@
-key,code,creation-moment,details,difficulty-level,update-moment,link,draft-mode,key:project,key:developer
-training-module-01,AAA-001,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-01
-training-module-02,AA-002,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-01
-training-module-03,A-003,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-01
-training-module-04,AAA-004,2000/01/08 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-01
-training-module-05,AAA-005,2000/01/08 00:01,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-01
-training-module-05.1,AAA-105,2020/02/29 00:00,Lorem ipsum,BASIC,2020/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-01
-training-module-05.2,AAA-205,2022/07/23 00:00,Lorem ipsum,BASIC,2022/07/24 00:00,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-01
-training-module-05.3,AAA-305,2022/07/22 23:59,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-01
-training-module-06,AAA-006,2000/12/12 00:00,L,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-02,developer-01
-training-module-07,AAA-007,2000/12/12 00:00,Lo,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-02,developer-01
-training-module-08,AAA-008,2000/12/12 00:00,LoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-02,developer-01
-training-module-09,AAA-009,2000/12/12 00:00,LoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsu,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-02,developer-01
-training-module-10,AAA-010,2000/12/12 00:00,æ¨£æœ¬æ¨™é¡Œ,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-02
-training-module-11,AAA-011,2000/12/12 00:00,貸んい建濯よ芝弾テソ,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-02
-training-module-12,AAA-012,2000/12/12 00:00,<p>This text is in HTML</p>,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-02
-training-module-13,AAA-013,2000/12/12 00:00,<script>alert('Hi')</script>,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-02
-training-module-14,AAA-014,2000/12/12 00:00,' or 'A'='A',BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-01
-training-module-15,AAA-015,2000/12/12 00:00,SELECT c FROM Contract OR 1=1,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-01
-training-module-16,AAA-016,2000/12/12 00:00,Lorem ipsum,INTERMEDIATE,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-01
-training-module-17,AAA-017,2000/12/12 00:00,Lorem ipsum,ADVANCED,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-01
-training-module-18,AAA-018,2000/12/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,https://es.wikipedia.org/wiki/Curso,true,project-01,developer-01
-training-module-19,AAA-019,2000/12/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,,true,project-01,developer-01
-training-module-19.1,AAA-119,2000/12/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,ftp://www.example.com/myProfile,true,project-01,developer-01
-training-module-19.2,AAA-219,2000/12/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,https://www.example.com?ejemplo=ejemplo&id=4,true,project-01,developer-01
-training-module-19.3,AAA-319,2000/12/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,https://www.example.com?,true,project-01,developer-01
-training-module-19.4,AAA-419,2000/12/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,https://www.んい建濯よ芝.com,true,project-01,developer-01
-training-module-20,AAA-020,2000/12/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,https://es.wikipedia.org/wiki/CursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCurso,true,project-01,developer-01
-training-module-21,AAA-021,2000/12/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,https://es.wikipedia.org/wiki/CursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCurs,true,project-01,developer-01
-training-module-22,AAA-022,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-02,developer-02
-training-module-23,AAA-023,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,true,project-02,developer-02
-training-module-24,AAA-024,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,null,true,project-02,developer-02
+key,code,creation-moment,details,difficulty-level,update-moment,link,estimated-total-time,draft-mode,key:project,key:developer
+# Datos para code
+training-module-01,AAA-001,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+training-module-02,AA-002,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+training-module-03,A-003,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+training-module-03.1,ZZZ-999,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+training-module-03.2,Z-999,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+# Datos para creation-moment
+training-module-04,AAA-004,2000/01/08 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,3456,true,project-01,developer-01
+training-module-05,AAA-005,2000/01/08 00:01,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+training-module-05.1,AAA-105,2020/02/29 00:00,Lorem ipsum,BASIC,2020/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+training-module-05.2,AAA-205,2022/07/23 00:00,Lorem ipsum,BASIC,2022/07/24 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+training-module-05.3,AAA-305,2022/07/22 23:59,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+# Datos para details
+training-module-06,AAA-006,2000/12/12 00:00,L,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+training-module-07,AAA-007,2000/12/12 00:00,Lo,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+training-module-08,AAA-008,2000/12/12 00:00,LoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,543,true,project-01,developer-01
+training-module-09,AAA-009,2000/12/12 00:00,LoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsu,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+training-module-10,AAA-010,2000/12/12 00:00,æ¨£æœ¬æ¨™é¡Œ,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,97,true,project-01,developer-02
+training-module-11,AAA-011,2000/12/12 00:00,貸んい建濯よ芝弾テソ,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,432,true,project-01,developer-02
+training-module-12,AAA-012,2000/12/12 00:00,<p>This text is in HTML</p>,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-02
+training-module-13,AAA-013,2000/12/12 00:00,<script>alert('Hi')</script>,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-02
+training-module-14,AAA-014,2000/12/12 00:00,' or 'A'='A',BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+training-module-15,AAA-015,2000/12/12 00:00,SELECT c FROM Contract OR 1=1,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+training-module-15.1,AAA-115,2000/12/12 00:00,<h1>!</h1>,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+training-module-15.2,AAA-215,2000/12/12 00:00,국민경제의 발전을,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+training-module-15.3,AAA-315,2000/12/12 00:00,العظمى واعتلاء,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+# Datos para difficulty-level
+training-module-16.1,AAA-116,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,432,true,project-01,developer-01
+training-module-16,AAA-016,2000/12/12 00:00,Lorem ipsum,INTERMEDIATE,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,432,true,project-01,developer-01
+training-module-17,AAA-017,2000/12/12 00:00,Lorem ipsum,ADVANCED,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+# Datos para update-moment
+training-module-18,AAA-018,2000/12/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,https://es.wikipedia.org/wiki/Curso,765,true,project-01,developer-01
+training-module-18.1,AAA-118,2000/12/12 00:00,Lorem ipsum,BASIC,2022/07/30 00:00,https://es.wikipedia.org/wiki/Curso,765,true,project-01,developer-01
+training-module-18.2,AAA-218,2000/12/12 00:00,Lorem ipsum,BASIC,2022/07/29 23:59,https://es.wikipedia.org/wiki/Curso,765,true,project-01,developer-01
+# Datos para link
+training-module-19,AAA-019,2000/12/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,,4,true,project-01,developer-01
+training-module-19.1,AAA-119,2000/12/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,ftp://www.example.com/myProfile,4,true,project-01,developer-01
+training-module-19.2,AAA-219,2000/12/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,https://www.example.com?ejemplo=ejemplo&id=4,4,true,project-01,developer-01
+training-module-19.3,AAA-319,2000/12/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,https://www.example.com?,4,true,project-01,developer-01
+training-module-19.4,AAA-419,2000/12/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,https://www.んい建濯よ芝.com,4,true,project-01,developer-01
+training-module-20,AAA-020,2000/12/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,https://es.wikipedia.org/wiki/CursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCurso,4,true,project-01,developer-01
+training-module-21,AAA-021,2000/12/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,https://es.wikipedia.org/wiki/CursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCurs,4,true,project-01,developer-01
+training-module-22,AAA-022,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-02
+training-module-23,AAA-023,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-02
+training-module-24,AAA-024,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,null,4,true,project-01,developer-02
+training-module-24.1,AAA-124,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,https://www.lorem-ipsum.org,4,true,project-01,developer-02
+training-module-24.2,AAA-224,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,ftp://www.lorem-ipsum.org,4,true,project-01,developer-02
+training-module-24.3,AAA-324,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,http://www.lorem-ipsum.org/dolor/sit.html,4,true,project-01,developer-02
+training-module-24.4,AAA-424,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,http://www.lorem-ipsum.org/dolor/sit.html#dolor,4,true,project-01,developer-02
+training-module-24.5,AAA-524,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,http://example.org?a=1&b=2,4,true,project-01,developer-02
+training-module-24.6,AAA-624,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,http://example.org?,4,true,project-01,developer-02
+training-module-24.7,AAA-724,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,http://example.org?a,4,true,project-01,developer-02
+training-module-24.8,AAA-824,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,http://example.org?a&b,4,true,project-01,developer-02
+training-module-24.9,AAA-924,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,http://example.org/,4,true,project-01,developer-02
+training-module-24.10,AA-124,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,http://example.org/a,4,true,project-01,developer-02
+training-module-24.11,AA-224,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,http://example.org/a/b,4,true,project-01,developer-02
+training-module-24.12,AA-324,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,http://example.org/a/b?,4,true,project-01,developer-02
+training-module-24.13,AA-424,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,http://example.org/a/b?a&b,4,true,project-01,developer-02
+# Datos para estimated-total-time
+training-module-25,AAA-025,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,null,0,true,project-01,developer-02
+training-module-26,AAA-026,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,null,1,true,project-01,developer-02
+training-module-27,AAA-027,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,null,9999,true,project-01,developer-02
+training-module-28,AAA-028,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,null,10000,true,project-01,developer-02
+# Datos para draft-mode
+training-module-29,AAA-029,2000/12/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,false,project-01,developer-01
