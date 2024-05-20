@@ -1,32 +1,3 @@
 key,key:userAccount,name,benefits,web-page,email
-sponsor-01,user-account-sponsor-01,Lorem ipsum,Lorem ipsum,https://www.example.com,email@example.com
-sponsor-02.1,user-account-sponsor-02,N,Lorem ipsum,https://www.example.com,email@example.com
-sponsor-02.2,user-account-sponsor-02.2,No,Lorem ipsum,https://www.example.com,email@example.com
-sponsor-02.3,user-account-sponsor-02.3,Nombre estandarNombre estandarNombre estandarNombre estandarNombre estandar,Lorem ipsum,https://www.example.com,email@example.com
-sponsor-02.4,user-account-sponsor-02.4,Nombre estandarNombre estandarNombre estandarNombre estandarNombre estanda,Lorem ipsum,https://www.example.com,email@example.com
-sponsor-02.5,user-account-sponsor-02.5,伊尺诶伊尺诶,Lorem ipsum,https://www.example.com,email@example.com
-sponsor-02.6,user-account-sponsor-02.6,<script>alert('Hi')</script>,Lorem ipsum,https://www.example.com,email@example.com
-sponsor-02.7,user-account-sponsor-02.7,<h1>HTML code</h1>,Lorem ipsum,https://www.example.com,email@example.com
-sponsor-02.8,user-account-sponsor-02.8,' OR 'A' = 'A',Lorem ipsum,https://www.example.com,email@example.com
-sponsor-02.9,user-account-sponsor-02.9,SELECT s FROM Sponsor OR 1=1,Lorem ipsum,https://www.example.com,email@example.com
-sponsor-03.1,user-account-sponsor-03.1,Lorem ipsum,B,https://www.example.com,email@example.com
-sponsor-03.2,user-account-sponsor-03.2,Lorem ipsum,Be,https://www.example.com,email@example.com
-sponsor-03.3,user-account-sponsor-03.3,Lorem ipsum,Beneficios estandarBeneficios estandarBeneficios estandarBeneficios estandarBeneficios estandarBenef,https://www.example.com,email@example.com
-sponsor-03.4,user-account-sponsor-03.4,Lorem ipsum,Beneficios estandarBeneficios estandarBeneficios estandarBeneficios estandarBeneficios estandarBene,https://www.example.com,email@example.com
-sponsor-03.5,user-account-sponsor-03.5,Lorem ipsum,伊尺诶伊尺诶,https://www.example.com,email@example.com
-sponsor-03.6,user-account-sponsor-03.6,Lorem ipsum,<script>alert('Hi')</script>,https://www.example.com,email@example.com
-sponsor-03.7,user-account-sponsor-03.7,Lorem ipsum,<h1>HTML code</h1>,https://www.example.com,email@example.com
-sponsor-03.8,user-account-sponsor-03.8,Lorem ipsum,' OR 'A' = 'A',https://www.example.com,email@example.com
-sponsor-03.9,user-account-sponsor-03.9,Lorem ipsum,SELECT s FROM Sponsor OR 1=1,https://www.example.com,email@example.com
-sponsor-04.1,user-account-sponsor-04.1,Lorem ipsum,Lorem ipsum,https://www.abcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmn.com,email@example.com
-sponsor-04.2,user-account-sponsor-04.2,Lorem ipsum,Lorem ipsum,https://www.abcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklm.com,email@example.com
-sponsor-04.3,user-account-sponsor-04.3,Lorem ipsum,Lorem ipsum,null,email@example.com
-sponsor-04.4,user-account-sponsor-04.4,Lorem ipsum,Lorem ipsum,,email@example.com
-sponsor-04.5,user-account-sponsor-04.5,Lorem ipsum,Lorem ipsum,http://www.example.com,email@example.com
-sponsor-04.6,user-account-sponsor-04.6,Lorem ipsum,Lorem ipsum,ftp://www.example.com/myProfile,email@example.com
-sponsor-04.7,user-account-sponsor-04.7,Lorem ipsum,Lorem ipsum,https://www.example.com?ejemplo=ejemplo&id=4,email@example.com
-sponsor-05.1,user-account-sponsor-05.1,Lorem ipsum,Lorem ipsum,https://www.example.com,伊尺诶伊尺诶@example.com
-sponsor-05.2,user-account-sponsor-05.2,Lorem ipsum,Lorem ipsum,https://www.example.com,null
-sponsor-05.3,user-account-sponsor-05.3,Lorem ipsum,Lorem ipsum,https://www.example.com,
-sponsor-05.4,user-account-sponsor-05.4,Lorem ipsum,Lorem ipsum,https://www.example.com,email@hotmail.com
-sponsor-05.5,user-account-sponsor-05.5,Lorem ipsum,Lorem ipsum,https://www.example.com,email@gmail.com
+sponsor-01,user-account-sponsor-01,Sponsor sponsor1,Benfits example,http://www.lorem-ipsum.org,acme@lorem-ipsum.org
+sponsor-02,user-account-sponsor-02,Sponsor sponsor2,Benefits example,http://www.lorem-ipsum.org,acme@lorem-ipsum.org
