@@ -88,7 +88,7 @@
 		
 		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
 			<acme:menu-suboption code="master.menu.client.contracts" action="/client/contract/list"/>
-			<acme:menu-suboption code="master.menu.client.progress-logs" action="/client/progress-logs/list-all"/>
+			<acme:menu-suboption code="master.menu.client.progress-logs" action="/client/progress-log/list-all"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.client.show-client-dashboard" action="/client/client-dashboard/show"/>
 		</acme:menu-option>
@@ -116,6 +116,8 @@
 			<acme:menu-suboption code="master.menu.user-account.developer" action="/authenticated/developer/update" access="hasRole('Developer')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-manager" action="/authenticated/manager/create" access="!hasRole('Manager')"/>
 			<acme:menu-suboption code="master.menu.user-account.manager" action="/authenticated/manager/update" access="hasRole('Manager')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-client" action="/authenticated/client/create" access="!hasRole('Client')"/>
+			<acme:menu-suboption code="master.menu.user-account.client" action="/authenticated/client/update" access="hasRole('Client')"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.sign-out" action="/authenticated/system/sign-out" access="isAuthenticated()"/>
