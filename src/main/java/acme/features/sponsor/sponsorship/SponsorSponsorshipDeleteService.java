@@ -84,7 +84,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		SelectChoices choices;
 		Dataset dataset;
 
-		allProjects = this.repository.findAllProjects();
+		allProjects = this.repository.findManyPublishedProjects();
 		projects = SelectChoices.from(allProjects, "code", object.getProject());
 		choices = SelectChoices.from(ProjectType.class, object.getProjectType());
 

@@ -46,12 +46,10 @@ public class Invoice extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				registrationTime;
 
-	// Must be at least one month ahead the registration time. This requirement will be implemented soon.
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				dueDate;
 
-	// Must positive and not nought. This requirement will be implemented soon.
 	@Valid
 	@NotNull
 	private Money				quantity;

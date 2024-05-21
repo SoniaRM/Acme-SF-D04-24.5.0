@@ -1,10 +1,12 @@
 key,instantiation-moment,title,description,priority,status,duration-start,duration-end,link
+# Datos intantiation-moment
 objective-01,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
 objective-02,2000/01/01 00:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
 objective-03,2000/01/01 00:01,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
 objective-03.1,2004/02/29 00:00,Lorem ipsum,Lorem ipsum,LOW,false,2004/03/06 12:00,2004/03/08 15:00,https://es.wikipedia.org/wiki/Curso
 objective-03.2,2022/07/30 00:00,Lorem ipsum,Lorem ipsum,LOW,false,2022/07/30 00:00,2022/07/30 00:00,https://es.wikipedia.org/wiki/Curso
 objective-03.3,2022/07/29 23:59,Lorem ipsum,Lorem ipsum,LOW,false,2022/07/29 23:59,2022/07/29 23:59,https://es.wikipedia.org/wiki/Curso
+# Datos para title
 objective-04,2000/03/06 11:00,L,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
 objective-05,2000/03/06 11:00,Lo,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
 objective-06,2000/03/06 11:00,LoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoren,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
@@ -15,6 +17,9 @@ objective-10,2000/03/06 11:00,<p>This text is in HTML</p>,Lorem ipsum,LOW,false,
 objective-11,2000/03/06 11:00,<script>alert('Hi')</script>,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
 objective-12,2000/03/06 11:00,' or 'A'='A',Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
 objective-13,2000/03/06 11:00,SELECT c FROM Contract OR 1=1,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
+objective-13.1,2000/03/06 11:00,<h1>!</h1>,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
+objective-13.2,2000/03/06 11:00,العظمى واعتلاء,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
+# Datos para description
 objective-14,2000/03/06 11:00,Lorem ipsum,L,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
 objective-15,2000/03/06 11:00,Lorem ipsum,Lo,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
 objective-16,2000/03/06 11:00,Lorem ipsum,LoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
@@ -25,11 +30,22 @@ objective-20,2000/03/06 11:00,Lorem ipsum,<p>This text is in HTML</p>,LOW,false,
 objective-21,2000/03/06 11:00,Lorem ipsum,<script>alert('Hi')</script>,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
 objective-22,2000/03/06 11:00,Lorem ipsum,' or 'A'='A',LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
 objective-23,2000/03/06 11:00,Lorem ipsum,SELECT c FROM Contract OR 1=1,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
+objective-23.1,2000/03/06 11:00,Lorem ipsum,<h1>!</h1>,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
+objective-23.2,2000/03/06 11:00,Lorem ipsum,العظمى واعتلاء,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
+# Datos para priority
+objective-24.1,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
 objective-24,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,MEDIUM,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
 objective-25,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,HIGH,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
+# Datos para status
+objective-26.1,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,HIGH,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
 objective-26,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,true,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/Curso
-objective-27,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 11:01,2000/03/06 11:02,https://es.wikipedia.org/wiki/Curso
+# Datos para duration-start
+objective-27,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 11:01,2000/03/06 11:20,https://es.wikipedia.org/wiki/Curso
 objective-28,2000/01/01 00:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/01/01 00:01,2000/01/01 00:02,https://es.wikipedia.org/wiki/Curso
+objective-28.1,2022/07/29 23:58,Lorem ipsum,Lorem ipsum,LOW,false,2022/07/29 23:59,2022/07/30 00:00,https://es.wikipedia.org/wiki/Curso
+# Datos para duration-end
+objective-28.2,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 11:01,2000/03/06 11:02,https://es.wikipedia.org/wiki/Curso
+# Datos para link
 objective-29,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/CursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCurso
 objective-30,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://es.wikipedia.org/wiki/CursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCurs
 objective-31,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,
@@ -38,3 +54,16 @@ objective-32.1,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:
 objective-32.2,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://www.example.com?ejemplo=ejemplo&id=4
 objective-32.3,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://www.example.com?
 objective-32.4,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://www.んい建濯よ芝.com
+objective-32.5,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,https://www.lorem-ipsum.org
+objective-32.6,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,ftp://www.lorem-ipsum.org
+objective-32.7,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,http://www.lorem-ipsum.org/dolor/sit.html
+objective-32.8,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,http://www.lorem-ipsum.org/dolor/sit.html#dolor
+objective-32.9,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,http://example.org?a=1&b=2
+objective-32.10,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,http://example.org?
+objective-32.11,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,http://example.org?a
+objective-32.12,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,http://example.org?a&b
+objective-32.13,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,http://example.org/
+objective-32.14,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,http://example.org/a
+objective-32.15,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,http://example.org/a/b
+objective-32.16,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,http://example.org/a/b?
+objective-32.17,2000/03/06 11:00,Lorem ipsum,Lorem ipsum,LOW,false,2000/03/06 12:00,2000/03/08 15:00,http://example.org/a/b?a&b

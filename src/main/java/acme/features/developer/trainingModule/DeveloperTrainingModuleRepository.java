@@ -22,22 +22,11 @@ public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 	@Query("select ts from TrainingSession ts where ts.trainingModule.id = :trainingModuleId")
 	Collection<TrainingSession> findManyTrainingSessionsByTrainingModuleId(int trainingModuleId);
 
-	default int findEstimatedTotalTimeOfTrainingModule(final int id) {
-		int totalTime = 0;
-		final Collection<TrainingSession> trainingSessions = this.findManyTrainingSessionsByTrainingModuleId(id);
-		for (final TrainingSession session : trainingSessions) {
-			final long diff = session.getEndPeriod().getTime() - session.getStartPeriod().getTime();
-			final long hours = diff / (1000 * 60 * 60);
-			totalTime += Math.abs(hours);
-		}
-		return totalTime;
-	}
-
 	//Show
 	@Query("select tm from TrainingModule tm where tm.id = :trainingModuleId")
 	TrainingModule findOneTrainingModuleById(int trainingModuleId);
 
-	@Query("select p from Project p where p.draftMode = true")
+	@Query("select p from Project p where p.draftMode = false")
 	Collection<Project> findManyProjectsAvailable();
 
 	//Create

@@ -25,10 +25,8 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 
 	@Override
 	public void load() {
-		Developer developer;
 		int id;
 		id = super.getRequest().getPrincipal().getActiveRoleId();
-		developer = this.repository.findOneDeveloperByUserAccountId(id);
 		DeveloperDashboard dashboard;
 
 		int totalTrainingModulesWithUpdateMoment;

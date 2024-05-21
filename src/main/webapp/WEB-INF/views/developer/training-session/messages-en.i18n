@@ -35,5 +35,8 @@ developer.training-session.form.button.publish = Publish
 
 
 developer.training-session.form.error.duplicated = This code is already used
-developer.training-session.form.error.invalid-creation-moment = Invalid creation moment
-developer.training-session.form.error.invalid-update-moment = Invalid update moment
+developer.training-session.form.error.not-one-week-ahead-trainingModule = Start Period Date must be one week ahead the Training Module Creation Moment
+developer.training-session.form.error.invalid-date-start-period = Date must be before 2200/12/24 23:59
+developer.training-session.form.error.invalid-date-end-period = Date must be before 2200/12/31 23:59
+developer.training-session.form.error.not-one-week-long = Training Session Period must be at least one week long
+developer.training-session.form.error.invalidEndPeriod = End Period must be after Start Period

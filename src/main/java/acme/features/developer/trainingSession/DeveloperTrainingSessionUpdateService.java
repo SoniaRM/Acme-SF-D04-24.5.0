@@ -1,7 +1,9 @@
 
 package acme.features.developer.trainingSession;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,7 +35,7 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 		trainingSessionId = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneTrainingSessionById(trainingSessionId);
 		trainingModule = object == null ? null : object.getTrainingModule();
-		status = super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper()) || object != null && !object.isDraftMode();
+		status = super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper()) && object != null && object.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -45,6 +47,7 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneTrainingSessionById(id);
+
 		super.getBuffer().addData(object);
 	}
 
@@ -60,16 +63,43 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			TrainingSession existing;
 
-			TrainingSession trainingSessionWithCodeDuplicated = this.repository.findOneTrainingSessionByCode(object.getCode());
-
-			if (trainingSessionWithCodeDuplicated != null)
-				super.state(trainingSessionWithCodeDuplicated.getId() == object.getId(), "code", "developer.training-session.form.error.code");
+			existing = this.repository.findOneTrainingSessionByCode(object.getCode());
+			if (existing != null)
+				super.state(existing.getId() == object.getId(), "code", "developer.training-session.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("endPeriod") && object.getEndPeriod() != null)
-			super.state(MomentHelper.isAfter(object.getEndPeriod(), object.getStartPeriod()), "endPeriod", "developer.training-session.form.error.invalidEndPeriod");
+		if (!super.getBuffer().getErrors().hasErrors("trainingModule"))
+			super.state(object.getTrainingModule() != null, "trainingModule", "developer.training-session.form.error.null-training-module.");
 
+		if (!super.getBuffer().getErrors().hasErrors("startPeriod") && object.getStartPeriod() != null) {
+
+			Date maxStartPeriod;
+			maxStartPeriod = MomentHelper.parse("2200/12/24 23:59", "yyyy/MM/dd HH:mm");
+			if (object.getTrainingModule() != null) {
+
+				Date minEndPeriod;
+				minEndPeriod = MomentHelper.deltaFromMoment(object.getTrainingModule().getCreationMoment(), 7, ChronoUnit.DAYS);
+
+				super.state(MomentHelper.isAfterOrEqual(object.getStartPeriod(), minEndPeriod), "startPeriod", "developer.training-session.form.error.not-one-week-ahead-trainingModule");
+			}
+			super.state(MomentHelper.isBeforeOrEqual(object.getStartPeriod(), maxStartPeriod), "startPeriod", "developer.training-session.form.error.invalid-date-start-period");
+
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("endPeriod") && object.getEndPeriod() != null) {
+
+			Date maxStartPeriod;
+			maxStartPeriod = MomentHelper.parse("2200/12/31 23:59", "yyyy/MM/dd HH:mm");
+
+			Date minEndPeriod;
+			minEndPeriod = MomentHelper.deltaFromMoment(object.getStartPeriod(), 7, ChronoUnit.DAYS);
+
+			super.state(MomentHelper.isAfterOrEqual(object.getEndPeriod(), minEndPeriod), "endPeriod", "developer.training-session.form.error.not-one-week-long");
+			super.state(MomentHelper.isAfterOrEqual(object.getEndPeriod(), object.getStartPeriod()), "endPeriod", "developer.training-session.form.error.invalidEndPeriod");
+			super.state(MomentHelper.isBeforeOrEqual(object.getEndPeriod(), maxStartPeriod), "endPeriod", "developer.training-session.form.error.invalid-date-end-period");
+		}
 	}
 
 	@Override
@@ -86,10 +116,10 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 		Collection<TrainingModule> trainingModules;
 		SelectChoices choices;
 
-		trainingModules = this.repository.findAllTrainingModules();
+		trainingModules = this.repository.findManyTrainingModulesAvailable2();
 		choices = SelectChoices.from(trainingModules, "code", object.getTrainingModule());
 
-		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link");
+		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "draftMode");
 		dataset.put("trainingModule", choices.getSelected().getKey());
 		dataset.put("trainingModules", choices);
 		super.getResponse().addData(dataset);
