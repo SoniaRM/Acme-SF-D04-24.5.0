@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.Project;
@@ -39,7 +38,6 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		object = new Contract();
 		object.setClient(client);
 		object.setDraftMode(true);
-		object.setInstantiationMoment(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(object);
 	}
@@ -62,6 +60,9 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 			existing = this.repository.findOneContractByCode(object.getCode());
 			super.state(existing == null, "code", "client.contract.form.error.duplicated");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("budget"))
+			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-budget");
 
 	}
 
