@@ -70,6 +70,9 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		if (!super.getBuffer().getErrors().hasErrors("budget"))
 			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-budget");
 
+		if (!super.getBuffer().getErrors().hasErrors("budget"))
+			super.state(object.getBudget().getAmount() <= 1000000, "budget", "client.contract.form.error.over-budget");
+
 	}
 
 	@Override
