@@ -1,7 +1,7 @@
 client.clientDashboard.form.label.totalLogsLessThan25 = Total Progress Logs Less Than 25
 client.clientDashboard.form.label.totalLogsLessBetween25And50 = Total Progress Logs Between 25 and 50 
 client.clientDashboard.form.label.totalLogsLessBetween50And75 = Total Progress Logs Between 50 and 75 
-client.clientDashboard.form.label.totalLogsAbove7 = Total Progress Logs Above 75
+client.clientDashboard.form.label.totalLogsAbove75 = Total Progress Logs Above 75
 client.clientDashboard.form.label.averageBudgetContracts = Average Budget
 client.clientDashboard.form.label.deviationBudgetContracts = Deviation Budget
 client.clientDashboard.form.label.minimunBudgetContracts = Minimum Budget
