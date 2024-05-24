@@ -59,6 +59,10 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void validate(final Invoice object) {
 		assert object != null;
+		Date lowerLimit;
+		Date upperLimit;
+		lowerLimit = new Date(946681200000L); // 2000/01/01 00:00:00
+		upperLimit = new Date(7289650799000L); // 2200/12/31 23:59:59
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Invoice existing;
@@ -67,21 +71,37 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 				super.state(existing == null, "code", "sponsor.invoice.form.error.duplicated");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("registrationTime")) {
+			Date registrationTime;
+			registrationTime = object.getRegistrationTime();
+
+			if (registrationTime != null)
+				super.state(MomentHelper.isAfterOrEqual(registrationTime, lowerLimit), "registrationTime", "sponsor.invoice.form.error.date-lower-limit");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
 			Date minimumDeadline;
-			if (object.getRegistrationTime() == null)
+			Date registrationTime;
+			registrationTime = object.getRegistrationTime();
+			minimumDeadline = MomentHelper.deltaFromMoment(registrationTime, 30, ChronoUnit.DAYS);
+
+			if (registrationTime == null)
 				super.state(false, "dueDate", "sponsor.invoice.form.error.too-short");
 			else {
-				minimumDeadline = MomentHelper.deltaFromMoment(object.getRegistrationTime(), 30, ChronoUnit.DAYS);
+				super.state(MomentHelper.isBeforeOrEqual(object.getDueDate(), upperLimit), "dueDate", "sponsor.invoice.form.error.date-upper-limit");
 				super.state(MomentHelper.isAfter(object.getDueDate(), minimumDeadline), "dueDate", "sponsor.invoice.form.error.too-short");
 			}
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
-			int invoiceId = super.getRequest().getData("id", int.class);
-			Sponsorship sponsorship = this.repository.findOneSponsorshipByInvoiceId(invoiceId);
+			int invoiceId;
+			Sponsorship sponsorship;
+			invoiceId = super.getRequest().getData("id", int.class);
+			sponsorship = this.repository.findOneSponsorshipByInvoiceId(invoiceId);
+
 			super.state(sponsorship.getAmount().getCurrency().equals(object.getQuantity().getCurrency()), "quantity", "sponsor.invoice.form.error.different-currency");
 			super.state(object.getQuantity().getAmount() > 0, "quantity", "sponsor.invoice.form.error.negative-amount");
+			super.state(object.getQuantity().getAmount() <= 1000000, "quantity", "sponsor.invoice.form.error.quantity-upper-limit");
 		}
 	}
 
