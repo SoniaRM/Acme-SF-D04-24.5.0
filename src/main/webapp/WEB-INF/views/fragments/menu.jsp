@@ -30,8 +30,6 @@
 			<acme:menu-suboption code="master.menu.anonymous.training-module-list" action="/any/training-module/list"/>	
 			<acme:menu-suboption code="master.menu.anonymous.project-list" action="/any/project/list"/>	
 			<acme:menu-suboption code="master.menu.anonymous.claim-list" action="/any/claim/list"/>
-			
-					
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
@@ -88,7 +86,7 @@
 		
 		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
 			<acme:menu-suboption code="master.menu.client.contracts" action="/client/contract/list"/>
-			<acme:menu-suboption code="master.menu.client.progress-logs" action="/client/progress-log/list-all"/>
+			<%-- <acme:menu-suboption code="master.menu.client.progress-logs" action="/client/progress-log/list-all"/> --%>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.client.show-client-dashboard" action="/client/client-dashboard/show"/>
 		</acme:menu-option>

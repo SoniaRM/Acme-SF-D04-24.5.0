@@ -93,7 +93,7 @@ master.menu.manager.show-manager-dashboard = Mis estadisticas
 # master.menu.client ####################################################
 
 master.menu.client = Cliente
-master.menu.client.contracts= Listado de mis Contracts
+master.menu.client.contracts= Listado de mis Contratos
 master.menu.client.progress-logs= Listado de mis Registros de Progreso
 master.menu.client.show-client-dashboard = Mis estadisticas
 

@@ -33,3 +33,6 @@ client.contract.form.error.invalid-instantiation-moment = Invalid instantiation 
 client.contract.form.error.code =  This code is invalid
 client.contract.form.error.contractWithOutProgressLogs = Cannot publish Contract because it has not Progress Logs
 client.contract.form.error.negative-budget = Budget has to be greater than 0.00
+client.contract.form.error.over-budget = Budget has to be lower or equal than 1000000.00
+client.contract.form.error.progress-logs-not-published = Cannot publish Contract because it has not published Progress Logs
+client.contract.form.error.progress-logs-not-present = Cannot publish Contract without any Progress Logs
