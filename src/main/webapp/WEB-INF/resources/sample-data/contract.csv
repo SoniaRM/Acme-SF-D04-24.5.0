@@ -10,8 +10,8 @@ contract-03.4,ABC-005,2022/07/29 23:59,Lorem ipsum,Lorem ipsum,Lorem ipsum,"EUR 
 contract-03.5,ABC-006,2016/02/29 12:34,Lorem ipsum,Lorem ipsum,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
 contract-04.1,ABC-007,2000/04/23 21:00,L,Lorem ipsum,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
 contract-04.2,ABC-008,2000/04/23 21:00,Lo,Lorem ipsum,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
-contract-04.3,ABC-009,2000/04/23 21:00,Lorem ipsum dolor sit amet consectetur adipiscing elit Sed euismod elit a ,Lorem ipsum,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
-contract-04.4,ABC-010,2000/04/23 21:00,Lorem ipsum dolor sit amet consectetur adipiscing elit Sed euismod elit at ,Lorem ipsum,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
+contract-04.3,ABC-009,2000/04/23 21:00,Lorem ipsum dolor sit amet consectetur adipiscing elit Sed euismod elit a,Lorem ipsum,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
+contract-04.4,ABC-010,2000/04/23 21:00,Lorem ipsum dolor sit amet consectetur adipiscing elit Sed euismod elit at,Lorem ipsum,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
 contract-04.5,ABC-011,2000/04/23 21:00,æ¨£æœ¬æ¨™é¡Œ,Lorem ipsum,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
 contract-04.6,ABC-012,2000/04/23 21:00,貸んい建濯よ芝弾テソ,Lorem ipsum,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
 contract-04.7,ABC-013,2000/04/23 21:00,<script>alert('Hi')</script>,Lorem ipsum,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
@@ -20,8 +20,8 @@ contract-04.9,ABC-015,2000/04/23 21:00,' or 'A' = 'A',Lorem ipsum,Lorem ipsum,"E
 contract-04.10,ABC-016,2000/04/23 21:00,SELECT c FROM Contract OR 1=1,Lorem ipsum,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
 contract-05.1,ABC-017,2000/04/23 21:00,Lorem ipsum,L,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
 contract-05.2,ABC-018,2000/04/23 21:00,Lorem ipsum,Lo,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
-contract-05.3,ABC-019,2000/04/23 21:00,Lorem ipsum,Lorem ipsum dolor sit amet consectetur adipiscing elit Sed euismod elit a ,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
-contract-05.4,ABC-020,2000/04/23 21:00,Lorem ipsum,Lorem ipsum dolor sit amet consectetur adipiscing elit Sed euismod elit at ,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
+contract-05.3,ABC-019,2000/04/23 21:00,Lorem ipsum,Lorem ipsum dolor sit amet consectetur adipiscing elit Sed euismod elit a,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
+contract-05.4,ABC-020,2000/04/23 21:00,Lorem ipsum,Lorem ipsum dolor sit amet consectetur adipiscing elit Sed euismod elit at,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
 contract-05.5,ABC-021,2000/04/23 21:00,Lorem ipsum,æ¨£æœ¬æ¨™é¡Œ,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
 contract-05.6,ABC-022,2000/04/23 21:00,Lorem ipsum,貸んい建濯よ芝弾テソ,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
 contract-05.7,ABC-023,2000/04/23 21:00,Lorem ipsum,<script>alert('Hi')</script>,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
@@ -31,16 +31,16 @@ contract-05.10,ABC-026,2000/04/23 21:00,Lorem ipsum,SELECT c FROM Contract OR 1=
 contract-06.1,ABC-027,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,L,"EUR 1,000.00",true,project-01,client-01
 contract-06.2,ABC-028,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,Lo,"EUR 1,000.00",true,project-01,client-01
 contract-06.3,ABC-029,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed euismod elit at est porttitor tristique,"EUR 1,000.00",true,project-01,client-01
-contract-06.4,ABC-030,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed euismod elit at est porttitor tristique ,"EUR 1,000.00",true,project-01,client-01
+contract-06.4,ABC-030,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed euismod elit at est porttitor tristique,"EUR 1,000.00",true,project-01,client-01
 contract-06.5,ABC-031,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,æ¨£æœ¬æ¨™é¡Œ,"EUR 1,000.00",true,project-01,client-01
 contract-06.6,ABC-032,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,貸んい建濯よ芝弾テソ,"EUR 1,000.00",true,project-01,client-01
 contract-06.7,ABC-033,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,<script>alert('Hi')</script>,"EUR 1,000.00",true,project-01,client-01
 contract-06.8,ABC-034,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,<h1>HTML code</h1>,"EUR 1,000.00",true,project-01,client-01
 contract-06.9,ABC-035,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,' or 'A' = 'A',"EUR 1,000.00",true,project-01,client-01
 contract-06.10,ABC-036,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,SELECT c FROM Contract OR 1=1,"EUR 1,000.00",true,project-01,client-01
-contract-07.1,ABC-037,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,"EUR 00.01",true,project-01,client-01
-contract-07.2,ABC-038,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,"EUR 00.02",true,project-01,client-01
-contract-07.3,ABC-039,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,"EUR 1,000,000.00",true,project-02,client-02
-contract-07.4,ABC-040,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,"EUR 999,999.99",true,project-02,client-02
-contract-07.5,ABC-041,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,"GBP 15.75",true,project-02,client-02
-contract-07.6,ABC-042,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,"THB 123,456.78",true,project-03,client-02
+contract-07.1,ABC-037,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,EUR 00.01,true,project-01,client-01
+contract-07.2,ABC-038,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,EUR 00.02,true,project-01,client-01
+contract-07.3,ABC-039,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,"EUR 1,000,000.00",true,project-01,client-02
+contract-07.4,ABC-040,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,"EUR 999,999.99",true,project-01,client-02
+contract-07.5,ABC-041,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,GBP 15.75,true,project-01,client-02
+contract-07.6,ABC-042,2000/04/23 21:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,"THB 123,456.78",true,project-01,client-02
