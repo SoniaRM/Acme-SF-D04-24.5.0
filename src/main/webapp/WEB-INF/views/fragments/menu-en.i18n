@@ -36,7 +36,8 @@ master.menu.authenticated = Authenticated
 master.menu.authenticated.all-risks = List risks
 master.menu.autheticated.list-sponsorship = Published sponsorships
 master.menu.authenticated.objective = List of Objectives
-
+master.menu.authenticated.all-notices = List notices
+master.menu.authenticated.create-notices = Create notices
 
 # master.menu.administrator ###################################################
 

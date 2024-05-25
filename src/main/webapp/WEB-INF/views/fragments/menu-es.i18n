@@ -29,15 +29,14 @@ master.menu.anonymous.claim-list = Lista de Claims
 master.menu.anonymous.training-module-list = Lista de Training Modules
 master.menu.anonymous.project-list = Lista de Proyectos
 
-
-
 # master.menu.authenticated ###################################################
 
 master.menu.authenticated = Autenticado
 master.menu.authenticated.all-risks = Lista de riesgos
 master.menu.anonymous.list-sponsorship = Patrocinios publicados
 master.menu.authenticated.objective = Lista de objetivos
-
+master.menu.authenticated.all-notices = Lista de notificaciones
+master.menu.authenticated.create-notices = Crear notificación
 
 # master.menu.administrator ###################################################
 

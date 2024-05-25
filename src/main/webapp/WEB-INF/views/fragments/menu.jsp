@@ -39,6 +39,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.training-module-list" action="/any/training-module/list"/>	
 			<acme:menu-suboption code="master.menu.anonymous.project-list" action="/any/project/list"/>	
 			<acme:menu-suboption code="master.menu.authenticated.objective" action="/authenticated/objective/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.all-notices" action="/authenticated/notice/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
