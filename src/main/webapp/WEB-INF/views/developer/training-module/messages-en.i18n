@@ -38,4 +38,6 @@ developer.training-module.form.error.duplicated = This code is already used
 developer.training-module.form.error.invalid-creation-moment = Invalid creation moment
 developer.training-module.form.error.invalid-update-moment = Invalid update moment
 developer.training-module.form.error.code =  This code is already used
-developer.training-module.form.error.trainingModuleWithOutTrainingSessions = Cannot publish Traninig Module because it has not Training Sessions
+developer.training-module.form.error.trainingModuleWithOutTrainingSessions = Cannot publish Tranining Module because it has not Training Sessions
+developer.training-module.form.error.trainingSessionInDraftMode = Training Module has Training Sessions in draftMode
+developer.training-module.form.it-has-training-sessions-published = Training Module has published Training Sessions
