@@ -75,7 +75,7 @@ master.menu.sponsor.dashboard = Dashboard
 
 master.menu.auditor = Auditor
 master.menu.auditor.code-audits = List my Code Audits
-master.menu.auditor.audit-records = List my Audit Records
+master.menu.auditor.audit-record = List my Audit Records
 master.menu.auditor.show-auditor-dashboard = Dashboard Auditor
 
 # master.menu.manager ####################################################

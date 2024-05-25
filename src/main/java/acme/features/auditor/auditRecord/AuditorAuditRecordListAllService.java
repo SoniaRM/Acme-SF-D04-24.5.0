@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.AuditRecord;
-import acme.entities.CodeAudit;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorAuditRecordListService extends AbstractService<Auditor, AuditRecord> {
+public class AuditorAuditRecordListAllService extends AbstractService<Auditor, AuditRecord> {
 
 	// Internal state ---------------------------------------------------------
+
 	@Autowired
 	private AuditorAuditRecordRepository repository;
 
@@ -24,28 +24,21 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int codeAuditId;
-		CodeAudit codeAudit;
-
-		codeAuditId = super.getRequest().getData("codeAuditId", int.class);
-		codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
-
-		status = codeAudit != null && (!codeAudit.isDraftMode() || super.getRequest().getPrincipal().hasRole(codeAudit.getAuditor()));
-
+		final boolean status;
+		status = super.getRequest().getPrincipal().hasRole(Auditor.class);
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		Collection<AuditRecord> objects;
-		int codeAuditId;
+		int auditorId;
 
-		codeAuditId = super.getRequest().getData("codeAuditId", int.class);
-		objects = this.repository.findManyAuditRecordsByCodeAuditId(codeAuditId);
+		auditorId = super.getRequest().getPrincipal().getActiveRoleId();
+
+		objects = this.repository.findManyAuditRecordsByAuditorId(auditorId);
 
 		super.getBuffer().addData(objects);
-		super.getResponse().addGlobal("codeAuditId", codeAuditId);
 	}
 
 	@Override
@@ -54,7 +47,7 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "mark", "draftMode", "finalPeriod");
+		dataset = super.unbind(object, "code", "initialPeriod", "finalPeriod", "mark", "optionalLink", "draftMode", "codeAudit");
 
 		super.getResponse().addData(dataset);
 	}
