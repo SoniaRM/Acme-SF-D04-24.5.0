@@ -57,6 +57,14 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 	@Override
 	public void validate(final Contract object) {
 		assert object != null;
+		Collection<ProgressLog> progresslogs = this.repository.findManyProgressLogsByContractId(object.getId());
+
+		boolean progressLogsPublished = true;
+		for (ProgressLog pl : progresslogs)
+			progressLogsPublished = progressLogsPublished && !pl.isDraftMode();
+
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(progressLogsPublished, "project", "client.contract.form.error.progress-logs-published");
 	}
 
 	@Override
@@ -68,6 +76,7 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 		progressLogs = this.repository.findManyProgressLogsByContractId(object.getId());
 		this.repository.deleteAll(progressLogs);
 		this.repository.delete(object);
+
 	}
 
 	@Override
@@ -85,6 +94,7 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
+		dataset.put("draftMode", object.isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

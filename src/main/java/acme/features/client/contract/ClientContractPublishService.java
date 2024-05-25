@@ -11,6 +11,7 @@ import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.Project;
 import acme.entities.contracts.Contract;
+import acme.entities.contracts.ProgressLog;
 import acme.roles.Client;
 
 @Service
@@ -49,13 +50,30 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 	@Override
 	public void bind(final Contract object) {
 		assert object != null;
-
 		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project");
 	}
 
 	@Override
 	public void validate(final Contract object) {
-		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Contract existing;
+			existing = this.repository.findOneContractByCode(object.getCode());
+			if (existing == null || existing.getId() != object.getId())
+				super.state(existing == null, "code", "client.contract.form.error.duplicated");
+		}
+
+		Collection<ProgressLog> progresslogs = this.repository.findManyProgressLogsByContractId(object.getId());
+
+		boolean progressLogsPublished = true;
+		for (ProgressLog pl : progresslogs)
+			progressLogsPublished = progressLogsPublished && !pl.isDraftMode();
+
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(progressLogsPublished, "project", "client.contract.form.error.progress-logs-not-published");
+
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(!progresslogs.isEmpty(), "project", "client.contract.form.error.progress-logs-not-present");
+
 	}
 
 	@Override
@@ -78,7 +96,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 		choices = SelectChoices.from(projects, "title", object.getProject());
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project", "draftMode");
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode", "project");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 
