@@ -1,6 +1,6 @@
 key,code,instantiationMoment,providerName,customerName,goals,budget,draft-mode,key:project,key:client
 # code data
-contract-01,ABC-001,2022/07/29 23:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,"EUR 1,000.00",true,project-02,client-01
+contract-01,ABC-001,2022/07/29 23:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
 contract-02,Z-001,2022/07/29 23:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
 contract-03,ZZ-001,2022/07/29 23:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
 contract-04,ZZZ-001,2022/07/29 23:00,Lorem ipsum,Lorem ipsum,Lorem ipsum,"EUR 1,000.00",true,project-01,client-01
