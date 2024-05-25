@@ -51,15 +51,16 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 
 		puss = this.repository.findManyProjectUserStoriesByProjectId(projectId);
 
-		if (puss.isEmpty()) {
-			project = this.repository.findOneProjectById(projectId);
+		//	if (puss.isEmpty()) {
+		project = this.repository.findOneProjectById(projectId);
 
-			object = new ProjectUserStory();
-			object.setProject(project);
-		}
-
-		else
-			object = puss.stream().findFirst().get();
+		object = new ProjectUserStory();
+		object.setProject(project);
+		//	}
+		/*
+		 * else
+		 * object = puss.stream().findFirst().get();
+		 */
 
 		super.getBuffer().addData(object);
 	}
@@ -74,6 +75,12 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 		projectId = super.getRequest().getData("projectId", int.class);
 		project = this.repository.findOneProjectById(projectId);
 		object.setProject(project);
+
+		UserStory userStory;
+		int userStoryId = super.getRequest().getData("userStory", int.class);
+		userStory = this.repository.findOneUserStoryById(userStoryId);
+		object.setUserStory(userStory);
+		super.bind(object, "userStory");
 
 	}
 
@@ -115,7 +122,7 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 
 		choices = SelectChoices.from(draftModeUserStories, "title", object.getUserStory());
 
-		dataset = super.unbind(object, "project");
+		dataset = super.unbind(object, "project", "userStory");
 		dataset.put("userStory", choices.getSelected().getKey());
 		dataset.put("userStories", choices);
 		dataset.put("projectId", object.getProject().getId());
