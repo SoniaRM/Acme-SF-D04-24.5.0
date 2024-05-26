@@ -33,6 +33,14 @@
     </tr>
     <tr>
         <th scope="row">
+            <acme:message code="auditor.dashboard.form.label.dev-number-audit-records-per-audits"/>
+        </th>
+        <td>
+            <acme:print value="${devAuditRecords}"/>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">
             <acme:message code="auditor.dashboard.form.label.min-number-audit-records-per-audits"/>
         </th>
         <td>

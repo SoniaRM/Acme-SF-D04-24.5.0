@@ -20,8 +20,8 @@ public interface AuditorDashboardRepository extends AbstractRepository {
 	@Query("select avg(select count(ar) from AuditRecord ar where ar.codeAudit.id = ca.id) from CodeAudit ca where ca.auditor.id = :id")
 	Double avgNumberOfAuditRecordsPerAudits(int id);
 
-	//@Query("select stddev(select count(ar) from AuditRecord ar where ar.codeAudit.id = ca.id) from CodeAudit ca where ca.auditor.id = :id")
-	//Double devNumberOfAuditRecordsPerAudits(int id);
+	@Query("select stddev((select count(ar) from AuditRecord ar where ar.codeAudit.id = ca.id)) from CodeAudit ca where ca.auditor.id = :id")
+	Double devNumberOfAuditRecordsPerAudits(int id);
 
 	@Query("select min(select count(ar) from AuditRecord ar where ar.codeAudit.id = ca.id) from CodeAudit ca where ca.auditor.id = :id")
 	Double minNumberOfAuditRecordsPerAudits(int id);

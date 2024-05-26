@@ -18,6 +18,8 @@ public class AuditorDashboardController extends AbstractController<Auditor, Audi
 	@Autowired
 	private AuditorDashboardShowService showService;
 
+	// Constructors -----------------------------------------------------------
+
 
 	@PostConstruct
 	protected void initialise() {
