@@ -101,11 +101,11 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			Date durationEnd;
 			durationStart = object.getDurationStart();
 			durationEnd = object.getDurationEnd();
-			minimumDeadline = MomentHelper.deltaFromMoment(durationStart, 30, ChronoUnit.DAYS);
 
 			if (object.getDurationStart() == null)
 				super.state(false, "durationEnd", "sponsor.sponsorship.form.error.too-short");
 			else {
+				minimumDeadline = MomentHelper.deltaFromMoment(durationStart, 30, ChronoUnit.DAYS);
 				super.state(MomentHelper.isBeforeOrEqual(durationEnd, upperLimit), "durationEnd", "sponsor.sponsorship.form.error.date-upper-limit");
 				super.state(MomentHelper.isAfter(durationEnd, minimumDeadline), "durationEnd", "sponsor.sponsorship.form.error.too-short");
 			}

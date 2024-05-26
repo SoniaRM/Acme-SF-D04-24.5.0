@@ -92,11 +92,11 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 			Date minimumDeadline;
 			Date registrationTime;
 			registrationTime = object.getRegistrationTime();
-			minimumDeadline = MomentHelper.deltaFromMoment(registrationTime, 30, ChronoUnit.DAYS);
 
 			if (registrationTime == null)
 				super.state(false, "dueDate", "sponsor.invoice.form.error.too-short");
 			else {
+				minimumDeadline = MomentHelper.deltaFromMoment(registrationTime, 30, ChronoUnit.DAYS);
 				super.state(MomentHelper.isBeforeOrEqual(object.getDueDate(), upperLimit), "dueDate", "sponsor.invoice.form.error.date-upper-limit");
 				super.state(MomentHelper.isAfter(object.getDueDate(), minimumDeadline), "dueDate", "sponsor.invoice.form.error.too-short");
 			}

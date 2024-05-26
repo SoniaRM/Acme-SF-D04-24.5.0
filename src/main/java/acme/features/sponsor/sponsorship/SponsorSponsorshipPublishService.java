@@ -110,11 +110,11 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 			Date durationEnd;
 			durationStart = object.getDurationStart();
 			durationEnd = object.getDurationEnd();
-			minimumDeadline = MomentHelper.deltaFromMoment(durationStart, 30, ChronoUnit.DAYS);
 
 			if (object.getDurationStart() == null)
 				super.state(false, "durationEnd", "sponsor.sponsorship.form.error.too-short");
 			else {
+				minimumDeadline = MomentHelper.deltaFromMoment(durationStart, 30, ChronoUnit.DAYS);
 				super.state(MomentHelper.isBeforeOrEqual(durationEnd, upperLimit), "durationEnd", "sponsor.sponsorship.form.error.date-upper-limit");
 				super.state(MomentHelper.isAfter(durationEnd, minimumDeadline), "durationEnd", "sponsor.sponsorship.form.error.too-short");
 			}
@@ -123,16 +123,19 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		Collection<Invoice> invoices = this.repository.findManyInvoicesBySponsorshipId(object.getId());
 		double sumTotal = 0.0;
 		boolean invoicesPublished = true;
-		String currency = object.getAmount().getCurrency();
-		for (Invoice i : invoices) {
-			invoicesPublished = invoicesPublished && !i.isDraftMode();
-			if (i.getQuantity().getCurrency().equals(currency))
-				sumTotal += i.totalAmount();
-		}
+		if (object.getAmount() != null) {
+			String currency = object.getAmount().getCurrency();
+			for (Invoice i : invoices) {
+				invoicesPublished = invoicesPublished && !i.isDraftMode();
+				if (i.getQuantity().getCurrency().equals(currency))
+					sumTotal += i.totalAmount();
+			}
 
-		// Trunco sumTotal a 2 decimales
-		double factor = Math.pow(10, 2);
-		sumTotal = Math.round(sumTotal * factor) / factor;
+			// Trunco sumTotal a 2 decimales
+			double factor = Math.pow(10, 2);
+			sumTotal = Math.round(sumTotal * factor) / factor;
+		} else
+			sumTotal = -1234.56;
 
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(invoicesPublished, "project", "sponsor.sponrsorship.form.error.invoices-not-published");

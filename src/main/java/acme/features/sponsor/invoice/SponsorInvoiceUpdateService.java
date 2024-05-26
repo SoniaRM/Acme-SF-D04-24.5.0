@@ -30,10 +30,12 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 		boolean status;
 		int invoiceId;
 		Sponsorship sponsorship;
+		Invoice invoice;
 
 		invoiceId = super.getRequest().getData("id", int.class);
+		invoice = this.repository.findOneInvoiceById(invoiceId);
 		sponsorship = this.repository.findOneSponsorshipByInvoiceId(invoiceId);
-		status = sponsorship != null && sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
+		status = sponsorship != null && sponsorship.isDraftMode() && invoice.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -83,11 +85,11 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 			Date minimumDeadline;
 			Date registrationTime;
 			registrationTime = object.getRegistrationTime();
-			minimumDeadline = MomentHelper.deltaFromMoment(registrationTime, 30, ChronoUnit.DAYS);
 
 			if (registrationTime == null)
 				super.state(false, "dueDate", "sponsor.invoice.form.error.too-short");
 			else {
+				minimumDeadline = MomentHelper.deltaFromMoment(registrationTime, 30, ChronoUnit.DAYS);
 				super.state(MomentHelper.isBeforeOrEqual(object.getDueDate(), upperLimit), "dueDate", "sponsor.invoice.form.error.date-upper-limit");
 				super.state(MomentHelper.isAfter(object.getDueDate(), minimumDeadline), "dueDate", "sponsor.invoice.form.error.too-short");
 			}
