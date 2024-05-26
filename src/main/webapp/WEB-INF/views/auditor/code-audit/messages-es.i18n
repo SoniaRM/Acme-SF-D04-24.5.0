@@ -35,3 +35,4 @@ auditor.code-audit.form.error.markNotAtLeastC = No se puede publicar el Code Aud
 auditor.code-audit.form.error.auditRecordInDraftMode = Audit Record esta en Borrador
 auditor.code-audit.form.error.code = Este codigo ya esta en uso
 auditor.code-audit.form.error.draftMode =  Debes publicar todos los audit records antes de publicar el code audit
+auditor.code-audit.form.error.isEmpty = No hay suficientes registros

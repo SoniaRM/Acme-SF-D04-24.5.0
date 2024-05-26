@@ -65,6 +65,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		assert object != null;
 		Collection<AuditRecord> auditRecords;
 		int id;
+		boolean draftModeAuditRecord;
 
 		id = super.getRequest().getData("id", int.class);
 		auditRecords = this.repository.findManyAuditRecordsByCodeAuditId(id);
@@ -78,6 +79,15 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 			duplicated = this.repository.findOneCodeAuditByCode(object.getCode());
 			super.state(duplicated == null || duplicated.equals(object), "code", "auditor.code-audit.form.error.duplicated");
 		}
+
+		for (AuditRecord ar : auditRecords)
+			super.state(!ar.isDraftMode(), "code", "auditor.code-audit.form.error.draftMode");
+
+		if (!auditRecords.isEmpty()) {
+			draftModeAuditRecord = auditRecords.stream().anyMatch(x -> !x.isDraftMode());
+			super.state(draftModeAuditRecord, "*", "auditor.code-audit.form.error.auditRecordInDraftMode");
+		}
+
 	}
 
 	@Override
