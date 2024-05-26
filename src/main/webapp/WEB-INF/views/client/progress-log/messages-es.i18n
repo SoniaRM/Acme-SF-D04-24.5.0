@@ -25,4 +25,4 @@ client.progress-log.form.button.delete = Eliminar
 client.progress-log.form.button.update = Actualizar
 client.progress-log.form.button.publish = Publicar
 
-client.progress-log.form.error.duplicated = Este código ya está en uso
+client.progress-log.form.error.code = Este código ya está en uso
