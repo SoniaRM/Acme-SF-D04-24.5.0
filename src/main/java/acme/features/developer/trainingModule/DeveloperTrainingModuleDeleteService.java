@@ -70,6 +70,11 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 
 		Collection<TrainingSession> trainingSessions = this.repository.findManyTrainingSessionsByTrainingModuleId(object.getId());
 
+		boolean allPublished = trainingSessions.stream().allMatch(session -> !session.isDraftMode());
+
+		if (allPublished)
+			super.state(false, "*", "developer.training-module.form.all-sessions-published");
+
 		boolean hasPublishedSessions = true;
 		for (TrainingSession ts : trainingSessions)
 			hasPublishedSessions = hasPublishedSessions && !ts.isDraftMode();

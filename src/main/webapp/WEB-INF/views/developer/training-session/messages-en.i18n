@@ -26,12 +26,10 @@ developer.training-session.form.label.draft-mode = Draft
 developer.training-session.form.label.training-module = Training Module
 
 
-
 developer.training-session.form.button.create = Create
 developer.training-session.form.button.delete = Delete
 developer.training-session.form.button.update = Update
 developer.training-session.form.button.publish = Publish
-
 
 
 developer.training-session.form.error.duplicated = This code is already used
@@ -40,3 +38,5 @@ developer.training-session.form.error.invalid-date-start-period = Date must be b
 developer.training-session.form.error.invalid-date-end-period = Date must be before 2200/12/31 23:59
 developer.training-session.form.error.not-one-week-long = Training Session Period must be at least one week long
 developer.training-session.form.error.invalidEndPeriod = End Period must be after Start Period
+developer.training-session.form.error.published-training-module = Cannot choose this Training Module
+developer.training-module.form.all-sessions-published = Cannot delete because of published Training Sessions

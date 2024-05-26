@@ -76,4 +76,4 @@ training-session-31.15,TS-AA-531,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,L
 training-session-31.16,TS-AA-631,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,http://example.org/a/b?,true,training-module-19.1
 training-session-31.17,TS-AA-731,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,http://example.org/a/b?a&b,true,training-module-19.1
 # Datos para draft-mode
-training-session-32,TS-AAA-032,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession01@gmail.com,https://es.wikipedia.org/wiki/Curso,false,training-module-01
+training-session-32,TS-AAA-032,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession01@gmail.com,https://es.wikipedia.org/wiki/Curso,false,training-module-29
