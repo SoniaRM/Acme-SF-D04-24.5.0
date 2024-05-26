@@ -28,7 +28,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 
 	@Override
 	public void authorise() {
-		final boolean status;
+		boolean status;
 		int codeAuditId;
 		CodeAudit object;
 		Auditor auditor;
@@ -37,6 +37,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		object = this.repository.findOneCodeAuditById(codeAuditId);
 		auditor = object == null ? null : object.getAuditor();
 		status = object != null && object.isDraftMode() && super.getRequest().getPrincipal().hasRole(auditor);
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -58,23 +59,24 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink");
 	}
 
+	//CAMBIOS
 	@Override
 	public void validate(final CodeAudit object) {
 		assert object != null;
-		boolean draftModeAuditRecord;
-		Collection<AuditRecord> auditRecords = this.repository.findManyAuditRecordsByCodeAuditId(object.getId());
+		Collection<AuditRecord> auditRecords;
+		int id;
 
-		for (AuditRecord ar : auditRecords)
-			super.state(!ar.isDraftMode(), "code", "auditor.code-audit.form.error.draftMode");
+		id = super.getRequest().getData("id", int.class);
+		auditRecords = this.repository.findManyAuditRecordsByCodeAuditId(id);
 
-		if (!auditRecords.isEmpty()) {
-			draftModeAuditRecord = auditRecords.stream().anyMatch(x -> !x.isDraftMode());
-			super.state(draftModeAuditRecord, "*", "auditor.code-audit.form.error.auditRecordInDraftMode");
-		}
+		super.state(!auditRecords.isEmpty(), "*", "auditor.code-audit.form.error.isEmpty");
+		super.state(object.getMark(auditRecords) != Mark.F && object.getMark(auditRecords) != Mark.F_MINUS, "*", "auditor.code-audit.form.error.markNotAtLeastC");
 
-		if (!super.getBuffer().getErrors().hasErrors("mark")) {
-			Mark mark = object.getMark(auditRecords);
-			super.state(mark == Mark.A || mark == Mark.A_PLUS || mark == Mark.B || mark == Mark.C, "mark", "auditor.code-audit.form.error.markNotAtLeastC");
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			CodeAudit duplicated;
+
+			duplicated = this.repository.findOneCodeAuditByCode(object.getCode());
+			super.state(duplicated == null || duplicated.equals(object), "code", "auditor.code-audit.form.error.duplicated");
 		}
 	}
 
