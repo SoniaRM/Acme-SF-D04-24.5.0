@@ -55,13 +55,6 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 	@Override
 	public void validate(final Contract object) {
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Contract existing;
-			existing = this.repository.findOneContractByCode(object.getCode());
-			if (existing == null || existing.getId() != object.getId())
-				super.state(existing == null, "code", "client.contract.form.error.duplicated");
-		}
-
 		Collection<ProgressLog> progresslogs = this.repository.findManyProgressLogsByContractId(object.getId());
 
 		boolean progressLogsPublished = true;
