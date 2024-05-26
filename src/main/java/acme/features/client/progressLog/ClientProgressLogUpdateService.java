@@ -83,7 +83,7 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 		contracts = this.repository.findAllContracts();
 		choices = SelectChoices.from(contracts, "code", object.getContract());
 
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftMode");
 		dataset.put("contract", choices.getSelected().getKey());
 		dataset.put("contracts", choices);
 		super.getResponse().addData(dataset);
