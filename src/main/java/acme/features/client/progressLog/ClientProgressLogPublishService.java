@@ -26,13 +26,11 @@ public class ClientProgressLogPublishService extends AbstractService<Client, Pro
 	public void authorise() {
 		boolean status;
 		int progressLogId;
-		ProgressLog object;
 		Contract contract;
 
 		progressLogId = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneProgressLogById(progressLogId);
-		contract = object == null ? null : object.getContract();
-		status = super.getRequest().getPrincipal().hasRole(contract.getClient()) || object != null && !object.isDraftMode();
+		contract = this.repository.findOneContractByProgressLogId(progressLogId);
+		status = contract != null && contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -51,7 +49,7 @@ public class ClientProgressLogPublishService extends AbstractService<Client, Pro
 	public void bind(final ProgressLog object) {
 		assert object != null;
 
-		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftmode");
+		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
 	}
 
 	@Override
@@ -78,7 +76,7 @@ public class ClientProgressLogPublishService extends AbstractService<Client, Pro
 		contracts = this.repository.findAllContracts();
 		choices = SelectChoices.from(contracts, "code", object.getContract());
 
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftmode");
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
 		dataset.put("contract", choices.getSelected().getKey());
 		dataset.put("contracts", choices);
 		super.getResponse().addData(dataset);

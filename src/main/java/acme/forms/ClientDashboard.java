@@ -15,15 +15,15 @@ public class ClientDashboard extends AbstractForm {
 
 	// Attributes -------------------------------------------------------------
 
-	int							totalLogsLessThan25;
-	int							totalLogsLessBetween25And50;
-	int							totalLogsLessBetween50And75;
-	int							totalLogsAbove75;
+	int							totalLogLessThan25;
+	int							totalLogLessBetween25And50;
+	int							totalLogLessBetween50And75;
+	int							totalLogAbove75;
 
-	Double						averageBudgetContract;
-	Double						deviationBudgetContract;
-	Double						minimumBudgetContract;
-	Double						maximumBudgetContract;
+	Double						averageBudgetContracts;
+	Double						deviationBudgetContracts;
+	Double						minimumBudgetContracts;
+	Double						maximumBudgetContracts;
 
 	// Derived attributes -----------------------------------------------------
 

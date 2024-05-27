@@ -38,6 +38,8 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 
 		principal = super.getRequest().getPrincipal();
 		id = principal.getAccountId();
+		//id = super.getRequest().getPrincipal().getActiveRoleId();
+
 		client = this.repository.findOneClientByUserAccountId(id);
 
 		int totalLogLessThan25;
@@ -46,7 +48,7 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 		int totalLogAbove75;
 		Double averageBudgetContracts;
 		Double deviationBudgetContracts;
-		Double minimunBudgetContracts;
+		Double minimumBudgetContracts;
 		Double maximumBudgetContracts;
 
 		totalLogLessThan25 = this.repository.findTotalLogLessThan25(client);
@@ -56,20 +58,20 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 
 		averageBudgetContracts = this.repository.findAverageBudgetContracts(client);
 		deviationBudgetContracts = this.repository.findDeviationBudgetContracts(client);
-		minimunBudgetContracts = this.repository.findMinimunBudgetContracts(client);
+		minimumBudgetContracts = this.repository.findMinimunBudgetContracts(client);
 		maximumBudgetContracts = this.repository.findMaximumBudgetContracts(client);
 
 		dashboard = new ClientDashboard();
 
-		dashboard.setTotalLogsLessThan25(totalLogLessThan25);
-		dashboard.setTotalLogsLessBetween25And50(totalLogLessBetween25And50);
-		dashboard.setTotalLogsLessBetween50And75(totalLogLessBetween50And75);
-		dashboard.setTotalLogsAbove75(totalLogAbove75);
+		dashboard.setTotalLogLessThan25(totalLogLessThan25);
+		dashboard.setTotalLogLessBetween25And50(totalLogLessBetween25And50);
+		dashboard.setTotalLogLessBetween50And75(totalLogLessBetween50And75);
+		dashboard.setTotalLogAbove75(totalLogAbove75);
 
-		dashboard.setAverageBudgetContract(averageBudgetContracts);
-		dashboard.setDeviationBudgetContract(deviationBudgetContracts);
-		dashboard.setMinimumBudgetContract(minimunBudgetContracts);
-		dashboard.setMaximumBudgetContract(maximumBudgetContracts);
+		dashboard.setAverageBudgetContracts(averageBudgetContracts);
+		dashboard.setDeviationBudgetContracts(deviationBudgetContracts);
+		dashboard.setMinimumBudgetContracts(minimumBudgetContracts);
+		dashboard.setMaximumBudgetContracts(maximumBudgetContracts);
 
 		super.getBuffer().addData(dashboard);
 	}
@@ -79,7 +81,9 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 		assert object != null;
 		Dataset dataset;
 
-		dataset = super.unbind(object, "totalLogLessThan25", "totalLogLessBetween25And50", "totalLogLessBetween50And75", "totalLogAbove75", "averageBudgetContracts", "deviationBudgetContracts", "minimunBudgetContracts", "maximumBudgetContracts");
+		dataset = super.unbind(object, "totalLogLessThan25", "totalLogLessBetween25And50", //
+			"totalLogLessBetween50And75", "totalLogAbove75", "averageBudgetContracts", //
+			"deviationBudgetContracts", "minimumBudgetContracts", "maximumBudgetContracts");
 		super.getResponse().addData(dataset);
 	}
 

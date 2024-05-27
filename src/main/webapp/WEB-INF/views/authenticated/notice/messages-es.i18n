@@ -1,0 +1,19 @@
+authenticated.notice.list.label.instantiation-moment = Momento de instanciación
+authenticated.notice.list.label.title = Título
+authenticated.notice.list.label.author = Autor
+authenticated.notice.list.label.message = Mensaje
+
+authenticated.notice.form.label.instantiation-moment = Momento de instanciación:
+authenticated.notice.form.label.title = Título:
+authenticated.notice.form.label.author = Autor:
+authenticated.notice.form.label.message = Mensaje:
+authenticated.notice.form.label.email = Email:
+authenticated.notice.form.label.link = Enlace:
+
+authenticated.notice.list.title = Lista de notificaciones
+authenticated.notice.form.title = Detalles de notificación
+
+authenticated.notice.list.button.create = Crear
+authenticated.notice.form.button.create = Crear
+
+authenticated.notice.form.error.confirmation = Confirma la creación. No podrás modificar ni elimiar esta notificación posteriormente

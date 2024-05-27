@@ -5,3 +5,9 @@ validation.invoice.code = El código de una factura debe seguir el siguiente pat
 
 #Manager
 validation.project.code = El código de un proyecto debe seguir el siguiente patrón: XXX-YYYY, siendo X una letra mayúscula y Y un número del 0 al 9
+
+#Client
+validation.notice.author = El autor de un anuncio debe seguir el siguiente patrón: "nombre de usuario - apellido, nombre", donde "nombre de usuario" denota el nombre de usuario del principal que ha publicado la nota y "apellido, nombre" denota su nombre completo
+validation.contract.code = El código de un contrato debe seguir el siguiente patrón: A-XXX, AA-XXX o AAA-XXX, donde A es una letra mayúscula de A a Z y X y número de 0 a 9
+validation.progresslog.recordid = El identificador de registro de un registro de seguimiento de progreso debe seguir el siguiente patrón: PG-AA-XXXX o PG-A-XXXX, donde A es una letra mayúscula de A a Z y X y número de 0 a 9
+validation.client.identification = La identificación de un cliente debe seguir el siguiente patrón: CLI-XXXX, X es un número de 0 a 9
