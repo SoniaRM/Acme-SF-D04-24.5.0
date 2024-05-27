@@ -58,16 +58,6 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
-		/*
-		 * boolean draftModeTrainingSession;
-		 * 
-		 * final Collection<TrainingSession> trainingSessions = this.repository.findManyTrainingSessionsByTrainingModuleId(object.getId());
-		 * super.state(!trainingSessions.isEmpty(), "*", "developer.training-module.form.error.trainingModuleWithOutTrainingSessions");
-		 * if (!trainingSessions.isEmpty()) {
-		 * draftModeTrainingSession = trainingSessions.stream().anyMatch(x -> !x.isDraftMode());
-		 * super.state(draftModeTrainingSession, "*", "developer.training-module.form.error.trainingSessionInDraftMode");
-		 * }
-		 */
 
 		Collection<TrainingSession> trainingSessions = this.repository.findManyTrainingSessionsByTrainingModuleId(object.getId());
 

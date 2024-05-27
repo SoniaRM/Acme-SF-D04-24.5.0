@@ -59,28 +59,21 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 	public void validate(final TrainingModule object) {
 		assert object != null;
 
-		/*
-		 * Collection<TrainingSession> trainingSessions;
-		 * trainingSessions = this.repository.findManyTrainingSessionsByTrainingModuleId(object.getId());
-		 * 
-		 * boolean hasPublishedSessions = trainingSessions.stream().anyMatch(session -> !session.isDraftMode());
-		 * 
-		 * super.state(!hasPublishedSessions, "*", "developer.training-module.form.it-has-training-sessions-published");
-		 */
-
 		Collection<TrainingSession> trainingSessions = this.repository.findManyTrainingSessionsByTrainingModuleId(object.getId());
 
 		boolean allPublished = trainingSessions.stream().allMatch(session -> !session.isDraftMode());
+		if (!trainingSessions.isEmpty()) {
+			if (allPublished)
+				super.state(false, "*", "developer.training-module.form.all-sessions-published");
 
-		if (allPublished)
-			super.state(false, "*", "developer.training-module.form.all-sessions-published");
+			boolean hasPublishedSessions = true;
+			for (TrainingSession ts : trainingSessions)
+				hasPublishedSessions = hasPublishedSessions && !ts.isDraftMode();
 
-		boolean hasPublishedSessions = true;
-		for (TrainingSession ts : trainingSessions)
-			hasPublishedSessions = hasPublishedSessions && !ts.isDraftMode();
+			if (!super.getBuffer().getErrors().hasErrors("project"))
+				super.state(!hasPublishedSessions, "project", "developer.training-module.form.it-has-training-sessions-published");
 
-		if (!super.getBuffer().getErrors().hasErrors("project"))
-			super.state(hasPublishedSessions, "project", "developer.training-module.form.it-has-training-sessions-published");
+		}
 
 	}
 
