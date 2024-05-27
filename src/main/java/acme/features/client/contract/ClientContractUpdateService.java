@@ -52,7 +52,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 	public void bind(final Contract object) {
 		assert object != null;
 
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode", "project");
+		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project");
 	}
 
 	@Override
@@ -66,6 +66,12 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 			if (contractWithCodeDuplicated != null)
 				super.state(contractWithCodeDuplicated.getId() == object.getId(), "code", "client.contract.form.error.code");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("budget"))
+			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-budget");
+
+		if (!super.getBuffer().getErrors().hasErrors("budget"))
+			super.state(object.getBudget().getAmount() <= 1000000, "budget", "client.contract.form.error.over-budget");
 
 	}
 
@@ -84,10 +90,9 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		SelectChoices choices;
 
 		projects = this.repository.findManyProjectsAvailable();
+		choices = SelectChoices.from(projects, "code", object.getProject());
 
-		choices = SelectChoices.from(projects, "title", object.getProject());
-
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode", "project");
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 

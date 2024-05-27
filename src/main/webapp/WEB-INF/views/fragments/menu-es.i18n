@@ -29,15 +29,14 @@ master.menu.anonymous.claim-list = Lista de Claims
 master.menu.anonymous.training-module-list = Lista de Training Modules
 master.menu.anonymous.project-list = Lista de Proyectos
 
-
-
 # master.menu.authenticated ###################################################
 
 master.menu.authenticated = Autenticado
 master.menu.authenticated.all-risks = Lista de riesgos
 master.menu.anonymous.list-sponsorship = Patrocinios publicados
 master.menu.authenticated.objective = Lista de objetivos
-
+master.menu.authenticated.all-notices = Lista de notificaciones
+master.menu.authenticated.create-notices = Crear notificación
 
 # master.menu.administrator ###################################################
 
@@ -93,7 +92,7 @@ master.menu.manager.show-manager-dashboard = Mis estadisticas
 # master.menu.client ####################################################
 
 master.menu.client = Cliente
-master.menu.client.contracts= Listado de mis Contracts
+master.menu.client.contracts= Listado de mis Contratos
 master.menu.client.progress-logs= Listado de mis Registros de Progreso
 master.menu.client.show-client-dashboard = Mis estadisticas
 
@@ -111,4 +110,5 @@ master.menu.user-account.developer = Datos de desarrollador
 master.menu.user-account.become-developer = Hazte desarrollador
 master.menu.user-account.manager = Datos de manager
 master.menu.user-account.become-manager = Hazte manager
-
+master.menu.user-account.client = Datos de cliente
+master.menu.user-account.become-client = Hazte cliente

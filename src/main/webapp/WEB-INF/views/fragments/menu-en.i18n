@@ -36,7 +36,8 @@ master.menu.authenticated = Authenticated
 master.menu.authenticated.all-risks = List risks
 master.menu.autheticated.list-sponsorship = Published sponsorships
 master.menu.authenticated.objective = List of Objectives
-
+master.menu.authenticated.all-notices = List notices
+master.menu.authenticated.create-notices = Create notices
 
 # master.menu.administrator ###################################################
 
@@ -115,3 +116,5 @@ master.menu.user-account.developer = Developer data
 master.menu.user-account.become-developer = Become a developer
 master.menu.user-account.manager = Manager data
 master.menu.user-account.become-manager = Become a manager
+master.menu.user-account.client = Client data
+master.menu.user-account.become-client = Become a client

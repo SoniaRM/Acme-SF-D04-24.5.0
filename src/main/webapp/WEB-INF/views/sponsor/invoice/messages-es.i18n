@@ -24,6 +24,9 @@ sponsor.invoice.form.button.delete = Borrar
 sponsor.invoice.form.button.publish = Publicar
 
 sponsor.invoice.form.error.duplicated = Este código ya está en uso
+sponsor.invoice.form.error.date-lower-limit = La fecha debe ser posterior o igual a 2000/01/01 00:00
+sponsor.invoice.form.error.date-upper-limit = La decha debe ser anterior o igual a 2200/12/31 23:59
 sponsor.invoice.form.error.too-short = La fecha límite debe ser, mínimo, 30 días posterior a la fecha de registro
 sponsor.invoice.form.error.different-currency = La moneda debe ser la misma que la del patrocinio asociado
 sponsor.invoice.form.error.negative-amount = La cantidad debe ser positiva
+sponsor.invoice.form.error.quantity-upper-limit = La cantidad debe ser inferior o igual a 1.000.000,00

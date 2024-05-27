@@ -26,13 +26,11 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 	public void authorise() {
 		boolean status;
 		int progressLogId;
-		ProgressLog object;
 		Contract contract;
 
 		progressLogId = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneProgressLogById(progressLogId);
-		contract = object == null ? null : object.getContract();
-		status = super.getRequest().getPrincipal().hasRole(contract.getClient()) || object != null && !object.isDraftMode();
+		contract = this.repository.findOneContractByProgressLogId(progressLogId);
+		status = contract != null && contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -51,7 +49,7 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 	public void bind(final ProgressLog object) {
 		assert object != null;
 
-		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftmode");
+		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
 	}
 
 	@Override
@@ -63,7 +61,7 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 			ProgressLog progressLogWithCodeDuplicated = this.repository.findOneProgressLogByCode(object.getRecordId());
 
 			if (progressLogWithCodeDuplicated != null)
-				super.state(progressLogWithCodeDuplicated.getRecordId() == object.getRecordId(), "recordId", "developer.training-session.form.error.code");
+				super.state(progressLogWithCodeDuplicated.getId() == object.getId(), "recordId", "client.progress-log.form.error.code");
 		}
 
 	}
@@ -85,7 +83,7 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 		contracts = this.repository.findAllContracts();
 		choices = SelectChoices.from(contracts, "code", object.getContract());
 
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftmode");
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftMode");
 		dataset.put("contract", choices.getSelected().getKey());
 		dataset.put("contracts", choices);
 		super.getResponse().addData(dataset);

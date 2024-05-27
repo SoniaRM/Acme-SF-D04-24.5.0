@@ -27,9 +27,14 @@ sponsor.sponsorship.form.button.delete = Borrar
 sponsor.sponsorship.form.button.publish = Publicar
 
 sponsor.sponsorship.form.error.duplicated = Este código ya está en uso
+sponsor.sponsorship.form.error.date-lower-limit = La fecha debe ser posterior o igual a 2000/01/01 00:00
+sponsor.sponsorship.form.error.date-upper-limit = La fecha debe ser anterior o igual a 2200/12/31 23:59
+sponsor.sponsorship.form.error.date-upper-limit-month-before = La fecha debe ser anterior o igual a 2200/12/01 23:58
 sponsor.sponsorship.form.error.after-moment = El inicio de la duración debe ser posterior al momento
 sponsor.sponsorship.form.error.too-short = El fin de la duración debe ser, mínimo, 30 días posterior al inicio de la duración
 sponsor.sponrsorship.form.error.invoices-not-published = Hay facturas asociadas sin publicar
 sponsor.sponsorship.form.error.different-currency = No puedes cambiar la moneda de un patrocinio
 sponsor.sponsorship.form.error.negative-amount = La cantidad debe ser positiva
+sponsor.sponsorship.form.error.wrong-currency = La moneda debe ser EUR, USD o GBP
+sponsor.sponsorship.form.error.amount-upper-limit = La cantidad debe ser más pequeña o igual que 1.000.000,00
 sponsor.sponsorship.form.error.invoices-amount = La cantidad debe ser igual a la suma de las cantidades totales de las facturas relacionadas
