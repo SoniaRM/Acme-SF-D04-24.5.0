@@ -59,9 +59,10 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 			super.state(existing == null, "code", "developer.training-session.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("trainingModule"))
+		if (!super.getBuffer().getErrors().hasErrors("trainingModule")) {
+			super.state(object.getTrainingModule().isDraftMode(), "trainingModule", "developer.training-session.form.error.published-training-module");
 			super.state(object.getTrainingModule() != null, "trainingModule", "developer.training-session.form.error.null-training-module.");
-
+		}
 		if (!super.getBuffer().getErrors().hasErrors("startPeriod") && object.getStartPeriod() != null) {
 
 			Date maxStartPeriod;
@@ -109,7 +110,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		Collection<TrainingModule> trainingModules;
 		SelectChoices choices;
 
-		trainingModules = this.repository.findManyTrainingModulesAvailable2();
+		trainingModules = this.repository.findAllTrainingModules();
 		choices = SelectChoices.from(trainingModules, "code", object.getTrainingModule());
 		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "trainingModule");
 		dataset.put("trainingModule", choices.getSelected().getKey());

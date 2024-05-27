@@ -58,6 +58,23 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
+
+		Collection<TrainingSession> trainingSessions = this.repository.findManyTrainingSessionsByTrainingModuleId(object.getId());
+
+		boolean allPublished = trainingSessions.stream().allMatch(session -> !session.isDraftMode());
+		if (!trainingSessions.isEmpty()) {
+			if (allPublished)
+				super.state(false, "*", "developer.training-module.form.all-sessions-published");
+
+			boolean hasPublishedSessions = true;
+			for (TrainingSession ts : trainingSessions)
+				hasPublishedSessions = hasPublishedSessions && !ts.isDraftMode();
+
+			if (!super.getBuffer().getErrors().hasErrors("project"))
+				super.state(!hasPublishedSessions, "project", "developer.training-module.form.it-has-training-sessions-published");
+
+		}
+
 	}
 
 	@Override
@@ -89,6 +106,7 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 		dataset.put("difficultyLevel", choicesLevel);
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
+		dataset.put("draftMode", object.isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}
