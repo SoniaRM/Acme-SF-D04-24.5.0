@@ -38,4 +38,7 @@ public interface SponsorSponsorshipRepository extends AbstractRepository {
 
 	@Query("select i from Invoice i where i.sponsorship.id = :sponsorshipId")
 	Collection<Invoice> findManyInvoicesBySponsorshipId(int sponsorshipId);
+
+	@Query("select i from Invoice i where (i.sponsorship.id = :sponsorshipId and i.draftMode = true)")
+	Collection<Invoice> findManyUnpublishedInvoicesBySponsorshipId(int sponsorshipId);
 }

@@ -37,9 +37,9 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 		client = this.repository.findOneClientById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new Contract();
+		object.setInstantiationMoment(MomentHelper.getCurrentMoment());
 		object.setClient(client);
 		object.setDraftMode(true);
-		object.setInstantiationMoment(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(object);
 	}
@@ -62,6 +62,12 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 			existing = this.repository.findOneContractByCode(object.getCode());
 			super.state(existing == null, "code", "client.contract.form.error.duplicated");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("budget"))
+			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-budget");
+
+		if (!super.getBuffer().getErrors().hasErrors("budget"))
+			super.state(object.getBudget().getAmount() <= 1000000, "budget", "client.contract.form.error.over-budget");
 
 	}
 

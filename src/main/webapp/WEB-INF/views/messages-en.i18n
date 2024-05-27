@@ -10,7 +10,12 @@ validation.project.code = A project code must follow the following pattern: XXX-
 validation.trainingModule.code = A training-module code must follow the following pattern: X-YYY, XX-YYY or XXX-YYY, where X is a capital letter and Y is a number form 0 to 9
 validation.trainingSession.code = A training-session code must follow the following pattern: TS-X-YYY, TS-XX-YYY or TS-XXX-YYY, where X is a capital letter and Y is a number form 0 to 9
 
-
 # Auditor
 validation.codeAudit.code = A code-audit code must follow the following pattern: X-YYY, XX-YYY or XXX-YYY, where X is a capital letter and Y is a number form 0 to 9
 validation.auditRecord.code = A audit-record code must follow the following pattern: AU-XXXX-XXX, where X is a number from 0 to 9
+
+# Client
+validation.notice.author = A notice author must follow the following pattern: “username - surname, name”, where “username” denotes the username of the principal who has posted the note and “surname, name” denotes his or her full name
+validation.contract.code = A contract code must follow the following pattern: A-XXX, AA-XXX or AAA-XXX, where A is a capital letter form A to Z and X a number from 0 to 9
+validation.progresslog.recordid = A progress log record id must follow the following pattern: PG-AA-XXXX or PG-A-XXXX, where A is a capital letter form A to Z and X a number from 0 to 9
+validation.client.identification = A client identification must follow the following pattern: CLI-XXXX, X is a number from 0 to 9

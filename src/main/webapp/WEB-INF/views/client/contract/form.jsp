@@ -5,7 +5,7 @@
 
 <acme:form>
 	<acme:input-textbox code="client.contract.form.label.code" path="code"/>	
-	<acme:input-moment code="client.contract.form.label.instantiation-moment" path="instantiationMoment" readonly="true" />
+	<acme:input-moment code="client.contract.form.label.instantiation-moment" path="instantiationMoment" readonly="true"/>
 	<acme:input-textarea code="client.contract.form.label.provider-name" path="providerName"/>
 	<acme:input-textarea code="client.contract.form.label.customer-name" path="customerName"/>
 	<acme:input-textarea code="client.contract.form.label.goals" path="goals"/>

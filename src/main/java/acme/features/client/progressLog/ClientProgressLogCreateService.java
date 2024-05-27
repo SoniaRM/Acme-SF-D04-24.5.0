@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contracts.Contract;
@@ -33,6 +34,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 	public void load() {
 		ProgressLog object;
 		object = new ProgressLog();
+		object.setRegistrationMoment(MomentHelper.getCurrentMoment());
 		object.setDraftMode(true);
 
 		super.getBuffer().addData(object);
@@ -42,7 +44,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 	public void bind(final ProgressLog object) {
 		assert object != null;
 
-		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftmode", "contract");
+		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "contract");
 	}
 
 	@Override
@@ -74,8 +76,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 		contracts = this.repository.findManyContractsAvailable2();
 		choices = SelectChoices.from(contracts, "code", object.getContract());
-		System.out.println(choices.getSelected().getKey());
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftmode", "contract");
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "contract");
 		dataset.put("contract", choices.getSelected().getKey());
 		dataset.put("contracts", choices);
 		super.getResponse().addData(dataset);

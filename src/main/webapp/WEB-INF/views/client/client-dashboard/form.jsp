@@ -9,7 +9,7 @@
 			<acme:message code="client.clientDashboard.form.label.totalLogsLessThan25"/>
 		</th>
 		<td>
-			<acme:print value="${totalLogsLessThan25}"/>
+			<acme:print value="${totalLogLessThan25}"/>
 		</td>
 	</tr>
 	<tr>
@@ -17,7 +17,7 @@
 			<acme:message code="client.clientDashboard.form.label.totalLogsLessBetween25And50"/>
 		</th>
 		<td>
-			<acme:print value="${totalLogsLessBetween25And50}"/>
+			<acme:print value="${totalLogLessBetween25And50}"/>
 		</td>
 	</tr>
 	<tr>
@@ -25,7 +25,7 @@
 			<acme:message code="client.clientDashboard.form.label.totalLogsLessBetween50And75"/>
 		</th>
 		<td>
-			<acme:print value="${totalLogsLessBetween50And75}"/>
+			<acme:print value="${totalLogLessBetween50And75}"/>
 		</td>
 	</tr>	
 	<tr>
@@ -33,7 +33,7 @@
 			<acme:message code="client.clientDashboard.form.label.totalLogsAbove75"/>
 		</th>
 		<td>
-			<acme:print value="${totalLogsAbove75}"/>
+			<acme:print value="${totalLogAbove75}"/>
 		</td>
 	</tr>	
 	<tr>
@@ -57,7 +57,7 @@
 			<acme:message code="client.clientDashboard.form.label.minimunBudgetContracts"/>
 		</th>
 		<td>
-			<acme:print value="${minimunBudgetContracts}"/>
+			<acme:print value="${minimumBudgetContracts}"/>
 		</td>
 	</tr>
 	<tr>

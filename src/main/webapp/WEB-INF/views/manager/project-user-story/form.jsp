@@ -23,6 +23,8 @@
     </jstl:if>
     <jstl:choose>	
 		<jstl:when test="${_command == 'delete'}">
+		        <input type="hidden" name="userStoryId" value="${userStoryId}"/>
+		
 			<acme:submit code="manager.projectUserStory.form.button.remove" action="/manager/project-user-story/delete?projectId=${projectId}"/>
 		</jstl:when> 	
 	</jstl:choose>
