@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
@@ -27,38 +28,26 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 
 	@Override
 	public void authorise() {
-		/*
-		 * boolean status;
-		 * AuditRecord auditRecord;
-		 * CodeAudit codeAudit = null;
-		 * Principal principal;
-		 * int id;
-		 * int codeAuditId;
-		 * 
-		 * id = super.getRequest().getData("id", int.class);
-		 * auditRecord = this.repository.findOneAuditRecordById(id);
-		 * codeAuditId = auditRecord.getCodeAudit().getId();
-		 * 
-		 * if (auditRecord != null)
-		 * codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
-		 * 
-		 * principal = super.getRequest().getPrincipal();
-		 * status = codeAudit.getAuditor().getId() == principal.getActiveRoleId() && auditRecord != null && auditRecord.isDraftMode();
-		 * 
-		 * super.getResponse().setAuthorised(status);
-		 */
 
 		boolean status;
-		int auditRecordId;
-		AuditRecord object;
-		CodeAudit codeAudit;
+		AuditRecord auditRecord;
+		CodeAudit codeAudit = null;
+		Principal principal;
+		int id;
+		int codeAuditId;
 
-		auditRecordId = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneAuditRecordById(auditRecordId);
-		codeAudit = object == null ? null : object.getCodeAudit();
-		status = super.getRequest().getPrincipal().hasRole(codeAudit.getAuditor()) && object != null && object.isDraftMode();
+		id = super.getRequest().getData("id", int.class);
+		auditRecord = this.repository.findOneAuditRecordById(id);
+		codeAuditId = auditRecord.getCodeAudit().getId();
+
+		if (auditRecord != null)
+			codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
+
+		principal = super.getRequest().getPrincipal();
+		status = codeAudit.getAuditor().getId() == principal.getActiveRoleId() && auditRecord != null && auditRecord.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
