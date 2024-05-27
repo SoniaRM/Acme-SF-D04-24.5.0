@@ -8,6 +8,7 @@
 	<acme:input-moment code="auditor.audit-record.form.label.initial-period" path="initialPeriod"/>
 	<acme:input-moment code="auditor.audit-record.form.label.final-period" path="finalPeriod"/>
 	<acme:input-url code="auditor.audit-record.form.label.optional-link" path="optionalLink"/>
+	<acme:input-select code="auditor.audit-record.form.label.code-audit" path="codeAudit" choices="${codeAudits}"/>
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|publish|delete') && draftMode == true}">
@@ -23,7 +24,7 @@
 		
 		<jstl:when test="${_command == 'create'}">
 			<acme:input-select code="auditor.audit-record.form.label.mark" path="mark" choices="${marks}"/>
-			<acme:submit code="auditor.audit-record.form.button.create" action="/auditor/audit-record/create?codeAuditId=${codeAuditId}"/>
+			<acme:submit code="auditor.audit-record.form.button.create" action="/auditor/audit-record/create"/>
 		</jstl:when>		
 	</jstl:choose>
 	

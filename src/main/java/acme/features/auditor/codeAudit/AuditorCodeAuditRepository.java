@@ -12,7 +12,6 @@ import acme.entities.CodeAudit;
 import acme.entities.Project;
 import acme.roles.Auditor;
 
-// HACER METODO PARA CALCULAR LA MARCA
 @Repository
 public interface AuditorCodeAuditRepository extends AbstractRepository {
 

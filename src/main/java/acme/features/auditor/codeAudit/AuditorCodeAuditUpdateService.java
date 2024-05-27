@@ -27,6 +27,18 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 
 	@Override
 	public void authorise() {
+		/*
+		 * final boolean status;
+		 * int codeAuditId;
+		 * CodeAudit object;
+		 * Auditor auditor;
+		 * 
+		 * codeAuditId = super.getRequest().getData("id", int.class);
+		 * object = this.repository.findOneCodeAuditById(codeAuditId);
+		 * auditor = object == null ? null : object.getAuditor();
+		 * status = object != null && object.isDraftMode() && super.getRequest().getPrincipal().hasRole(auditor);
+		 * super.getResponse().setAuthorised(status);
+		 */
 		final boolean status;
 		int codeAuditId;
 		CodeAudit object;
@@ -54,7 +66,7 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 	public void bind(final CodeAudit object) {
 		assert object != null;
 
-		super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "draftMode");
+		super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project");
 	}
 
 	@Override
@@ -92,9 +104,11 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 		choicesType = SelectChoices.from(Type.class, object.getType());
 		choices = SelectChoices.from(projects, "title", object.getProject());
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "draftMode");
-		dataset.put("type", choicesType);
+		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project", "draftMode");
+		dataset.put("type", choicesType.getSelected().getKey());
+		dataset.put("types", choicesType);
 		dataset.put("project", choices.getSelected().getKey());
+		dataset.put("projects", choices);
 		dataset.put("mark", object.getMark(auditRecords));
 
 		super.getResponse().addData(dataset);

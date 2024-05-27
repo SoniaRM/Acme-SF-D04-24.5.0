@@ -31,13 +31,10 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 
 	@Override
 	public void load() {
-		Auditor auditor;
 		int id;
+		AuditorDashboards dashboard;
 
 		id = super.getRequest().getPrincipal().getActiveRoleId();
-		auditor = this.repository.findOneAuditorByUserAccountId(id);
-
-		AuditorDashboards dashboard;
 
 		int totalCodeAuditsStatic;
 		int totalCodeAuditsDynamic;
@@ -56,7 +53,7 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 		totalCodeAuditsDynamic = this.repository.totalCodeAuditsType(Type.DYNAMIC, id);
 
 		avgAuditRecords = this.repository.avgNumberOfAuditRecordsPerAudits(id);
-		//devAuditRecords = this.repository.devNumberOfAuditRecordsPerAudits(id);
+		devAuditRecords = this.repository.devNumberOfAuditRecordsPerAudits(id);
 		minAuditRecords = this.repository.minNumberOfAuditRecordsPerAudits(id);
 		maxAuditRecords = this.repository.maxNumberOfAuditRecordsPerAudits(id);
 
@@ -69,7 +66,7 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 		dashboard.setTotalCodeAuditsStatic(totalCodeAuditsStatic);
 		dashboard.setTotalCodeAuditsDynamic(totalCodeAuditsDynamic);
 		dashboard.setAvgAuditRecords(avgAuditRecords);
-		//dashboard.setDevAuditRecords(devAuditRecords);
+		dashboard.setDevAuditRecords(devAuditRecords);
 		dashboard.setMinAuditRecords(minAuditRecords);
 		dashboard.setMaxAuditRecords(maxAuditRecords);
 		dashboard.setAvgPeriod(avgPeriod);
@@ -84,8 +81,7 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 	public void unbind(final AuditorDashboards object) {
 		Dataset dataset;
 
-		dataset = super.unbind(object, "totalCodeAuditsStatic", "totalCodeAuditsDynamic", "avgAuditRecords", //
-			"minAuditRecords", "maxAuditRecords", "avgPeriod", "devPeriod", "minPeriod", "maxPeriod");
+		dataset = super.unbind(object, "totalCodeAuditsStatic", "totalCodeAuditsDynamic", "avgAuditRecords", "devAuditRecords", "minAuditRecords", "maxAuditRecords", "avgPeriod", "devPeriod", "minPeriod", "maxPeriod");
 
 		super.getResponse().addData(dataset);
 	}

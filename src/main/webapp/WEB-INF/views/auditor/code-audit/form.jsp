@@ -9,6 +9,7 @@
 	<acme:input-select code="auditor.code-audit.form.label.type" path="type" choices="${types}"/>
 	<acme:input-textarea code="auditor.code-audit.form.label.corrective-actions" path="correctiveActions"/>
 	<acme:input-url code="auditor.code-audit.form.label.optional-link" path="optionalLink"/>
+	<acme:input-select code="auditor.code-audit.form.label.projects" path="project" choices="${projects}"/>
 		
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
@@ -26,7 +27,6 @@
 			<acme:button code="auditor.code-audit.form.button.audit-records" action="/auditor/audit-record/list?codeAuditId=${id}"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:input-select code="auditor.code-audit.form.label.projects" path="project" choices="${projects}"/>
 			<acme:submit code="auditor.code-audit.form.button.create" action="/auditor/code-audit/create"/>
 		</jstl:when>			
 	</jstl:choose>

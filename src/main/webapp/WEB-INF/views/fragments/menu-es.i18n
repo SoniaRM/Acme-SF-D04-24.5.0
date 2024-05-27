@@ -72,7 +72,7 @@ master.menu.sponsor.dashboard = Panel de control
 
 master.menu.auditor = Auditor
 master.menu.auditor.code-audits = Listado de mis Code Audits
-master.menu.auditor.audit-records = Listado de mis Audit Records
+master.menu.auditor.audit-record = Listado de mis Audit Records
 master.menu.auditor.show-auditor-dashboard = Estadisticas Auditor
 
 # master.menu.developer ####################################################
