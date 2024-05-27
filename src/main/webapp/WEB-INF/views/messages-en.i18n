@@ -9,3 +9,8 @@ validation.project.code = A project code must follow the following pattern: XXX-
 # Developer
 validation.trainingModule.code = A training-module code must follow the following pattern: X-YYY, XX-YYY or XXX-YYY, where X is a capital letter and Y is a number form 0 to 9
 validation.trainingSession.code = A training-session code must follow the following pattern: TS-X-YYY, TS-XX-YYY or TS-XXX-YYY, where X is a capital letter and Y is a number form 0 to 9
+
+
+# Auditor
+validation.codeAudit.code = A code-audit code must follow the following pattern: X-YYY, XX-YYY or XXX-YYY, where X is a capital letter and Y is a number form 0 to 9
+validation.auditRecord.code = A audit-record code must follow the following pattern: AU-XXXX-XXX, where X is a number from 0 to 9

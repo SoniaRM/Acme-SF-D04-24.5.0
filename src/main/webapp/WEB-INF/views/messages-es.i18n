@@ -5,3 +5,8 @@ validation.invoice.code = El código de una factura debe seguir el siguiente pat
 
 #Manager
 validation.project.code = El código de un proyecto debe seguir el siguiente patrón: XXX-YYYY, siendo X una letra mayúscula y Y un número del 0 al 9
+
+
+#Auditor
+validation.codeAudit.code = El código de code-audit debe seguir el siguiente patrón: X-YYY, XX-YYY o XXX-YYY, donde X es una letra mayuscula y Y es un numero del 0 al 9
+validation.auditRecord.code = El código de audit record debe seguir el siguiente patrón: AU-XXXX-XXX, donde X es un numero del 0 al 9

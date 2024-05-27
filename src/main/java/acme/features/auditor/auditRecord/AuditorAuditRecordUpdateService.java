@@ -1,10 +1,11 @@
 
 package acme.features.auditor.auditRecord;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
@@ -26,43 +27,57 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 
 	@Override
 	public void authorise() {
+		/*
+		 * boolean status;
+		 * AuditRecord auditRecord;
+		 * CodeAudit codeAudit = null;
+		 * Principal principal;
+		 * int id;
+		 * int codeAuditId;
+		 * 
+		 * id = super.getRequest().getData("id", int.class);
+		 * auditRecord = this.repository.findOneAuditRecordById(id);
+		 * codeAuditId = auditRecord.getCodeAudit().getId();
+		 * 
+		 * if (auditRecord != null)
+		 * codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
+		 * 
+		 * principal = super.getRequest().getPrincipal();
+		 * status = codeAudit.getAuditor().getId() == principal.getActiveRoleId() && auditRecord != null && auditRecord.isDraftMode();
+		 * 
+		 * super.getResponse().setAuthorised(status);
+		 */
+
 		boolean status;
-		AuditRecord auditRecord;
-		CodeAudit codeAudit = null;
-		Principal principal;
-		int id;
-		int codeAuditId;
+		int auditRecordId;
+		AuditRecord object;
+		CodeAudit codeAudit;
 
-		id = super.getRequest().getData("id", int.class);
-		auditRecord = this.repository.findOneAuditRecordById(id);
-		codeAuditId = auditRecord.getCodeAudit().getId();
-
-		if (auditRecord != null)
-			codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
-
-		principal = super.getRequest().getPrincipal();
-		status = codeAudit.getAuditor().getId() == principal.getActiveRoleId() && auditRecord != null && auditRecord.isDraftMode();
+		auditRecordId = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneAuditRecordById(auditRecordId);
+		codeAudit = object == null ? null : object.getCodeAudit();
+		status = super.getRequest().getPrincipal().hasRole(codeAudit.getAuditor()) && object != null && object.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		int auditRecordId;
-		AuditRecord auditRecord;
+		int id;
+		AuditRecord object;
 
-		auditRecordId = super.getRequest().getData("id", int.class);
+		id = super.getRequest().getData("id", int.class);
 
-		auditRecord = this.repository.findOneAuditRecordById(auditRecordId);
+		object = this.repository.findOneAuditRecordById(id);
 
-		super.getBuffer().addData(auditRecord);
+		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "code", "initialPeriod", "finalPeriod", "mark", "optionalLink");
+		super.bind(object, "code", "initialPeriod", "finalPeriod", "mark", "optionalLink", "codeAudit");
 	}
 
 	@Override
@@ -94,13 +109,49 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 		Dataset dataset;
 		SelectChoices choices;
 		choices = SelectChoices.from(Mark.class, object.getMark());
+		Collection<CodeAudit> codeAudits;
+		SelectChoices choicesCA;
 
-		CodeAudit codeAudit = object.getCodeAudit();
+		codeAudits = this.repository.findAllCodeAudits();
+		choicesCA = SelectChoices.from(codeAudits, "code", object.getCodeAudit());
 
-		dataset = super.unbind(object, "code", "initialMoment", "finalMoment", "mark", "link", "draftMode");
-		dataset.put("codeAuditCode", codeAudit.getCode());
+		dataset = super.unbind(object, "code", "initialPeriod", "finalPeriod", "mark", "optionalLink", "codeAudit", "draftMode");
+		dataset.put("mark", choices.getSelected().getKey());
 		dataset.put("marks", choices);
+		dataset.put("codeAudit", choicesCA.getSelected().getKey());
+		dataset.put("codeAudits", choicesCA);
+		/*
+		 * Dataset dataset;
+		 * Collection<CodeAudit> codeAudits;
+		 * SelectChoices choices;
+		 * SelectChoices choicesMark;
+		 * 
+		 * codeAudits = this.repository.findAllCodeAudits();
+		 * choices = SelectChoices.from(codeAudits, "code", object.getCodeAudit());
+		 * 
+		 * choicesMark = SelectChoices.from(Mark.class, object.getMark());
+		 * 
+		 * dataset = super.unbind(object, "code", "initialPeriod", "finalPeriod", "mark", "optionalLink", "codeAudit", "draftMode");
+		 * dataset.put("mark", choicesMark.getSelected().getKey());
+		 * dataset.put("marks", choicesMark);
+		 * dataset.put("codeAudit", choices.getSelected().getKey());
+		 * dataset.put("codeAudits", choices);
+		 */
 
 		super.getResponse().addData(dataset);
+
+		/*
+		 * Dataset dataset;
+		 * SelectChoices choices;
+		 * choices = SelectChoices.from(Mark.class, object.getMark());
+		 * 
+		 * CodeAudit codeAudit = object.getCodeAudit();
+		 * 
+		 * dataset = super.unbind(object, "code", "initialMoment", "finalMoment", "mark", "link", "draftMode");
+		 * dataset.put("codeAuditCode", codeAudit.getCode());
+		 * dataset.put("marks", choices);
+		 * 
+		 * super.getResponse().addData(dataset);
+		 */
 	}
 }
