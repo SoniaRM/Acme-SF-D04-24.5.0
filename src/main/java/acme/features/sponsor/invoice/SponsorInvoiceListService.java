@@ -28,10 +28,12 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 		boolean status;
 		int masterId;
 		Sponsorship sponsorship;
+		Sponsor sponsor;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		sponsorship = this.repository.findOneSponsorshipById(masterId);
-		status = sponsorship != null && (!sponsorship.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
+		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
+		status = sponsorship != null && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -50,8 +52,13 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 	@Override
 	public void unbind(final Invoice object) {
 		assert object != null;
+
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax");
+
+		dataset = super.unbind(object, "code", "registrationTime", "dueDate");
+		String published = !object.isDraftMode() ? "✓" : "x";
+		dataset.put("published", published);
+
 		super.getResponse().addData(dataset);
 	}
 
@@ -61,11 +68,11 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 
 		int masterId;
 		Sponsorship sponsorship;
-		boolean showCreate;
+		final boolean showCreate;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		sponsorship = this.repository.findOneSponsorshipById(masterId);
-		showCreate = sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
+		showCreate = sponsorship.isDraftMode();
 
 		super.getResponse().addGlobal("masterId", masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);

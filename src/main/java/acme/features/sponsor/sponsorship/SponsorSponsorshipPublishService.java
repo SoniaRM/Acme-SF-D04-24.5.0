@@ -13,10 +13,9 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
-import acme.entities.Invoice;
 import acme.entities.Project;
 import acme.entities.Sponsorship;
-import acme.enumerated.ProjectType;
+import acme.enumerated.TypeOfSponsorship;
 import acme.roles.Sponsor;
 
 @Service
@@ -34,8 +33,8 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	public void authorise() {
 		boolean status;
 		int masterId;
-		Sponsorship sponsorship;
 		Sponsor sponsor;
+		Sponsorship sponsorship;
 
 		masterId = super.getRequest().getData("id", int.class);
 		sponsorship = this.repository.findOneSponsorshipById(masterId);
@@ -49,8 +48,10 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	public void load() {
 		Sponsorship object;
 		int id;
+
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneSponsorshipById(id);
+
 		super.getBuffer().addData(object);
 	}
 
@@ -59,103 +60,74 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		assert object != null;
 		int projectId;
 		Project project;
+
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
-		super.bind(object, "code", "moment", "durationStart", "durationEnd", "amount", "projectType", "email", "link");
+
+		super.bind(object, "code", "moment", "startDate", "endDate", "email", "link", "type", "amount");
 		object.setProject(project);
 	}
 
 	@Override
 	public void validate(final Sponsorship object) {
 		assert object != null;
-		Date lowerLimit;
-		Date upperLimit;
-		Date upperLimitMonthBefore;
-		lowerLimit = new Date(946681200000L); // 2000/01/01 00:00:00
-		upperLimit = new Date(7289650799000L); // 2200/12/31 23:59:59
-		upperLimitMonthBefore = new Date(7287058739000L); // 2200/12/01 23:58:59
+		super.state(this.repository.allInvoicesPublishedBySponsorshipId(object.getId()), "*", "sponsor.sponsorship.form.error.publish-invoices");
+		if (!super.getBuffer().getErrors().hasErrors("code"))
+			super.state(this.repository.existsOtherByCodeAndId(object.getCode(), object.getId()), "code", "sponsor.sponsorship.form.error.duplicated");
 
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Sponsorship existing;
-			existing = this.repository.findOneSponsorshipByCode(object.getCode());
-			if (existing == null || existing.getId() != object.getId())
-				super.state(existing == null, "code", "sponsor.sponsorship.form.error.duplicated");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("moment")) {
-			Date moment;
-			moment = object.getMoment();
-
-			if (moment != null)
-				super.state(MomentHelper.isAfterOrEqual(moment, lowerLimit), "moment", "sponsor.sponsorship.form.error.date-lower-limit");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("durationStart")) {
-			Date moment;
-			Date durationStart;
-			moment = object.getMoment();
-			durationStart = object.getDurationStart();
-
-			if (moment == null)
-				super.state(false, "durationStart", "sponsor.sponsorship.form.error.after-moment");
-			else {
-				super.state(MomentHelper.isBeforeOrEqual(durationStart, upperLimitMonthBefore), "durationStart", "sponsor.sponsorship.form.error.date-upper-limit-month-before");
-				super.state(MomentHelper.isAfter(durationStart, moment), "durationStart", "sponsor.sponsorship.form.error.after-moment");
-			}
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("durationEnd")) {
+		if (!super.getBuffer().getErrors().hasErrors("startDate")) {
 			Date minimumDeadline;
-			Date durationStart;
-			Date durationEnd;
-			durationStart = object.getDurationStart();
-			durationEnd = object.getDurationEnd();
 
-			if (object.getDurationStart() == null)
-				super.state(false, "durationEnd", "sponsor.sponsorship.form.error.too-short");
-			else {
-				minimumDeadline = MomentHelper.deltaFromMoment(durationStart, 30, ChronoUnit.DAYS);
-				super.state(MomentHelper.isBeforeOrEqual(durationEnd, upperLimit), "durationEnd", "sponsor.sponsorship.form.error.date-upper-limit");
-				super.state(MomentHelper.isAfter(durationEnd, minimumDeadline), "durationEnd", "sponsor.sponsorship.form.error.too-short");
-			}
+			if (!super.getBuffer().getErrors().hasErrors("moment")) {
+				super.state(MomentHelper.isAfterOrEqual(object.getStartDate(), object.getMoment()), "startDate", "sponsor.sponsorship.form.error.too-close-moment");
+
+				minimumDeadline = object.getEndDate() == null ? null : MomentHelper.deltaFromMoment(object.getEndDate(), 1, ChronoUnit.MONTHS);
+				super.state(object.getEndDate() == null || MomentHelper.isBefore(object.getStartDate(), minimumDeadline), "startDate", "sponsor.sponsorship.form.error.duration-more-time");
+			} else
+				super.state(false, "startDate", "sponsor.sponsorship.form.error.invalid-moment");
+
 		}
 
-		Collection<Invoice> invoices = this.repository.findManyInvoicesBySponsorshipId(object.getId());
-		double sumTotal = 0.0;
-		boolean invoicesPublished = true;
-		if (object.getAmount() != null) {
-			String currency = object.getAmount().getCurrency();
-			for (Invoice i : invoices) {
-				invoicesPublished = invoicesPublished && !i.isDraftMode();
-				if (i.getQuantity().getCurrency().equals(currency))
-					sumTotal += i.totalAmount();
-			}
+		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
+			Date maximumDeadline;
 
-			// Trunco sumTotal a 2 decimales
-			double factor = Math.pow(10, 2);
-			sumTotal = Math.round(sumTotal * factor) / factor;
-		} else
-			sumTotal = -1234.56;
+			if (!super.getBuffer().getErrors().hasErrors("moment")) {
+				super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), object.getMoment()), "endDate", "sponsor.sponsorship.form.error.too-close-moment");
 
-		if (!super.getBuffer().getErrors().hasErrors("project"))
-			super.state(invoicesPublished, "project", "sponsor.sponrsorship.form.error.invoices-not-published");
-
-		if (!super.getBuffer().getErrors().hasErrors("amount")) {
-			Sponsorship sponsorship = this.repository.findOneSponsorshipById(object.getId());
-			Money amount = object.getAmount();
-
-			super.state(amount.getCurrency().equals(sponsorship.getAmount().getCurrency()), "amount", "sponsor.sponsorship.form.error.different-currency");
-			super.state(amount.getAmount() > 0, "amount", "sponsor.sponsorship.form.error.negative-amount");
-			super.state(amount.getAmount() == sumTotal, "amount", "sponsor.sponsorship.form.error.invoices-amount");
-			super.state(amount.getCurrency().equals("EUR") || amount.getCurrency().equals("USD") || amount.getCurrency().equals("GBP"), "amount", "sponsor.sponsorship.form.error.wrong-currency");
-			super.state(amount.getAmount() <= 1000000, "amount", "sponsor.sponsorship.form.error.amount-upper-limit");
+				maximumDeadline = object.getStartDate() == null ? null : MomentHelper.deltaFromMoment(object.getStartDate(), 1, ChronoUnit.MONTHS);
+				super.state(object.getStartDate() == null || MomentHelper.isAfter(object.getEndDate(), maximumDeadline), "endDate", "sponsor.sponsorship.form.error.duration-more-time");
+			} else
+				super.state(false, "endDate", "sponsor.sponsorship.form.error.invalid-moment");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Boolean isDraftMode = this.repository.projectIsDraftMode(object.getProject().getId());
+			super.state(!isDraftMode, "project", "sponsor.sponsorship.form.error.not-published-project");
+		}
+
 	}
 
 	@Override
 	public void perform(final Sponsorship object) {
 		assert object != null;
+
+		Double invoicesAmounts;
+		Money finalMoney;
+		String systemCurrency;
+
+		invoicesAmounts = this.repository.findManyInvoicesBySponsorshipId(object.getId()).stream() //
+			.mapToDouble(i -> i.totalAmount().getAmount() / this.repository.findMoneyConvertByMoneyCurrency(i.totalAmount().getCurrency())) //
+			.sum();
+
+		systemCurrency = this.repository.findSystemConfiguration().getSystemCurrency();
+
+		finalMoney = new Money();
+		finalMoney.setAmount(Math.round(invoicesAmounts * this.repository.findMoneyConvertByMoneyCurrency(systemCurrency) * 100.0) / 100.0);
+		finalMoney.setCurrency(this.repository.findSystemConfiguration().getSystemCurrency());
+
+		object.setAmount(finalMoney);
 		object.setDraftMode(false);
+
 		this.repository.save(object);
 	}
 
@@ -163,21 +135,22 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
-		Collection<Project> allProjects;
-		SelectChoices projects;
+		Collection<Project> projects;
 		SelectChoices choices;
+		SelectChoices choicesType;
 		Dataset dataset;
 
-		allProjects = this.repository.findManyPublishedProjects();
-		projects = SelectChoices.from(allProjects, "code", object.getProject());
-		choices = SelectChoices.from(ProjectType.class, object.getProjectType());
+		projects = this.repository.findAllProjects();
+		choices = SelectChoices.from(projects, "code", object.getProject());
+		choicesType = SelectChoices.from(TypeOfSponsorship.class, object.getType());
 
-		dataset = super.unbind(object, "code", "moment", "durationStart", "durationEnd", "amount", "projectType", "email", "link");
-		dataset.put("project", projects.getSelected().getKey());
-		dataset.put("projects", projects);
-		dataset.put("types", choices);
-		dataset.put("draftMode", object.isDraftMode());
+		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "email", "link", "type", "draftMode", "amount");
+		dataset.put("project", choices.getSelected().getKey());
+		dataset.put("projects", choices);
+		dataset.put("type", choicesType.getSelected().getKey());
+		dataset.put("types", choicesType);
 
 		super.getResponse().addData(dataset);
 	}
+
 }

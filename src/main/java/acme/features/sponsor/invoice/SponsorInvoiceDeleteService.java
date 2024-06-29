@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.Invoice;
-import acme.entities.Sponsorship;
 import acme.roles.Sponsor;
 
 @Service
@@ -25,13 +24,14 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 	public void authorise() {
 		boolean status;
 		int invoiceId;
-		Sponsorship sponsorship;
 		Invoice invoice;
+		Sponsor sponsor;
 
 		invoiceId = super.getRequest().getData("id", int.class);
+
 		invoice = this.repository.findOneInvoiceById(invoiceId);
-		sponsorship = this.repository.findOneSponsorshipByInvoiceId(invoiceId);
-		status = sponsorship != null && sponsorship.isDraftMode() && invoice.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
+		sponsor = invoice == null ? null : invoice.getSponsor();
+		status = invoice != null && invoice.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -50,7 +50,8 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void bind(final Invoice object) {
 		assert object != null;
-		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+
+		super.bind(object, "code", "dueDate", "quantity", "tax", "link");
 	}
 
 	@Override
@@ -61,19 +62,17 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void perform(final Invoice object) {
 		assert object != null;
+
 		this.repository.delete(object);
 	}
 
 	@Override
 	public void unbind(final Invoice object) {
 		assert object != null;
+
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
-		dataset.put("masterId", object.getSponsorship().getId());
-		dataset.put("draftMode", object.isDraftMode());
-		dataset.put("totalAmount", object.totalAmount());
-		dataset.put("sponsorship", object.getSponsorship().getCode());
+		dataset = super.unbind(object, "code", "dueDate", "quantity", "tax", "link", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}
