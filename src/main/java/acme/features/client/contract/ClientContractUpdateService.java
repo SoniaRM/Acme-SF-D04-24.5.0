@@ -52,12 +52,13 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 	public void bind(final Contract object) {
 		assert object != null;
 
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project");
+		super.bind(object, "code", "providerName", "customerName", "goals", "budget", "project");
 	}
 
 	@Override
 	public void validate(final Contract object) {
 		assert object != null;
+		String currencies;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 
@@ -67,11 +68,16 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 				super.state(contractWithCodeDuplicated.getId() == object.getId(), "code", "client.contract.form.error.code");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("budget"))
-			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-budget");
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			currencies = this.repository.findAcceptedCurrencies();
+			super.state(currencies.contains(object.getBudget().getCurrency()), "budget", "client.contract.form.error.bugdet.invalid-currency");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget"))
-			super.state(object.getBudget().getAmount() <= 1000000, "budget", "client.contract.form.error.over-budget");
+			super.state(object.getBudget().getAmount() > 0., "budget", "client.contract.form.error.negative-budget");
+
+		if (!super.getBuffer().getErrors().hasErrors("budget"))
+			super.state(object.getBudget().getAmount() <= 1000000., "budget", "client.contract.form.error.over-budget");
 
 	}
 
@@ -90,11 +96,13 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		SelectChoices choices;
 
 		projects = this.repository.findManyProjectsAvailable();
+
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode");
-		dataset.put("project", choices.getSelected().getKey());
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project", "draftMode");
+		dataset.put("project", choices.getSelected());
 		dataset.put("projects", choices);
+		dataset.put("client", object.getClient());
 
 		super.getResponse().addData(dataset);
 	}

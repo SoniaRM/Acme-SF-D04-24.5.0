@@ -1,15 +1,12 @@
 
 package acme.features.client.progressLog;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
 import acme.entities.contracts.Contract;
 import acme.entities.contracts.ProgressLog;
 import acme.roles.Client;
@@ -26,16 +23,29 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 	@Override
 	public void authorise() {
 		final boolean status;
-		status = super.getRequest().getPrincipal().hasRole(Client.class);
+		int masterId;
+		Contract contract;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+		contract = this.repository.findOneContractById(masterId);
+		status = contract != null && super.getRequest().getPrincipal().hasRole(contract.getClient());
+
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		ProgressLog object;
+		int masterId;
+		Contract contract;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+		contract = this.repository.findOneContractById(masterId);
+
 		object = new ProgressLog();
 		object.setRegistrationMoment(MomentHelper.getCurrentMoment());
 		object.setDraftMode(true);
+		object.setContract(contract);
 
 		super.getBuffer().addData(object);
 	}
@@ -44,7 +54,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 	public void bind(final ProgressLog object) {
 		assert object != null;
 
-		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "contract");
+		super.bind(object, "recordId", "completeness", "comment", "responsiblePerson");
 	}
 
 	@Override
@@ -71,14 +81,13 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 		assert object != null;
 
 		Dataset dataset;
-		Collection<Contract> contracts;
-		SelectChoices choices;
 
-		contracts = this.repository.findManyContractsAvailable2();
-		choices = SelectChoices.from(contracts, "code", object.getContract());
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "contract");
-		dataset.put("contract", choices.getSelected().getKey());
-		dataset.put("contracts", choices);
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+
+		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
+		dataset.put("draftMode", object.isDraftMode());
+		dataset.put("contract", object.getContract().getCode());
+
 		super.getResponse().addData(dataset);
 	}
 }

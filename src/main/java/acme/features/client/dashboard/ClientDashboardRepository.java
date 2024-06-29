@@ -1,10 +1,14 @@
 
 package acme.features.client.dashboard;
 
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.client.data.datatypes.Money;
 import acme.client.repositories.AbstractRepository;
+import acme.entities.SystemConfiguration;
 import acme.roles.Client;
 
 @Repository
@@ -36,5 +40,11 @@ public interface ClientDashboardRepository extends AbstractRepository {
 
 	@Query("select c from Client c where c.userAccount.id = :id")
 	Client findOneClientByUserAccountId(int id);
+
+	@Query("select c.budget from Contract c where c.client.id = :clientId and c.draftMode = false")
+	Collection<Money> getBudgetOfContractsByClientId(int clientId);
+
+	@Query("select sc from SystemConfiguration sc")
+	SystemConfiguration getSystemConfiguration();
 
 }

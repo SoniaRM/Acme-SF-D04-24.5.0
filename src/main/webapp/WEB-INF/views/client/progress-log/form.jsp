@@ -9,7 +9,7 @@
 	<acme:input-textarea code="client.progress-log.form.label.comment" path="comment"/>	
 	<acme:input-moment code="client.progress-log.form.label.registration-moment" path="registrationMoment" readonly="true"/>	
 	<acme:input-textarea code="client.progress-log.form.label.responsible-person" path="responsiblePerson"/>	
-	<acme:input-select code="client.progress-log.form.label.contract" path="contract" choices="${contracts}"/>
+	<acme:input-textbox code="client.progress-log.form.label.contract" path="contract" readonly="true"/>
 		
 		
 	<jstl:choose>	 
@@ -19,7 +19,7 @@
 			<acme:submit code="client.progress-log.form.button.publish" action="/client/progress-log/publish"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="client.progress-log.form.button.create" action="/client/progress-log/create"/>
+			<acme:submit code="client.progress-log.form.button.create" action="/client/progress-log/create?masterId=${masterId}"/>
 		</jstl:when>			
 	</jstl:choose>
 </acme:form>

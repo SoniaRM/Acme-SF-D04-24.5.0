@@ -29,11 +29,8 @@ client.contract.form.button.publish = Publicar
 client.contract.form.button.progress-logs = Registros de Progreso
 
 client.contract.form.error.duplicated = Este código ya está en uso
-client.contract.form.error.invalid-instantiation-moment = Momento de instanciación inválido
 client.contract.form.error.code =  Este código es inválido
-client.contract.form.error.contractWithOutProgressLogs = No se puede publicar el Contrato porque no tiene Registros de Progreso
+client.contract.form.error.bugdet.invalid-currency = La divisa introducida no es una divisa aceptada
 client.contract.form.error.negative-budget = El presupuesto debe ser mayor a 0.00
 client.contract.form.error.over-budget = El presupuesto debe ser menor o igual a 1000000.00
-client.contract.form.error.progress-logs-not-published = No se puede publicar el Contrato porque tiene Registros de Progreso sin publicar
-client.contract.form.error.progress-logs-not-present = No se puede publicar el Contrato sin Registros de Progreso
 client.contract.form.error.progress-logs-published = No se puede eliminar el Contrato porque hay al menos un Registros de Progreso publicado

@@ -39,7 +39,7 @@ public interface ClientContractRepository extends AbstractRepository {
 	@Query("select p from Project p where p.id = :projectId")
 	Project findOneProjectById(int projectId);
 
-	@Query("select p from Project p")
-	Collection<Project> findAllProjects();
+	@Query("select sc.acceptedCurrencies from SystemConfiguration sc")
+	String findAcceptedCurrencies();
 
 }

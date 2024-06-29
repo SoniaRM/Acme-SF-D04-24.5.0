@@ -50,8 +50,6 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 	@Override
 	public void bind(final Contract object) {
 		assert object != null;
-
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project");
 	}
 
 	@Override

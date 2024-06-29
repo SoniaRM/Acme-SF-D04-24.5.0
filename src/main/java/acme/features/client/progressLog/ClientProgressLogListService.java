@@ -13,7 +13,7 @@ import acme.entities.contracts.ProgressLog;
 import acme.roles.Client;
 
 @Service
-public class ClientProgressLogListMineService extends AbstractService<Client, ProgressLog> {
+public class ClientProgressLogListService extends AbstractService<Client, ProgressLog> {
 
 	// Internal state ---------------------------------------------------------
 	@Autowired
@@ -57,6 +57,22 @@ public class ClientProgressLogListMineService extends AbstractService<Client, Pr
 		dataset.put("contract", object.getContract());
 
 		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void unbind(final Collection<ProgressLog> objects) {
+		assert objects != null;
+
+		int masterId;
+		Contract contract;
+		boolean showCreate;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+		contract = this.repository.findOneContractById(masterId);
+		showCreate = contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
+
+		super.getResponse().addGlobal("masterId", masterId);
+		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 
 }
