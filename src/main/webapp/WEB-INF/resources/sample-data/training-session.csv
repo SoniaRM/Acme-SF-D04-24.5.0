@@ -3,7 +3,7 @@ key,code,start-period,end-period,location,instructor,email,link,draft-mode,key:t
 training-session-01,TS-AAA-001,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession01@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-01
 training-session-02,TS-AA-002,2000/12/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession02@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-02
 training-session-03,TS-A-003,2000/12/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession03@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-03
-training-session-03.4,TS-ZZZ-999,2000/12/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession03@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-03
+training-session-03.41,TS-ZZZ-999,2000/12/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession03@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-03
 training-session-03.5,TS-Z-999,2000/12/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession03@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-03
 # Datos para start-period
 training-session-03.13,TS-A-133,2000/01/01 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession03@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-05.2
@@ -14,7 +14,7 @@ training-session-03.12,TS-A-123,2022/07/22 23:59,2022/07/29 23:59,Lorem ipsum,Lo
 # Datos para end-period
 training-session-03.1,TS-A-103,2000/12/12 00:00,2022/07/30 00:00,Lorem ipsum,Lorem ipsum,trainingsession03@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-05.2
 training-session-03.2,TS-A-203,2000/12/12 00:00,2022/07/29 23:59,Lorem ipsum,Lorem ipsum,trainingsession03@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-05.3
-training-session-03.4,TS-A-403,2000/12/12 00:00,2020/02/29 00:00,Lorem ipsum,Lorem ipsum,trainingsession03@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-05.3
+training-session-03.45,TS-A-403,2000/12/12 00:00,2020/02/29 00:00,Lorem ipsum,Lorem ipsum,trainingsession03@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-05.3
 training-session-03.3,TS-A-303,2004/02/29 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession03@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-05.1
 training-session-04,TS-AAA-004,2000/01/01 00:00,2000/01/08 00:00,Lorem ipsum,Lorem ipsum,trainingsession04@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-04
 training-session-05,TS-AAA-005,2000/01/01 00:01,2000/01/08 00:01,Lorem ipsum,Lorem ipsum,trainingsession05@gmail.com,https://es.wikipedia.org/wiki/Curso,true,training-module-05
@@ -59,10 +59,10 @@ training-session-27.7,TS-AAA-727,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,L
 training-session-27.8,TS-AAA-827,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,fff@email.com,https://es.wikipedia.org/wiki/Curso,true,training-module-15
 training-session-27.9,TS-AAA-927,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,a@b.es,https://es.wikipedia.org/wiki/Curso,true,training-module-15
 training-session-27.10,TS-AA-027,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,a@b.esx,https://es.wikipedia.org/wiki/Curso,true,training-module-15
-training-session-27.11,TS-AA-127,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,acme:password@lorem-ipsum.org,https://es.wikipedia.org/wiki/Curso,true,training-module-15
-training-session-27.12,TS-AA-137,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,"lorem-ipsum@dolor.sit.amet,.consectetur.adipiscing.elit,.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es",https://es.wikipedia.org/wiki/Curso,true,training-module-15
-training-session-27.13,TS-AA-147,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,"lorem-ipsum@dolor.sit.amet,.consectetur.adipiscing.elit,.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.org",https://es.wikipedia.org/wiki/Curso,true,training-module-15
-# Datos para link
+training-session-27.11,TS-AA-127,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,acme-password@lorem-ipsum.org,https://es.wikipedia.org/wiki/Curso,true,training-module-15
+training-session-27.12,TS-AA-137,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,lorem-ipsum@dolor.sit.amet.a.consectetur.adipiscing.el.it.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es,https://es.wikipedia.org/wiki/Curso,true,training-module-15
+training-session-27.13,TS-AA-147,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,lorem-ipsum@dolor.sit.amet.a.consectetur.adipiscing.el.it.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.org,https://es.wikipedia.org/wiki/Curso,true,training-module-15
+# Datos para link,,,,,,,
 training-session-28,TS-AAA-028,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession28@gmail.com,https://es.wikipedia.org/wiki/CursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCurso,true,training-module-01
 training-session-29,TS-AAA-029,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession29@gmail.com,https://es.wikipedia.org/wiki/CursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCurs,true,training-module-01
 training-session-30,TS-AAA-030,2000/10/12 00:00,2020/03/26 08:00,Lorem ipsum,Lorem ipsum,trainingsession30@gmail.com,null,true,training-module-16
