@@ -1,40 +1,46 @@
-sponsor.sponsorship.list.label.code = Código
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+sponsor.sponsorship.form.title = Detalles de patrocinio
+sponsor.sponsorship.list.title = Lista de patrocinios
+
 sponsor.sponsorship.list.label.moment = Momento
-sponsor.sponsorship.list.label.durationStart = Inicio de la duración
-sponsor.sponsorship.list.label.durationEnd = Fin de la duración
 sponsor.sponsorship.list.label.amount = Cantidad
-sponsor.sponsorship.list.label.projectType = Tipo de proyecto
-
-sponsor.sponsorship.form.label.code = Código:
-sponsor.sponsorship.form.label.moment = Momento:
-sponsor.sponsorship.form.label.durationStart = Inicio de la duración:
-sponsor.sponsorship.form.label.durationEnd = Fin de la duración:
-sponsor.sponsorship.form.label.amount = Cantidad:
-sponsor.sponsorship.form.label.projectType = Tipo de proyecto:
-sponsor.sponsorship.form.label.email = Email (Opcional):
-sponsor.sponsorship.form.label.link = Enlace (Opcional):
-sponsor.sponsorship.form.label.project = Proyecto:
-sponsor.sponsorship.form.label.draftMode = Draft mode
-
-sponsor.sponsorship.list.title = Mis patrocinios
-sponsor.sponsorship.form.title = Detalles del patrocinio
+sponsor.sponsorship.list.label.code = Código
+sponsor.sponsorship.list.label.published = Publicado
 
 sponsor.sponsorship.list.button.create = Crear
-sponsor.sponsorship.form.button.create = Crear
+
+sponsor.sponsorship.form.label.code = Código: 
+sponsor.sponsorship.form.label.moment = Momento:
+sponsor.sponsorship.form.label.project = Projecto:
+sponsor.sponsorship.form.label.moment = Momento: 
+sponsor.sponsorship.form.label.startDate = Fecha inicio:
+sponsor.sponsorship.form.label.endDate = Fecha final:
+sponsor.sponsorship.form.label.type = Tipo de patrocinio:
+sponsor.sponsorship.form.label.amount-exchange = Cantidad con divisa del sistema:
+sponsor.sponsorship.form.label.amount = Cantidad:
+sponsor.sponsorship.form.label.email = Correo (Opcional):
+sponsor.sponsorship.form.label.link = Más información (Opcional):
+		
 sponsor.sponsorship.form.button.invoices = Facturas
 sponsor.sponsorship.form.button.update = Actualizar
 sponsor.sponsorship.form.button.delete = Borrar
 sponsor.sponsorship.form.button.publish = Publicar
+sponsor.sponsorship.form.button.create = Crear
 
-sponsor.sponsorship.form.error.duplicated = Este código ya está en uso
-sponsor.sponsorship.form.error.date-lower-limit = La fecha debe ser posterior o igual a 2000/01/01 00:00
-sponsor.sponsorship.form.error.date-upper-limit = La fecha debe ser anterior o igual a 2200/12/31 23:59
-sponsor.sponsorship.form.error.date-upper-limit-month-before = La fecha debe ser anterior o igual a 2200/12/01 23:58
-sponsor.sponsorship.form.error.after-moment = El inicio de la duración debe ser posterior al momento
-sponsor.sponsorship.form.error.too-short = El fin de la duración debe ser, mínimo, 30 días posterior al inicio de la duración
-sponsor.sponrsorship.form.error.invoices-not-published = Hay facturas asociadas sin publicar
-sponsor.sponsorship.form.error.different-currency = No puedes cambiar la moneda de un patrocinio
-sponsor.sponsorship.form.error.negative-amount = La cantidad debe ser positiva
-sponsor.sponsorship.form.error.wrong-currency = La moneda debe ser EUR, USD o GBP
-sponsor.sponsorship.form.error.amount-upper-limit = La cantidad debe ser más pequeña o igual que 1.000.000,00
-sponsor.sponsorship.form.error.invoices-amount = La cantidad debe ser igual a la suma de las cantidades totales de las facturas relacionadas
+
+sponsor.sponsorship.form.error.duplicated = Este código ya estña cogido
+sponsor.sponsorship.form.error.bad-money = La suma de la cantidad total de todas las facturas debe ser igual a la cantidad del patrocinio
+sponsor.sponsorship.form.error.publish-invoices = Antes de publicar un patrocinio, primero debes publicar sus facturas
+sponsor.sponsorship.form.error.too-close-moment = Esta fecha debe ser después a la fecha en la que creas el patrocinio
+sponsor.sponsorship.form.error.not-published-project = No puedes crear un patrocinio de un proyecto no publicado
+sponsor.sponsorship.form.error.duration-more-time = La fecha de inicio debe ser al menos un mes antes de la fecha de fin
+sponsor.sponsorship.form.error.invalid-moment = La fecha de momento es incorrecto

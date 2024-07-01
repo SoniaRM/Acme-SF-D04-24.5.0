@@ -12,15 +12,14 @@ import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
-import acme.enumerated.ProjectType;
+import acme.enumerated.TypeOfSponsorship;
 import acme.roles.Sponsor;
 import lombok.Getter;
 import lombok.Setter;
@@ -38,42 +37,40 @@ public class Sponsorship extends AbstractEntity {
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "^[A-Z]{1,3}-\\d{3}$", message = "{validation.sponsorship.code}")
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	private String				code;
 
-	@PastOrPresent
-	@NotNull
+	@Past
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	private Date				moment;
 
-	@NotNull
+	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				durationStart;
+	@NotNull
+	private Date				startDate;
+
+	@Past
+	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
+	private Date				endDate;
 
 	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				durationEnd;
-
 	@Valid
-	@NotNull
 	private Money				amount;
 
 	@NotNull
-	private ProjectType			projectType;
+	private TypeOfSponsorship	type;
 
 	@Email
-	@Length(max = 255)
 	private String				email;
 
 	@URL
-	@Length(max = 255)
 	private String				link;
 
 	private boolean				draftMode;
 
-	// Derived attributes -----------------------------------------------------
-
-	// Relationships ----------------------------------------------------------
+	// Relationships -------------------------------------------------------------
 
 	@NotNull
 	@Valid

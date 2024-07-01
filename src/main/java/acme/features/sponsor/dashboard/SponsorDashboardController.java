@@ -1,5 +1,5 @@
 
-package acme.features.sponsor.sponsorDashboard;
+package acme.features.sponsor.dashboard;
 
 import javax.annotation.PostConstruct;
 
@@ -7,16 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.forms.SponsorDashboard;
+import acme.forms.SponsorForm;
 import acme.roles.Sponsor;
 
 @Controller
-public class SponsorSponsorDashboardController extends AbstractController<Sponsor, SponsorDashboard> {
+public class SponsorDashboardController extends AbstractController<Sponsor, SponsorForm> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorSponsorDashboardShowService showService;
+	private SponsorDashboardShowService showService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -25,5 +25,4 @@ public class SponsorSponsorDashboardController extends AbstractController<Sponso
 	protected void initialise() {
 		super.addBasicCommand("show", this.showService);
 	}
-
 }

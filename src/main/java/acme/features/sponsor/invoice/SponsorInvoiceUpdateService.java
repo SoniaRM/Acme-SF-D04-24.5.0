@@ -4,9 +4,11 @@ package acme.features.sponsor.invoice;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
+import org.assertj.core.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
@@ -29,13 +31,14 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	public void authorise() {
 		boolean status;
 		int invoiceId;
-		Sponsorship sponsorship;
 		Invoice invoice;
+		Sponsor sponsor;
 
 		invoiceId = super.getRequest().getData("id", int.class);
+
 		invoice = this.repository.findOneInvoiceById(invoiceId);
-		sponsorship = this.repository.findOneSponsorshipByInvoiceId(invoiceId);
-		status = sponsorship != null && sponsorship.isDraftMode() && invoice.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
+		sponsor = invoice == null ? null : invoice.getSponsor();
+		status = invoice != null && invoice.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -61,69 +64,59 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void validate(final Invoice object) {
 		assert object != null;
-		Date lowerLimit;
-		Date upperLimit;
-		lowerLimit = new Date(946681200000L); // 2000/01/01 00:00:00
-		upperLimit = new Date(7289650799000L); // 2200/12/31 23:59:59
-
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Invoice existing;
-			existing = this.repository.findOneInvoiceByCode(object.getCode());
-			if (existing == null || existing.getId() != object.getId())
-				super.state(existing == null, "code", "sponsor.invoice.form.error.duplicated");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("registrationTime")) {
-			Date registrationTime;
-			registrationTime = object.getRegistrationTime();
-
-			if (registrationTime != null)
-				super.state(MomentHelper.isAfterOrEqual(registrationTime, lowerLimit), "registrationTime", "sponsor.invoice.form.error.date-lower-limit");
-		}
+		if (!super.getBuffer().getErrors().hasErrors("code"))
+			super.state(this.repository.existsOtherByCodeAndId(object.getCode(), object.getId()), "code", "sponsor.invoice.form.error.duplicated");
 
 		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
-			Date minimumDeadline;
-			Date registrationTime;
-			registrationTime = object.getRegistrationTime();
+			Date maximumDeadline;
 
-			if (registrationTime == null)
-				super.state(false, "dueDate", "sponsor.invoice.form.error.too-short");
-			else {
-				minimumDeadline = MomentHelper.deltaFromMoment(registrationTime, 30, ChronoUnit.DAYS);
-				super.state(MomentHelper.isBeforeOrEqual(object.getDueDate(), upperLimit), "dueDate", "sponsor.invoice.form.error.date-upper-limit");
-				super.state(MomentHelper.isAfter(object.getDueDate(), minimumDeadline), "dueDate", "sponsor.invoice.form.error.too-short");
-			}
+			if (!super.getBuffer().getErrors().hasErrors("registrationTime")) {
+				maximumDeadline = MomentHelper.deltaFromMoment(object.getRegistrationTime(), 1, ChronoUnit.MONTHS);
+				super.state(MomentHelper.isAfter(object.getDueDate(), maximumDeadline), "dueDate", "sponsor.invoice.form.error.to-close-from-registration");
+
+			} else
+				super.state(false, "dueDate", "sponsor.invoice.form.error.incorrect-registration-time");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
-			int invoiceId;
-			Sponsorship sponsorship;
-			invoiceId = super.getRequest().getData("id", int.class);
-			sponsorship = this.repository.findOneSponsorshipByInvoiceId(invoiceId);
-
-			super.state(sponsorship.getAmount().getCurrency().equals(object.getQuantity().getCurrency()), "quantity", "sponsor.invoice.form.error.different-currency");
-			super.state(object.getQuantity().getAmount() > 0, "quantity", "sponsor.invoice.form.error.negative-amount");
-			super.state(object.getQuantity().getAmount() <= 1000000, "quantity", "sponsor.invoice.form.error.quantity-upper-limit");
+			super.state(object.getQuantity().getAmount() > 0, "quantity", "sponsor.invoice.form.error.negative-salary");
+			super.state(Arrays.asList(this.repository.findAcceptedCurrencies().split(",")).contains(object.getQuantity().getCurrency()), "quantity", "sponsor.invoice.form.error.invalid-currency");
 		}
 	}
 
 	@Override
 	public void perform(final Invoice object) {
 		assert object != null;
+		Sponsorship sponsorship;
+		Double invoicesAmounts;
+		Money finalMoney;
+		String systemCurrency;
 
 		this.repository.save(object);
+
+		sponsorship = object.getSponsorship();
+
+		invoicesAmounts = this.repository.findManyInvoicesBySponsorshipId(sponsorship.getId()).stream() //
+			.mapToDouble(i -> i.totalAmount().getAmount() / this.repository.findMoneyConvertByMoneyCurrency(i.totalAmount().getCurrency())) //
+			.sum();
+
+		systemCurrency = this.repository.findSystemConfiguration().getSystemCurrency();
+
+		finalMoney = new Money();
+		finalMoney.setAmount(Math.round(invoicesAmounts * this.repository.findMoneyConvertByMoneyCurrency(systemCurrency) * 100.0) / 100.0);
+		finalMoney.setCurrency(this.repository.findSystemConfiguration().getSystemCurrency());
+
+		sponsorship.setAmount(finalMoney);
+		this.repository.save(sponsorship);
 	}
 
 	@Override
 	public void unbind(final Invoice object) {
 		assert object != null;
+
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
-		dataset.put("masterId", object.getSponsorship().getId());
-		dataset.put("draftMode", object.isDraftMode());
-		dataset.put("totalAmount", object.totalAmount());
-		dataset.put("sponsorship", object.getSponsorship().getCode());
+		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

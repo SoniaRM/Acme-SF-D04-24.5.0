@@ -11,7 +11,7 @@ import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.Project;
 import acme.entities.Sponsorship;
-import acme.enumerated.ProjectType;
+import acme.enumerated.TypeOfSponsorship;
 import acme.roles.Sponsor;
 
 @Service
@@ -28,14 +28,15 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
-		Sponsorship sponsorship;
+		int id;
 		Sponsor sponsor;
+		Sponsorship sponsorship;
 
-		masterId = super.getRequest().getData("id", int.class);
-		sponsorship = this.repository.findOneSponsorshipById(masterId);
+		id = super.getRequest().getData("id", int.class);
+		sponsorship = this.repository.findOneSponsorshipById(id);
 		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
-		status = super.getRequest().getPrincipal().hasRole(sponsor) || sponsorship != null && !sponsorship.isDraftMode();
+		status = sponsorship != null && super.getRequest().getPrincipal().hasRole(sponsor);
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -43,28 +44,32 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 	public void load() {
 		Sponsorship object;
 		int id;
+
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneSponsorshipById(id);
+
 		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void unbind(final Sponsorship object) {
 		assert object != null;
-		Collection<Project> allProjects;
-		SelectChoices projects;
+
+		Collection<Project> projects;
 		SelectChoices choices;
 		Dataset dataset;
+		SelectChoices choicesType;
 
-		allProjects = this.repository.findManyPublishedProjects();
-		projects = SelectChoices.from(allProjects, "code", object.getProject());
-		choices = SelectChoices.from(ProjectType.class, object.getProjectType());
+		projects = this.repository.findAllProjects();
 
-		dataset = super.unbind(object, "code", "moment", "durationStart", "durationEnd", "amount", "projectType", "email", "link");
-		dataset.put("project", projects.getSelected().getKey());
-		dataset.put("projects", projects);
-		dataset.put("types", choices);
-		dataset.put("draftMode", object.isDraftMode());
+		choices = SelectChoices.from(projects, "code", object.getProject());
+		choicesType = SelectChoices.from(TypeOfSponsorship.class, object.getType());
+
+		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "email", "link", "draftMode", "type", "amount");
+		dataset.put("project", choices.getSelected().getKey());
+		dataset.put("projects", choices);
+		dataset.put("type", choicesType.getSelected().getKey());
+		dataset.put("types", choicesType);
 
 		super.getResponse().addData(dataset);
 	}

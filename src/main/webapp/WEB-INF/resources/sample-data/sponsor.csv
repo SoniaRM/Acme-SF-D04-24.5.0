@@ -1,3 +1,3 @@
-key,key:userAccount,name,benefits,web-page,email
-sponsor-01,user-account-sponsor-01,Sponsor sponsor1,Benfits example,http://www.lorem-ipsum.org,acme@lorem-ipsum.org
-sponsor-02,user-account-sponsor-02,Sponsor sponsor2,Benefits example,http://www.lorem-ipsum.org,acme@lorem-ipsum.org
+key,key:userAccount,name,benefits,web,email
+sponsor-01,user-account-sponsor-01,Jose Manuel,"Benefit1, Benefit2, Benefit3",http://web1.com,josema@acme.com
+sponsor-02,user-account-sponsor-02,Alejandro,"Benefit4, Benefit5, Benefit6",http://web2.com,alex@acme.com
