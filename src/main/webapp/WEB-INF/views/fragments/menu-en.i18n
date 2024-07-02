@@ -22,7 +22,7 @@ master.menu.anonymous.list-sponsorship = Published sponsorships
 master.menu.anonymous.favourite-link = Favourite link
 master.menu.anonymous.josbanbot-link = 20538111P: Baños Boton, Jose Ramon
 master.menu.anonymous.sonrusmor-link = 77868455T: Rus Morales, Sonia Maria
-master.menu.anonymous.manpalpin-link = 29511597K: Palacios Pineda, Manuel 
+master.menu.anonymous.manpalpin-link = 53966183H: Miret Martín, José Manuel 
 master.menu.anonymous.javramnun-link = 49126810Y: Ramírez Núñez, Javier
 master.menu.anonymous.rubpergar-link = 77863706N: Perez Garrido, Ruben
 master.menu.anonymous.claim-list = List Claim
@@ -69,7 +69,7 @@ master.menu.consumer.favourite-link = Favourite link
 # master.menu.sponsor ##########################################################
 
 master.menu.sponsor = Sponsor
-master.menu.sponsor.list-mine = My sponsorships
+master.menu.sponsor.sponsorship = My sponsorships
 master.menu.sponsor.dashboard = Dashboard
 
 # master.menu.auditor ####################################################

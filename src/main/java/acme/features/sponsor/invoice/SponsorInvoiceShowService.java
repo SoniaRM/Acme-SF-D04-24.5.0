@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.Invoice;
-import acme.entities.Sponsorship;
 import acme.roles.Sponsor;
 
 @Service
@@ -24,12 +23,15 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 	@Override
 	public void authorise() {
 		boolean status;
-		int invoiceId;
-		Sponsorship sponsorship;
+		int incoiceId;
+		Invoice invoice;
+		Sponsor sponsor;
 
-		invoiceId = super.getRequest().getData("id", int.class);
-		sponsorship = this.repository.findOneSponsorshipByInvoiceId(invoiceId);
-		status = sponsorship != null && (!sponsorship.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
+		incoiceId = super.getRequest().getData("id", int.class);
+
+		invoice = this.repository.findOneInvoiceById(incoiceId);
+		sponsor = invoice == null ? null : invoice.getSponsor();
+		status = invoice != null && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -48,15 +50,11 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 	@Override
 	public void unbind(final Invoice object) {
 		assert object != null;
+
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
-		dataset.put("masterId", object.getSponsorship().getId());
-		dataset.put("draftMode", object.isDraftMode());
-		dataset.put("totalAmount", object.totalAmount());
-		dataset.put("sponsorship", object.getSponsorship().getCode());
+		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}
-
 }

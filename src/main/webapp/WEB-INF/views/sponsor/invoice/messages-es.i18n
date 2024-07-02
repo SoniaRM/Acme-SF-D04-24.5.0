@@ -1,32 +1,38 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+sponsor.invoice.form.title = Detalles de patrocinio
+sponsor.invoice.list.title = Lista de patrocinios
+
+sponsor.invoice.list.label.registrationTime = Momento de inscripción
+sponsor.invoice.list.label.dueDate = Fecha de vencimiento
 sponsor.invoice.list.label.code = Código
-sponsor.invoice.list.label.registrationTime = Fecha de registro
-sponsor.invoice.list.label.dueDate = Fecha límite
-sponsor.invoice.list.label.quantity = Cantidad
-sponsor.invoice.list.label.tax = Impuesto
+sponsor.invoice.list.label.published = Publicado
 
-sponsor.invoice.form.label.code = Código:
-sponsor.invoice.form.label.registrationTime = Fecha de registro:
-sponsor.invoice.form.label.dueDate = Fecha límite:
+sponsor.invoice.list.button.create = Create
+
+sponsor.invoice.form.label.code = Código: 
+sponsor.invoice.form.label.registrationTime = Momento de inscripción: 
+sponsor.invoice.form.label.dueDate = Fecha de vencimiento:
 sponsor.invoice.form.label.quantity = Cantidad:
+sponsor.invoice.form.label.quantity-exchange = Cantidad con divisa del sistema:
 sponsor.invoice.form.label.tax = Impuesto:
-sponsor.invoice.form.label.totalAmount = Cantidad total:
-sponsor.invoice.form.label.link = Enlace (Opcional):
-sponsor.invoice.form.label.sponsorship = Patrocinio:
-sponsor.invoice.form.label.draftMode = Modo borrador
-
-sponsor.invoice.list.title = Mis facturas
-sponsor.invoice.form.title = Detalles de factura
-
-sponsor.invoice.list.button.create = Crear
-sponsor.invoice.form.button.create = Crear
+sponsor.invoice.form.label.link = Más información (Opcional):
+		
 sponsor.invoice.form.button.update = Actualizar
-sponsor.invoice.form.button.delete = Borrar
+sponsor.invoice.form.button.delete = Eliminar
 sponsor.invoice.form.button.publish = Publicar
+sponsor.invoice.form.button.create = Crear
 
-sponsor.invoice.form.error.duplicated = Este código ya está en uso
-sponsor.invoice.form.error.date-lower-limit = La fecha debe ser posterior o igual a 2000/01/01 00:00
-sponsor.invoice.form.error.date-upper-limit = La decha debe ser anterior o igual a 2200/12/31 23:59
-sponsor.invoice.form.error.too-short = La fecha límite debe ser, mínimo, 30 días posterior a la fecha de registro
-sponsor.invoice.form.error.different-currency = La moneda debe ser la misma que la del patrocinio asociado
-sponsor.invoice.form.error.negative-amount = La cantidad debe ser positiva
-sponsor.invoice.form.error.quantity-upper-limit = La cantidad debe ser inferior o igual a 1.000.000,00
+sponsor.invoice.form.error.duplicated = Este código no está libre
+sponsor.invoice.form.error.negative-salary = La cantidad debe ser positiva
+sponsor.invoice.form.error.invalid-currency = Por favor, elige un tipo de moneda que esté en la configuración del sistema
+sponsor.invoice.form.error.to-close-from-registration = La fecha de vencimiento debe ser al menos un mes por delante del momento de inscripción
+sponsor.invoice.form.error.incorrect-registration-time = El momento de inscripción es incorrecto

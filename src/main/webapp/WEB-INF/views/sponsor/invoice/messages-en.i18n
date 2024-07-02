@@ -1,32 +1,38 @@
-sponsor.invoice.list.label.code = Code
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+sponsor.invoice.form.title = Invoice form 
+sponsor.invoice.list.title = Listing of invoices
+
 sponsor.invoice.list.label.registrationTime = Registration time
 sponsor.invoice.list.label.dueDate = Due date
-sponsor.invoice.list.label.quantity = Quantity
-sponsor.invoice.list.label.tax = Tax
-
-sponsor.invoice.form.label.code = Code:
-sponsor.invoice.form.label.registrationTime = Registration time:
-sponsor.invoice.form.label.dueDate = Due date:
-sponsor.invoice.form.label.quantity = Quantity:
-sponsor.invoice.form.label.tax = Tax:
-sponsor.invoice.form.label.totalAmount = Total Amount:
-sponsor.invoice.form.label.link = Link (Optional):
-sponsor.invoice.form.label.sponsorship = Sponsorship:
-sponsor.invoice.form.label.draftMode = Draft mode
-
-sponsor.invoice.list.title = My invoices
-sponsor.invoice.form.title = Invoice details
+sponsor.invoice.list.label.code = Code
+sponsor.invoice.list.label.published = Published
 
 sponsor.invoice.list.button.create = Create
-sponsor.invoice.form.button.create = Create
+
+sponsor.invoice.form.label.code = Code: 
+sponsor.invoice.form.label.registrationTime = Registration time: 
+sponsor.invoice.form.label.dueDate = Due date:
+sponsor.invoice.form.label.quantity = Quantity:
+sponsor.invoice.form.label.quantity-exchange = Quantity with system currency:
+sponsor.invoice.form.label.tax = Tax:
+sponsor.invoice.form.label.link = More information (Optional):
+		
 sponsor.invoice.form.button.update = Update
 sponsor.invoice.form.button.delete = Delete
 sponsor.invoice.form.button.publish = Publish
+sponsor.invoice.form.button.create = Create
 
-sponsor.invoice.form.error.duplicated = This code is already being used
-sponsor.invoice.form.error.date-lower-limit = The date must be after or equal to 2000/01/01 00:00
-sponsor.invoice.form.error.date-upper-limit = The date must be before or equal to 2200/12/31 23:59
-sponsor.invoice.form.error.too-short = Due date must be, at least, 30 days after registration time
-sponsor.invoice.form.error.different-currency = The currency must be the same as the related sponsorship
-sponsor.invoice.form.error.negative-amount = Amount must be positive and not nought
-sponsor.invoice.form.error.quantity-upper-limit = Quantity must be lower or equal than 1.000.000,00
+sponsor.invoice.form.error.duplicated = This code is taken
+sponsor.invoice.form.error.negative-salary = The quantity must be positive
+sponsor.invoice.form.error.invalid-currency = Please choose a currency that is in the system configuration
+sponsor.invoice.form.error.to-close-from-registration = The due date must be at least one month ahead the registration time
+sponsor.invoice.form.error.incorrect-registration-time = The registration time is incorrect

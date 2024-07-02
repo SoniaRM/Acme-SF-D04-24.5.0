@@ -8,20 +8,18 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.Valid;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.PositiveOrZero;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
+import acme.roles.Sponsor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,56 +36,52 @@ public class Invoice extends AbstractEntity {
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "^IN-\\d{4}-\\d{4}$", message = "{validation.invoice.code}")
+	@Pattern(regexp = "IN-[0-9]{4}-[0-9]{4}")
 	private String				code;
 
-	@PastOrPresent
-	@NotNull
+	@Past
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	private Date				registrationTime;
 
-	@NotNull
+	@Past
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	private Date				dueDate;
 
-	@Valid
 	@NotNull
 	private Money				quantity;
 
-	@Range(min = 0, max = 100)
-	@Digits(integer = 3, fraction = 2)
-	private double				tax;
+	@PositiveOrZero
+	@NotNull
+	private Double				tax;
 
 	@URL
-	@Length(max = 255)
 	private String				link;
 
-	private boolean				draftMode;
-
-	// Derived attributes -----------------------------------------------------
-
-
-	@Transient
-	public double totalAmount() {
-		double result;
-		double amount;
-
-		if (this.quantity == null)
-			amount = 0.0;
-		else
-			amount = this.quantity.getAmount();
-
-		result = amount + amount * (this.tax / 100.0);
-
-		return result;
-	}
-
-	// Relationships ----------------------------------------------------------
-
+	// Relationships -------------------------------------------------------------
 
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	private Sponsorship sponsorship;
+	private Sponsorship			sponsorship;
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	private Sponsor				sponsor;
+
+	private boolean				draftMode;
+
+	// Derived attributes -------------------------------------------------------------
+
+
+	public Money totalAmount() {
+		double finalAmount = this.quantity.getAmount() + this.tax / 100 * this.quantity.getAmount();
+		Money finalMoney = new Money();
+		finalMoney.setAmount(Math.round(finalAmount * 100.0) / 100.0);
+		finalMoney.setCurrency(this.quantity.getCurrency());
+		return finalMoney;
+	}
 
 }
