@@ -44,8 +44,6 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 
 		avgTimeTrainingModule = this.repository.avgTimeTrainingModule(id);
 
-		System.out.println(trainingModules);
-
 		if (trainingModules > 1)
 			devTimeTrainingModule = this.repository.devTimeTrainingModule(id);
 		else
