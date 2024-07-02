@@ -9,6 +9,7 @@ authenticated.notice.form.label.author = Autor:
 authenticated.notice.form.label.message = Mensaje:
 authenticated.notice.form.label.email = Email:
 authenticated.notice.form.label.link = Enlace:
+authenticated.notice.form.label.confirmation = Confirmación
 
 authenticated.notice.list.title = Lista de notificaciones
 authenticated.notice.form.title = Detalles de notificación
@@ -16,4 +17,4 @@ authenticated.notice.form.title = Detalles de notificación
 authenticated.notice.list.button.create = Crear
 authenticated.notice.form.button.create = Crear
 
-authenticated.notice.form.error.confirmation = Confirma la creación. No podrás modificar ni elimiar esta notificación posteriormente
+authenticated.notice.form.error.confirmation = Por favor, Confirma la creación. No podrás modificar ni elimiar esta notificación tras su creación

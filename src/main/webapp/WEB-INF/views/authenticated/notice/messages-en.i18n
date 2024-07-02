@@ -9,6 +9,7 @@ authenticated.notice.form.label.author = Author:
 authenticated.notice.form.label.message = Message:
 authenticated.notice.form.label.email = Email:
 authenticated.notice.form.label.link = Link:
+authenticated.notice.form.label.confirmation = Confirmation
 
 authenticated.notice.list.title = Listing of notices
 authenticated.notice.form.title = Notice details
@@ -16,4 +17,4 @@ authenticated.notice.form.title = Notice details
 authenticated.notice.list.button.create = Create
 authenticated.notice.form.button.create = Create
 
-authenticated.notice.form.error.confirmation = Confirm creation. You will not be able to update or delete this notice later
+authenticated.notice.form.error.confirmation = Please, confirm creation. You will not be able to update or delete this notice after creating it

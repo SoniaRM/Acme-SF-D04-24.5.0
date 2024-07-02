@@ -27,10 +27,12 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 		boolean status;
 		int masterId;
 		Contract contract;
+		Client client;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		contract = this.repository.findOneContractById(masterId);
-		status = contract != null && (!contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient()));
+		client = contract == null ? null : contract.getClient();
+		status = contract != null && super.getRequest().getPrincipal().hasRole(client);
 
 		super.getResponse().setAuthorised(status);
 	}

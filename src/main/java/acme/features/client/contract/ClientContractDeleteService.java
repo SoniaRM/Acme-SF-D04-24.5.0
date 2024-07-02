@@ -6,10 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
-import acme.entities.Project;
 import acme.entities.contracts.Contract;
 import acme.entities.contracts.ProgressLog;
 import acme.roles.Client;
@@ -55,14 +52,6 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 	@Override
 	public void validate(final Contract object) {
 		assert object != null;
-		Collection<ProgressLog> progresslogs = this.repository.findManyProgressLogsByContractId(object.getId());
-
-		boolean progressLogsPublished = true;
-		for (ProgressLog pl : progresslogs)
-			progressLogsPublished = progressLogsPublished && !pl.isDraftMode();
-
-		if (!super.getBuffer().getErrors().hasErrors("project"))
-			super.state(progressLogsPublished, "project", "client.contract.form.error.progress-logs-published");
 	}
 
 	@Override
@@ -81,19 +70,19 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 	public void unbind(final Contract object) {
 		assert object != null;
 
-		Dataset dataset;
-		Collection<Project> projects;
-		SelectChoices choices;
-
-		projects = this.repository.findManyProjectsAvailable();
-
-		choices = SelectChoices.from(projects, "title", object.getProject());
-
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project");
-		dataset.put("project", choices.getSelected().getKey());
-		dataset.put("projects", choices);
-		dataset.put("draftMode", object.isDraftMode());
-
-		super.getResponse().addData(dataset);
+		//		Dataset dataset;
+		//		Collection<Project> projects;
+		//		SelectChoices choices;
+		//
+		//		projects = this.repository.findManyProjectsAvailable();
+		//
+		//		choices = SelectChoices.from(projects, "title", object.getProject());
+		//
+		//		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project");
+		//		dataset.put("project", choices.getSelected().getKey());
+		//		dataset.put("projects", choices);
+		//		dataset.put("draftMode", object.isDraftMode());
+		//
+		//		super.getResponse().addData(dataset);
 	}
 }

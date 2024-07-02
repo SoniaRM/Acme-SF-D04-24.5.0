@@ -32,7 +32,7 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 		contractId = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneContractById(contractId);
 		client = object == null ? null : object.getClient();
-		status = super.getRequest().getPrincipal().hasRole(client) || object != null && !object.isDraftMode();
+		status = object != null && super.getRequest().getPrincipal().hasRole(client);
 
 		super.getResponse().setAuthorised(status);
 	}
