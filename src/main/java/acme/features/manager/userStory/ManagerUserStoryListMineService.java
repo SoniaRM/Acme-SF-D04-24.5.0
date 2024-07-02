@@ -59,6 +59,17 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
 
 		super.getResponse().addData(dataset);
+
+		int projectId;
+		Project p;
+		final boolean show;
+
+		projectId = super.getRequest().getData("masterId", int.class);
+		p = this.repository.findOneProjectById(projectId);
+		show = p.isDraftMode() && super.getRequest().getPrincipal().hasRole(p.getManager());
+
+		super.getResponse().addGlobal("masterId", projectId);
+		super.getResponse().addGlobal("show", show);
 	}
 
 }
