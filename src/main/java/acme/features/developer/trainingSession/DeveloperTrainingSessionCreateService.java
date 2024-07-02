@@ -110,7 +110,9 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		Collection<TrainingModule> trainingModules;
 		SelectChoices choices;
 
-		trainingModules = this.repository.findAllTrainingModules();
+		int developerId;
+		developerId = super.getRequest().getPrincipal().getActiveRoleId();
+		trainingModules = this.repository.findAllTrainingModulesByDeveloperId(developerId);
 		choices = SelectChoices.from(trainingModules, "code", object.getTrainingModule());
 		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "trainingModule");
 		dataset.put("trainingModule", choices.getSelected().getKey());
