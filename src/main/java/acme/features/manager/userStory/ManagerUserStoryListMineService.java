@@ -30,9 +30,12 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 
 		int masterId;
 		Project project;
+		Manager manager;
 		masterId = super.getRequest().getData("masterId", int.class);
+
 		project = this.repository.findOneProjectById(masterId);
-		status = project != null && (!project.isDraftMode() || super.getRequest().getPrincipal().hasRole(project.getManager()));
+		manager = project == null ? null : project.getManager();
+		status = project != null && (!project.isDraftMode() || super.getRequest().getPrincipal().hasRole(project.getManager())) && super.getRequest().getPrincipal().getActiveRoleId() == manager.getId();
 		super.getResponse().setAuthorised(status);
 	}
 

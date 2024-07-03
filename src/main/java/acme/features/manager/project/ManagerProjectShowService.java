@@ -52,6 +52,19 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 		dataset.put("manager", object.getManager());
 		super.getResponse().addData(dataset);
 
+		int projectId;
+		Project p;
+		final boolean showP;
+		Manager manager;
+
+		projectId = super.getRequest().getData("id", int.class);
+		p = this.repository.findOneProjectById(projectId);
+		manager = object == null ? null : p.getManager();
+		showP = !p.isDraftMode() && super.getRequest().getPrincipal().getActiveRoleId() == manager.getId();
+
+		super.getResponse().addGlobal("id", projectId);
+		super.getResponse().addGlobal("showP", showP);
+
 	}
 
 }
