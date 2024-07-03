@@ -50,6 +50,13 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 		Collection<UserStory> userStories;
 		userStories = objects.stream().map(ProjectUserStory::getUserStory).collect(Collectors.toList());
 
+		int projectId;
+		Project project;
+
+		projectId = super.getRequest().getData("masterId", int.class);
+		project = this.repository.findOneProjectById(projectId);
+		super.getResponse().addGlobal("project", project);
+
 		super.getBuffer().addData(userStories);
 	}
 
@@ -63,16 +70,6 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 
 		super.getResponse().addData(dataset);
 
-		int projectId;
-		Project p;
-		final boolean show;
-
-		projectId = super.getRequest().getData("masterId", int.class);
-		p = this.repository.findOneProjectById(projectId);
-		show = p.isDraftMode() && super.getRequest().getPrincipal().hasRole(p.getManager());
-
-		super.getResponse().addGlobal("masterId", projectId);
-		super.getResponse().addGlobal("show", show);
 	}
 
 }

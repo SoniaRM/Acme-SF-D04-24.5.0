@@ -11,12 +11,13 @@
 	<acme:list-column code="manager.user-story.list.label.draft-mode" path="draftMode" width="10%"/>
 </acme:list>
 
-<jstl:if test="${show}">
-    <acme:button code="manager.user-story.list.button.create" action="/manager/user-story/create"/>
-    <acme:button code="manager.project.userStory.form.button.create" action="/manager/project-user-story/create?masterId=${masterId}"/>
+
+<jstl:if test="${acme:anyOf(_command, 'list-mine') && project.draftMode == true}">
+  <acme:button code="manager.user-story.list.button.create" action="/manager/user-story/create"/>
+  <acme:button code="manager.project.userStory.form.button.create" action="/manager/project-user-story/create?masterId=${masterId}"/>
 </jstl:if>
 
-<jstl:if test="${_command == 'list-all'}">
+<jstl:if test="${acme:anyOf(_command, 'list-all')}">
   <acme:button code="manager.user-story.list.button.create" action="/manager/user-story/create"/>
   <acme:button code="manager.project.userStory.form.button.create" action="/manager/project-user-story/create?masterId=${masterId}"/>
 </jstl:if>

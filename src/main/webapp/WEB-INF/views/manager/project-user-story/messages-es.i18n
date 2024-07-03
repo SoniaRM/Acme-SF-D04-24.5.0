@@ -14,3 +14,5 @@ manager.project-user-story.form.error.not-same-manager = Manager diferente
 manager.project-user-story.form.error.unassigning-user-story-not-assigned-to-project = User Story no asociada con Project
 manager.project-user-story.form.error.project-is-null = Project no puede ser null
 manager.project-user-story.form.error.project-is-published = Project publicado
+
+manager.relation.form.error.existing-relation = Relación ya existente
