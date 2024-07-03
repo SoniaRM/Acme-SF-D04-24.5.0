@@ -33,7 +33,7 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		trainingModuleId = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneTrainingModuleById(trainingModuleId);
 		developer = object == null ? null : object.getDeveloper();
-		status = super.getRequest().getPrincipal().hasRole(developer) && object != null;
+		status = super.getRequest().getPrincipal().hasRole(developer) || object != null && !object.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -70,5 +70,19 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		dataset.put("draftMode", object.isDraftMode());
 
 		super.getResponse().addData(dataset);
+
+		int trainingModuleId;
+		TrainingModule trainingModule;
+		final boolean show;
+		Developer developer;
+
+		trainingModuleId = super.getRequest().getData("id", int.class);
+		trainingModule = this.repository.findOneTrainingModuleById(trainingModuleId);
+		developer = object == null ? null : trainingModule.getDeveloper();
+		show = !trainingModule.isDraftMode() && super.getRequest().getPrincipal().getActiveRoleId() == developer.getId();
+
+		super.getResponse().addGlobal("show", show);
+		;
+
 	}
 }
