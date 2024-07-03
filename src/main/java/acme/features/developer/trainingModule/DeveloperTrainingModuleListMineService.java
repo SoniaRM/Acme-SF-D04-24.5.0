@@ -42,7 +42,9 @@ public class DeveloperTrainingModuleListMineService extends AbstractService<Deve
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime", "draftMode", "project");
+		String draftMode = object.isDraftMode() ? "✓" : "x";
+		dataset.put("draftMode", draftMode);
 
 		super.getResponse().addData(dataset);
 	}
