@@ -41,6 +41,8 @@ public class AnyProjectListService extends AbstractService<Any, Project> {
 
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode");
+		String indication = object.isIndication() ? "✓" : "x";
+		dataset.put("indication", indication);
 
 		super.getResponse().addData(dataset);
 	}
