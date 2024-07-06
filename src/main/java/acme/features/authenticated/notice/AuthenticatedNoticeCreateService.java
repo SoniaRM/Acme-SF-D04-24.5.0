@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Authenticated;
+import acme.client.data.accounts.Principal;
+import acme.client.data.accounts.UserAccount;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
@@ -30,8 +32,14 @@ public class AuthenticatedNoticeCreateService extends AbstractService<Authentica
 	public void load() {
 		Notice object;
 
+		Principal p = super.getRequest().getPrincipal();
+		String username = p.getUsername();
+		UserAccount ua = this.repository.findUserAccountById(p.getAccountId());
+		String fullname = ua.getIdentity().getFullName();
+
 		object = new Notice();
 		object.setInstantiationMoment(MomentHelper.getCurrentMoment());
+		object.setAuthor(username + "-" + fullname);
 
 		super.getBuffer().addData(object);
 	}
@@ -40,7 +48,7 @@ public class AuthenticatedNoticeCreateService extends AbstractService<Authentica
 	public void bind(final Notice object) {
 		assert object != null;
 
-		super.bind(object, "instantiationMoment", "title", "author", "message", "email", "link");
+		super.bind(object, "title", "message", "email", "link");
 
 	}
 
@@ -48,16 +56,16 @@ public class AuthenticatedNoticeCreateService extends AbstractService<Authentica
 	public void validate(final Notice object) {
 		assert object != null;
 
-		//		boolean confirmation;
-		//
-		//		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		//		super.state(confirmation, "confirmation", "authenticated.notice.form.error.confirmation");
+		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
+
+		if (!super.getBuffer().getErrors().hasErrors("confirmation"))
+			super.state(confirmation, "confirmation", "authenticated.notice.form.error.confirmation");
 	}
 
 	@Override
 	public void perform(final Notice object) {
 		assert object != null;
-		object.setInstantiationMoment(MomentHelper.getCurrentMoment());
+
 		this.repository.save(object);
 	}
 
@@ -68,7 +76,6 @@ public class AuthenticatedNoticeCreateService extends AbstractService<Authentica
 		Dataset dataset;
 
 		dataset = super.unbind(object, "instantiationMoment", "title", "author", "message", "email", "link");
-		dataset.put("confirmation", false);
 
 		super.getResponse().addData(dataset);
 	}

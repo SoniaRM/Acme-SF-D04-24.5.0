@@ -48,32 +48,46 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 	public void bind(final Contract object) {
 		assert object != null;
 
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project");
+		int projectId;
+		Project project;
+
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.repository.findOneProjectById(projectId);
+
+		super.bind(object, "code", "providerName", "customerName", "goals", "budget");
+		object.setProject(project);
 
 	}
 
 	@Override
 	public void validate(final Contract object) {
 		assert object != null;
+		String currencies;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Contract existing;
-
 			existing = this.repository.findOneContractByCode(object.getCode());
 			super.state(existing == null, "code", "client.contract.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("budget"))
-			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-budget");
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			currencies = this.repository.findAcceptedCurrencies();
+			super.state(currencies.contains(object.getBudget().getCurrency()), "budget", "client.contract.form.error.bugdet.invalid-currency");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget"))
-			super.state(object.getBudget().getAmount() <= 1000000, "budget", "client.contract.form.error.over-budget");
+			super.state(object.getBudget().getAmount() > 0., "budget", "client.contract.form.error.negative-budget");
+
+		if (!super.getBuffer().getErrors().hasErrors("budget"))
+			super.state(object.getBudget().getAmount() <= 1000000., "budget", "client.contract.form.error.over-budget");
 
 	}
 
 	@Override
 	public void perform(final Contract object) {
 		assert object != null;
+
+		object.setDraftMode(true);
 		this.repository.save(object);
 	}
 
@@ -81,18 +95,17 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 	public void unbind(final Contract object) {
 		assert object != null;
 
+		Collection<Project> allProjects;
+		SelectChoices projects;
 		Dataset dataset;
-		Collection<Project> projects;
-		SelectChoices choices;
 
-		projects = this.repository.findManyProjectsAvailable();
+		allProjects = this.repository.findManyProjectsAvailable();
+		projects = SelectChoices.from(allProjects, "code", object.getProject());
 
-		choices = SelectChoices.from(projects, "code", object.getProject());
-
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project");
-		dataset.put("project", choices.getSelected().getKey());
-		dataset.put("projects", choices);
-		dataset.put("client", object.getClient());
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		dataset.put("project", projects.getSelected().getKey());
+		dataset.put("projects", projects);
+		dataset.put("draftMode", object.isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

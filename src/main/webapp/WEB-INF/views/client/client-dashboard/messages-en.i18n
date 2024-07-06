@@ -1,9 +1,11 @@
-client.clientDashboard.form.label.totalLogsLessThan25 = Number of progress logs with less than 25% completeness rate
-client.clientDashboard.form.label.totalLogsLessBetween25And50 = Number of progress logs with a completeness rate between 25% and 50%
-client.clientDashboard.form.label.totalLogsLessBetween50And75 = Number of progress logs with a completeness rate between 50% and 75%
-client.clientDashboard.form.label.totalLogsAbove75 = Number of progress logs with more than 75% completeness rate
-client.clientDashboard.form.label.averageBudgetContracts = Average budget in contracts
-client.clientDashboard.form.label.deviationBudgetContracts = Deviation budget in contracts
-client.clientDashboard.form.label.minimunBudgetContracts = Minimum budget in contracts
-client.clientDashboard.form.label.maximumBudgetContracts = Maximum budget in contracts
+client.clientDashboard.form.label.totalLogsLessThan25 = Number of published progress logs with less than 25% completeness rate
+client.clientDashboard.form.label.totalLogsLessBetween25And50 = Number of published progress logs with a completeness rate between 25% and 50%
+client.clientDashboard.form.label.totalLogsLessBetween50And75 = Number of published progress logs with a completeness rate between 50% and 75%
+client.clientDashboard.form.label.totalLogsAbove75 = Number of published progress logs with more than 75% completeness rate
+
+client.clientDashboard.form.label.averageBudgetContracts = Average budget in published contracts
+client.clientDashboard.form.label.deviationBudgetContracts = Standard deviation budget in published contracts
+client.clientDashboard.form.label.minimunBudgetContracts = Minimum budget in published contracts
+client.clientDashboard.form.label.maximumBudgetContracts = Maximum budget in published contracts
+
 client.client-dashboard.form.title = Client Dashboard

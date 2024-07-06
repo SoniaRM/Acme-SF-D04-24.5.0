@@ -38,7 +38,6 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 
 		principal = super.getRequest().getPrincipal();
 		id = principal.getAccountId();
-		//id = super.getRequest().getPrincipal().getActiveRoleId();
 
 		client = this.repository.findOneClientByUserAccountId(id);
 

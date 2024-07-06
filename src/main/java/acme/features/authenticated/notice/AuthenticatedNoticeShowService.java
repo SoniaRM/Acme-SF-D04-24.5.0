@@ -1,11 +1,15 @@
 
 package acme.features.authenticated.notice;
 
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.Notice;
 
@@ -22,7 +26,18 @@ public class AuthenticatedNoticeShowService extends AbstractService<Authenticate
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int noticeId;
+		Notice notice;
+		Date lastMonth;
+
+		noticeId = super.getRequest().getData("id", int.class);
+		notice = this.repository.findOneNoticeById(noticeId);
+
+		lastMonth = MomentHelper.deltaFromMoment(MomentHelper.getCurrentMoment(), -1, ChronoUnit.MONTHS);
+		status = notice != null && notice.getInstantiationMoment().after(lastMonth);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

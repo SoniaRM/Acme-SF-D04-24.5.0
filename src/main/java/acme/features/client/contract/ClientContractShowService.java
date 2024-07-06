@@ -32,7 +32,7 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 		contractId = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneContractById(contractId);
 		client = object == null ? null : object.getClient();
-		status = super.getRequest().getPrincipal().hasRole(client) || object != null && !object.isDraftMode();
+		status = object != null && super.getRequest().getPrincipal().hasRole(client);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -55,9 +55,9 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 		Collection<Project> projects;
 		SelectChoices choices;
 
-		projects = this.repository.findAllProjects();
+		projects = this.repository.findManyProjectsAvailable();
 
-		choices = SelectChoices.from(projects, "title", object.getProject());
+		choices = SelectChoices.from(projects, "code", object.getProject());
 
 		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project", "draftMode");
 		dataset.put("project", choices.getSelected().getKey());

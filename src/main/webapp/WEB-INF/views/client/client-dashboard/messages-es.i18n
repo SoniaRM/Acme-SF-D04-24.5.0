@@ -1,9 +1,11 @@
-client.clientDashboard.form.label.totalLogsLessThan25 = Número de registros de progreso con un ratio de compleción menor al 25%
-client.clientDashboard.form.label.totalLogsLessBetween25And50 = Número de registros de progreso con un ratio de compleción entre el 25% y 50%
-client.clientDashboard.form.label.totalLogsLessBetween50And75 = Número de registros de progreso con un ratio de compleción entre el 50% y 75%
-client.clientDashboard.form.label.totalLogsAbove75 = Número de registros de progreso con un ratio de compleción mayor al 75%
-client.clientDashboard.form.label.averageBudgetContracts = Presupuesto medio de los contratos 
-client.clientDashboard.form.label.deviationBudgetContracts = Desviación del presupuesto de los contratos
-client.clientDashboard.form.label.minimunBudgetContracts = Presupuesto mínimo de los contratos
-client.clientDashboard.form.label.maximumBudgetContracts = Presupuesto máximo de los contratos
+client.clientDashboard.form.label.totalLogsLessThan25 = Número de registros de progreso publicados con un ratio de compleción menor al 25%
+client.clientDashboard.form.label.totalLogsLessBetween25And50 = Número de registros de progreso publicados con un ratio de compleción entre el 25% y 50%
+client.clientDashboard.form.label.totalLogsLessBetween50And75 = Número de registros de progreso publicados con un ratio de compleción entre el 50% y 75%
+client.clientDashboard.form.label.totalLogsAbove75 = Número de registros de progreso con un publicados ratio de compleción mayor al 75%
+
+client.clientDashboard.form.label.averageBudgetContracts = Media del presupuesto de los contratos publicados
+client.clientDashboard.form.label.deviationBudgetContracts = Desviación estándar del presupuesto de los contratos publicados
+client.clientDashboard.form.label.minimunBudgetContracts = Presupuesto mínimo de los contratos publicados
+client.clientDashboard.form.label.maximumBudgetContracts = Presupuesto máximo de los contratos publicados
+
 client.client-dashboard.form.title = Panel del cliente
