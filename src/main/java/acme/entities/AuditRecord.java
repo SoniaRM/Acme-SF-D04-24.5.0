@@ -28,7 +28,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(indexes = {
-	@Index(columnList = "code"), @Index(columnList = "draftMode")
+	@Index(columnList = "draftMode")
 })
 
 public class AuditRecord extends AbstractEntity {
