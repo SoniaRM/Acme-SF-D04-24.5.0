@@ -28,7 +28,7 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 		projectId = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneProjectById(projectId);
 		manager = object == null ? null : object.getManager();
-		status = super.getRequest().getPrincipal().hasRole(manager) || object != null && !object.isDraftMode();
+		status = super.getRequest().getPrincipal().hasRole(manager) && object != null;
 
 		super.getResponse().setAuthorised(status);
 	}
