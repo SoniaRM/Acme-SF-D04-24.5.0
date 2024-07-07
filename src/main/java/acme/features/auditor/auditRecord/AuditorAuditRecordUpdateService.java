@@ -4,7 +4,6 @@ package acme.features.auditor.auditRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
@@ -27,22 +26,36 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 	@Override
 	public void authorise() {
 
+		/*
+		 * boolean status;
+		 * AuditRecord auditRecord;
+		 * CodeAudit codeAudit = null;
+		 * Principal principal;
+		 * int id;
+		 * int codeAuditId;
+		 * 
+		 * id = super.getRequest().getData("id", int.class);
+		 * auditRecord = this.repository.findOneAuditRecordById(id);
+		 * codeAuditId = auditRecord.getCodeAudit().getId();
+		 * 
+		 * if (auditRecord != null)
+		 * codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
+		 * 
+		 * principal = super.getRequest().getPrincipal();
+		 * status = codeAudit.getAuditor().getId() == principal.getActiveRoleId() && auditRecord != null && auditRecord.isDraftMode();
+		 * 
+		 * super.getResponse().setAuthorised(status);
+		 */
+
 		boolean status;
-		AuditRecord auditRecord;
-		CodeAudit codeAudit = null;
-		Principal principal;
-		int id;
-		int codeAuditId;
+		int auditRecordId;
+		AuditRecord object;
+		CodeAudit codeAudit;
 
-		id = super.getRequest().getData("id", int.class);
-		auditRecord = this.repository.findOneAuditRecordById(id);
-		codeAuditId = auditRecord.getCodeAudit().getId();
-
-		if (auditRecord != null)
-			codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
-
-		principal = super.getRequest().getPrincipal();
-		status = codeAudit.getAuditor().getId() == principal.getActiveRoleId() && auditRecord != null && auditRecord.isDraftMode();
+		auditRecordId = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneAuditRecordById(auditRecordId);
+		codeAudit = object == null ? null : object.getCodeAudit();
+		status = super.getRequest().getPrincipal().hasRole(codeAudit.getAuditor()) && object != null && object.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 
@@ -64,7 +77,7 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "code", "initialPeriod", "finalPeriod", "mark", "optionalLink", "codeAudit");
+		super.bind(object, "code", "initialPeriod", "finalPeriod", "mark", "optionalLink");
 	}
 
 	@Override
