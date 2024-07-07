@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -44,12 +44,12 @@ public class AuditRecord extends AbstractEntity {
 	@Pattern(regexp = "^AU-\\d{4}-\\d{3}$", message = "{validation.auditRecord.code}")
 	private String				code;
 
-	@PastOrPresent
+	@Past
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				initialPeriod;
 
-	@PastOrPresent
+	@Past
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				finalPeriod;

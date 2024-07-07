@@ -2,6 +2,7 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -20,6 +21,21 @@ public interface AuditorCodeAuditRepository extends AbstractRepository {
 
 	@Query("select ca from CodeAudit ca where ca.id = :id")
 	CodeAudit findOneCodeAuditById(int id);
+
+	//
+	@Query("select p from Project p where p.id = :id and p.draftMode = false")
+	Project findOnePublishedProjectById(int id);
+	//
+
+	//
+	@Query("select p.draftMode from Project p where p.id = :projectId")
+	Boolean projectIsDraftMode(int projectId);
+	//
+
+	//
+	@Query("select min(ar.initialPeriod) from AuditRecord ar where ar.codeAudit.id = :codeAuditId")
+	Date findValidExecutionDateBeforeInitial(int codeAuditId);
+	//
 
 	@Query("select ca from CodeAudit ca where ca.auditor.id = :auditorId")
 	Collection<CodeAudit> findManyCodeAuditsByAuditorId(int auditorId);

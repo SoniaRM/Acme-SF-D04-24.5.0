@@ -48,6 +48,8 @@ public class AuditorAuditRecordListAllService extends AbstractService<Auditor, A
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "initialPeriod", "finalPeriod", "mark", "optionalLink", "draftMode", "codeAudit");
+		String draftMode = object.isDraftMode() ? "✓" : "x";
+		dataset.put("draftMode", draftMode);
 
 		super.getResponse().addData(dataset);
 	}

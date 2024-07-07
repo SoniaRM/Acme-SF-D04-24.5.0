@@ -2,11 +2,13 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.AuditRecord;
@@ -80,6 +82,12 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 			if (codeAuditWithCodeDuplicated != null)
 				super.state(codeAuditWithCodeDuplicated.getId() == object.getId(), "code", "auditor.code-audit.form.error.code");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("execution")) {
+			Date maximumDate = this.repository.findValidExecutionDateBeforeInitial(object.getId());
+			Boolean validExecution = maximumDate == null || MomentHelper.isAfter(maximumDate, object.getExecution());
+			super.state(validExecution, "execution", "auditor.code-audit.form.error.badExecution");
+		}
 	}
 
 	@Override
@@ -102,9 +110,9 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 		projects = this.repository.findManyProjectsAvailable();
 
 		choicesType = SelectChoices.from(Type.class, object.getType());
-		choices = SelectChoices.from(projects, "title", object.getProject());
+		choices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project", "draftMode");
+		dataset = super.unbind(object, "code", "execution", "correctiveActions", "optionalLink", "project", "draftMode");
 		dataset.put("type", choicesType.getSelected().getKey());
 		dataset.put("types", choicesType);
 		dataset.put("project", choices.getSelected().getKey());

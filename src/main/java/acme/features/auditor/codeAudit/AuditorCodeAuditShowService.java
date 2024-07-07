@@ -36,7 +36,7 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		codeAuditId = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneCodeAuditById(codeAuditId);
 		auditor = object == null ? null : object.getAuditor();
-		status = super.getRequest().getPrincipal().hasRole(auditor) || object != null && !object.isDraftMode();
+		status = super.getRequest().getPrincipal().hasRole(auditor) && object != null;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -59,21 +59,35 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		Dataset dataset;
 		Collection<Project> projects;
 		SelectChoices choices;
-		Collection<AuditRecord> auditRecords = this.repository.findManyAuditRecordsByCodeAuditId(object.getId());
 		SelectChoices choicesType;
 
-		projects = this.repository.findAllProjects();
+		Collection<AuditRecord> auditRecords = this.repository.findManyAuditRecordsByCodeAuditId(object.getId());
 
-		choices = SelectChoices.from(projects, "title", object.getProject());
+		projects = this.repository.findManyProjectsAvailable();
+
 		choicesType = SelectChoices.from(Type.class, object.getType());
+		choices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "draftMode");
+		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink");
 		dataset.put("types", choicesType);
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 		dataset.put("execution", object.getExecution());
 		dataset.put("mark", object.getMark(auditRecords));
+		dataset.put("draftMode", object.isDraftMode());
 
 		super.getResponse().addData(dataset);
+
+		int codeAuditId;
+		CodeAudit codeAudit;
+		final boolean show;
+		Auditor auditor;
+
+		codeAuditId = super.getRequest().getData("id", int.class);
+		codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
+		auditor = object == null ? null : codeAudit.getAuditor();
+		show = !codeAudit.isDraftMode() && super.getRequest().getPrincipal().getActiveRoleId() == auditor.getId();
+
+		super.getResponse().addGlobal("show", show);
 	}
 }

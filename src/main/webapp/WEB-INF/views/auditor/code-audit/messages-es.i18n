@@ -36,3 +36,4 @@ auditor.code-audit.form.error.auditRecordInDraftMode = Audit Record esta en Borr
 auditor.code-audit.form.error.code = Este codigo ya esta en uso
 auditor.code-audit.form.error.draftMode =  Debes publicar todos los audit records antes de publicar el code audit
 auditor.code-audit.form.error.isEmpty = No hay suficientes registros
+auditor.code-audit.form.error.badExecution = La fecha de ejecución debe ser anterior a la fecha más antigua de la fecha de inicio de sus audit records

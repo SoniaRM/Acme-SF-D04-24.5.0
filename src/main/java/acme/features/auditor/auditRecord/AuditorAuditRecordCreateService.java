@@ -2,7 +2,6 @@
 package acme.features.auditor.auditRecord;
 
 import java.time.temporal.ChronoUnit;
-import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +29,14 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 	@Override
 	public void authorise() {
 
-		final boolean status;
-		status = super.getRequest().getPrincipal().hasRole(Auditor.class);
+		boolean status;
+		int masterId;
+		CodeAudit codeAudit;
+
+		masterId = super.getRequest().getData("codeAuditId", int.class);
+		codeAudit = this.repository.findOneCodeAuditById(masterId);
+		status = codeAudit != null && codeAudit.isDraftMode() && super.getRequest().getPrincipal().hasRole(codeAudit.getAuditor());
+
 		super.getResponse().setAuthorised(status);
 
 	}
@@ -39,9 +44,14 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 	@Override
 	public void load() {
 		AuditRecord object;
+		int masterId;
+		CodeAudit codeAudit;
 
+		masterId = super.getRequest().getData("codeAuditId", int.class);
+		codeAudit = this.repository.findOneCodeAuditById(masterId);
 		object = new AuditRecord();
 		object.setDraftMode(true);
+		object.setCodeAudit(codeAudit);
 
 		super.getBuffer().addData(object);
 
@@ -51,17 +61,8 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "code", "initialPeriod", "finalPeriod", "mark", "optionalLink", "codeAudit");
-		/*
-		 * int id;
-		 * CodeAudit codeAudit;
-		 * 
-		 * id = super.getRequest().getData("codeAuditId", int.class);
-		 * codeAudit = this.repository.findOneCodeAuditById(id);
-		 * 
-		 * super.bind(object, "code", "initialPeriod", "finalPeriod", "mark", "optionalLink");
-		 * object.setCodeAudit(codeAudit);
-		 */
+		super.bind(object, "code", "initialPeriod", "finalPeriod", "mark", "optionalLink");
+
 	}
 
 	@Override
@@ -75,8 +76,10 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("initialPeriod"))
-			if (object.getFinalPeriod() != null && object.getInitialPeriod() != null)
+			if (object.getFinalPeriod() != null && object.getInitialPeriod() != null) {
 				super.state(MomentHelper.isAfter(object.getFinalPeriod(), object.getInitialPeriod()), "startMoment", "validation.auditrecord.initialIsBefore");
+				super.state(MomentHelper.isAfterOrEqual(object.getInitialPeriod(), object.getCodeAudit().getExecution()), "startMoment", "validation.auditrecord.initialIsAfterExecution");
+			}
 		if (!super.getBuffer().getErrors().hasErrors("finishPeriod"))
 			if (object.getFinalPeriod() != null && object.getInitialPeriod() != null) {
 				Date end;
@@ -99,33 +102,14 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 		Dataset dataset;
 		SelectChoices choices;
 		choices = SelectChoices.from(Mark.class, object.getMark());
-		Collection<CodeAudit> codeAudits;
-		SelectChoices choicesCA;
-
-		codeAudits = this.repository.findAllCodeAudits();
-		choicesCA = SelectChoices.from(codeAudits, "code", object.getCodeAudit());
 
 		dataset = super.unbind(object, "code", "initialPeriod", "finalPeriod", "mark", "optionalLink", "codeAudit");
+		dataset.put("codeAuditId", super.getRequest().getData("codeAuditId", int.class));
 		dataset.put("mark", choices.getSelected().getKey());
 		dataset.put("marks", choices);
-		dataset.put("codeAudit", choicesCA.getSelected().getKey());
-		dataset.put("codeAudits", choicesCA);
+		dataset.put("codeAudit", object.getCodeAudit().getCode());
 
 		super.getResponse().addData(dataset);
 
-		/*
-		 * Dataset dataset;
-		 * SelectChoices choices;
-		 * choices = SelectChoices.from(Mark.class, object.getMark());
-		 * 
-		 * CodeAudit codeAudit = object.getCodeAudit();
-		 * 
-		 * dataset = super.unbind(object, "code", "initialPeriod", "finalPeriod", "mark", "optionalLink", "draftMode");
-		 * dataset.put("codeAuditCode", codeAudit.getCode());
-		 * dataset.put("marks", choices);
-		 * dataset.put("codeAuditId", codeAudit.getId());
-		 * 
-		 * super.getResponse().addData(dataset);
-		 */
 	}
 }
