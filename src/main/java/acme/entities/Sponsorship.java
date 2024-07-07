@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.URL;
@@ -40,17 +40,15 @@ public class Sponsorship extends AbstractEntity {
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	private String				code;
 
-	@Past
+	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	private Date				moment;
 
-	@Past
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	private Date				startDate;
 
-	@Past
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	private Date				endDate;
