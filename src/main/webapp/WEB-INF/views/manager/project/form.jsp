@@ -11,15 +11,12 @@
 	<acme:input-integer code="manager.project.form.label.cost" path="cost"/>
 	<acme:input-url code="manager.project.form.label.link" path="link"/>
 	
-
 	
-	<jstl:choose>	
 		
-		<jstl:when test="${_command == 'show' && draftMode == false && showP}">
+	<jstl:choose>	 
+		<jstl:when test="${_command == 'show' && draftMode == false}">
 			<acme:button code="manager.project.form.button.user-stories" action="/manager/user-story/list-mine?masterId=${id}"/>
         </jstl:when>
-
-        
         
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 			<acme:submit code="manager.project.form.button.update" action="/manager/project/update"/>
