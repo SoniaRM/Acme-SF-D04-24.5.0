@@ -68,6 +68,13 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 			super.state(userStories.stream().allMatch(x -> !x.isDraftMode()), "*", "manager.project.form.error.userStoriesInDraftMode");
 		if (!super.getBuffer().getErrors().hasErrors("indication"))
 			super.state(object.isIndication() == false, "indication", "manager.project.form.error.existing-fatal-errors");
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+
+			Project projectWithCodeDuplicated = this.repository.findOneProjectByCode(object.getCode());
+
+			if (projectWithCodeDuplicated != null)
+				super.state(projectWithCodeDuplicated.getId() == object.getId(), "code", "manager.project.form.error.duplicated");
+		}
 	}
 
 	@Override
