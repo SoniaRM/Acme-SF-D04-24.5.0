@@ -94,6 +94,14 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 
 		if (!super.getBuffer().getErrors().hasErrors("finalPeriod") && object.getFinalPeriod() != null)
 			super.state(MomentHelper.isAfter(object.getFinalPeriod(), object.getInitialPeriod()), "finalPeriod", "auditor.audit-record.form.error.invalidFinalPeriod");
+
+		/*
+		 * if (!super.getBuffer().getErrors().hasErrors("initialPeriod") && object.getInitialPeriod() != null) {
+		 * Date executionDate = this.repository.findExecutionDate(object.getCodeAudit());
+		 * super.state(MomentHelper.isBefore(executionDate, object.getInitialPeriod()), "execution", "auditor.audit-record.form.error.invalidInitialPeriod");
+		 * }
+		 */
+
 	}
 
 	@Override

@@ -26,3 +26,4 @@ auditor.audit-record.form.button.publish = Publish
 
 auditor.audit-record.form.error.duplicated = This code is already used
 auditor.audit-record.form.error.invalidFinalPeriod = Invalid Final Period
+auditor.audit-record.form.error.badInitialDate = The Initial Period must be after than Execution

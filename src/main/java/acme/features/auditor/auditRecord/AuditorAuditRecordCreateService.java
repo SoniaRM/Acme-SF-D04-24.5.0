@@ -2,7 +2,6 @@
 package acme.features.auditor.auditRecord;
 
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -75,17 +74,36 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 			super.state(isCodeUnique == null, "code", "auditor.audit-record.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("initialPeriod"))
-			if (object.getFinalPeriod() != null && object.getInitialPeriod() != null) {
-				super.state(MomentHelper.isAfter(object.getFinalPeriod(), object.getInitialPeriod()), "startMoment", "validation.auditrecord.initialIsBefore");
-				super.state(MomentHelper.isAfterOrEqual(object.getInitialPeriod(), object.getCodeAudit().getExecution()), "startMoment", "validation.auditrecord.initialIsAfterExecution");
-			}
-		if (!super.getBuffer().getErrors().hasErrors("finishPeriod"))
-			if (object.getFinalPeriod() != null && object.getInitialPeriod() != null) {
-				Date end;
-				end = MomentHelper.deltaFromMoment(object.getInitialPeriod(), 1, ChronoUnit.HOURS);
-				super.state(MomentHelper.isAfterOrEqual(object.getFinalPeriod(), end), "finishMoment", "validation.auditrecord.moment.minimun");
-			}
+		if (!super.getBuffer().getErrors().hasErrors("initialPeriod")) {
+			boolean notNull = object.getCodeAudit().getExecution() != null;
+			Boolean timeConcordance = notNull && MomentHelper.isAfter(object.getInitialPeriod(), object.getCodeAudit().getExecution());
+			super.state(timeConcordance, "initialPeriod", "auditor.audit-record.form.error.badInitialDate");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("finalPeriod")) {
+			boolean notNull = object.getInitialPeriod() != null;
+			Boolean timeConcordance = notNull && MomentHelper.isAfter(object.getFinalPeriod(), object.getInitialPeriod());
+			super.state(timeConcordance, "finalPeriod", "auditor.audit-record.form.error.FinalAfterInitial");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("finalPeriod")) {
+			boolean notNull = object.getInitialPeriod() != null;
+			Boolean goodDuration = notNull && MomentHelper.isLongEnough(object.getFinalPeriod(), object.getInitialPeriod(), 1, ChronoUnit.HOURS);
+			super.state(goodDuration, "finalPeriod", "auditor.auditRecord.form.error.notEnoughDuration");
+		}
+		/*
+		 * if (!super.getBuffer().getErrors().hasErrors("initialPeriod"))
+		 * if (object.getFinalPeriod() != null && object.getInitialPeriod() != null) {
+		 * super.state(MomentHelper.isAfter(object.getFinalPeriod(), object.getInitialPeriod()), "startMoment", "validation.auditrecord.initialIsBefore");
+		 * super.state(MomentHelper.isAfterOrEqual(object.getInitialPeriod(), object.getCodeAudit().getExecution()), "startMoment", "validation.auditrecord.initialIsAfterExecution");
+		 * }
+		 * if (!super.getBuffer().getErrors().hasErrors("finishPeriod"))
+		 * if (object.getFinalPeriod() != null && object.getInitialPeriod() != null) {
+		 * Date end;
+		 * end = MomentHelper.deltaFromMoment(object.getInitialPeriod(), 1, ChronoUnit.HOURS);
+		 * super.state(MomentHelper.isAfterOrEqual(object.getFinalPeriod(), end), "finishMoment", "validation.auditrecord.moment.minimun");
+		 * }
+		 */
 	}
 
 	@Override
