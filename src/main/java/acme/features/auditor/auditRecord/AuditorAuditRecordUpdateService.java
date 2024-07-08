@@ -1,6 +1,8 @@
 
 package acme.features.auditor.auditRecord;
 
+import java.time.temporal.ChronoUnit;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -85,22 +87,28 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-
-			AuditRecord auditRecordWithCodeDuplicated = this.repository.findOneAuditRecordByCode(object.getCode());
-
-			if (auditRecordWithCodeDuplicated != null)
-				super.state(auditRecordWithCodeDuplicated.getId() == object.getId(), "code", "auditor.audit-record.form.error.code");
+			AuditRecord isCodeUnique;
+			isCodeUnique = this.repository.findOneAuditRecordByCode(object.getCode());
+			super.state(isCodeUnique == null, "code", "auditor.audit-record.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("finalPeriod") && object.getFinalPeriod() != null)
-			super.state(MomentHelper.isAfter(object.getFinalPeriod(), object.getInitialPeriod()), "finalPeriod", "auditor.audit-record.form.error.invalidFinalPeriod");
+		if (!super.getBuffer().getErrors().hasErrors("initialPeriod")) {
+			boolean notNull = object.getCodeAudit().getExecution() != null;
+			Boolean timeConcordance = notNull && MomentHelper.isAfter(object.getInitialPeriod(), object.getCodeAudit().getExecution());
+			super.state(timeConcordance, "initialPeriod", "auditor.audit-record.form.error.badInitialDate");
+		}
 
-		/*
-		 * if (!super.getBuffer().getErrors().hasErrors("initialPeriod") && object.getInitialPeriod() != null) {
-		 * Date executionDate = this.repository.findExecutionDate(object.getCodeAudit());
-		 * super.state(MomentHelper.isBefore(executionDate, object.getInitialPeriod()), "execution", "auditor.audit-record.form.error.invalidInitialPeriod");
-		 * }
-		 */
+		if (!super.getBuffer().getErrors().hasErrors("finalPeriod")) {
+			boolean notNull = object.getInitialPeriod() != null;
+			Boolean timeConcordance = notNull && MomentHelper.isAfter(object.getFinalPeriod(), object.getInitialPeriod());
+			super.state(timeConcordance, "finalPeriod", "auditor.audit-record.form.error.finalAfterInitialPeriod");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("finalPeriod")) {
+			boolean notNull = object.getInitialPeriod() != null;
+			Boolean goodDuration = notNull && MomentHelper.isLongEnough(object.getFinalPeriod(), object.getInitialPeriod(), 1, ChronoUnit.HOURS);
+			super.state(goodDuration, "finalPeriod", "auditor.audit-record.form.error.badDuration");
+		}
 
 	}
 

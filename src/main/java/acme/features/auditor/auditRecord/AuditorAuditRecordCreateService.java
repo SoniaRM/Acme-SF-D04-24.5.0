@@ -91,19 +91,7 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 			Boolean goodDuration = notNull && MomentHelper.isLongEnough(object.getFinalPeriod(), object.getInitialPeriod(), 1, ChronoUnit.HOURS);
 			super.state(goodDuration, "finalPeriod", "auditor.auditRecord.form.error.notEnoughDuration");
 		}
-		/*
-		 * if (!super.getBuffer().getErrors().hasErrors("initialPeriod"))
-		 * if (object.getFinalPeriod() != null && object.getInitialPeriod() != null) {
-		 * super.state(MomentHelper.isAfter(object.getFinalPeriod(), object.getInitialPeriod()), "startMoment", "validation.auditrecord.initialIsBefore");
-		 * super.state(MomentHelper.isAfterOrEqual(object.getInitialPeriod(), object.getCodeAudit().getExecution()), "startMoment", "validation.auditrecord.initialIsAfterExecution");
-		 * }
-		 * if (!super.getBuffer().getErrors().hasErrors("finishPeriod"))
-		 * if (object.getFinalPeriod() != null && object.getInitialPeriod() != null) {
-		 * Date end;
-		 * end = MomentHelper.deltaFromMoment(object.getInitialPeriod(), 1, ChronoUnit.HOURS);
-		 * super.state(MomentHelper.isAfterOrEqual(object.getFinalPeriod(), end), "finishMoment", "validation.auditrecord.moment.minimun");
-		 * }
-		 */
+
 	}
 
 	@Override

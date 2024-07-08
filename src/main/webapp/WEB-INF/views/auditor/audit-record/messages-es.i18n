@@ -27,3 +27,5 @@ auditor.audit-record.form.button.publish = Publicar
 auditor.audit-record.form.error.duplicated = Este codigo ya esta en uso
 auditor.audit-record.form.error.invalidFinalPeriod = Periodo Final no valido
 auditor.audit-record.form.error.badInitialDate = El Periodo inicial debe ser posterior al execution
+auditor.audit-record.form.error.finalAfterInitialPeriod = El Period final debe ser posterior al Period inicial
+auditor.audit-record.form.error.badDuration = La duracion debe ser de 1 hora
