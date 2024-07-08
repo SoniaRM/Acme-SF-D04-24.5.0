@@ -30,6 +30,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.training-module-list" action="/any/training-module/list"/>	
 			<acme:menu-suboption code="master.menu.anonymous.project-list" action="/any/project/list"/>	
 			<acme:menu-suboption code="master.menu.anonymous.claim-list" action="/any/claim/list"/>
+			<acme:menu-suboption code="master.menu.anonymous.code-audit-list" action="/any/code-audit/list"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
