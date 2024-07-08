@@ -47,6 +47,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneProjectById(id);
 		super.getBuffer().addData(object);
+
 	}
 
 	@Override
@@ -60,17 +61,20 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	public void validate(final Project object) {
 		assert object != null;
 
-		boolean draftModeProjectUserStories;
-
 		final Collection<ProjectUserStory> projectUserStories = this.repository.findManyProjectUserStoriesByProjectId(object.getId());
 		Collection<UserStory> userStories = projectUserStories.stream().map(ProjectUserStory::getUserStory).collect(Collectors.toList());
 		super.state(!userStories.isEmpty(), "*", "manager.project.form.error.projectWithOutUserStories");
-		if (!userStories.isEmpty()) {
-			draftModeProjectUserStories = userStories.stream().anyMatch(userStory -> !userStory.isDraftMode());
-			super.state(draftModeProjectUserStories, "*", "manager.project.form.error.userStoriesInDraftMode");
-		}
+		if (!userStories.isEmpty())
+			super.state(userStories.stream().allMatch(x -> !x.isDraftMode()), "*", "manager.project.form.error.userStoriesInDraftMode");
 		if (!super.getBuffer().getErrors().hasErrors("indication"))
 			super.state(object.isIndication() == false, "indication", "manager.project.form.error.existing-fatal-errors");
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+
+			Project projectWithCodeDuplicated = this.repository.findOneProjectByCode(object.getCode());
+
+			if (projectWithCodeDuplicated != null)
+				super.state(projectWithCodeDuplicated.getId() == object.getId(), "code", "manager.project.form.error.duplicated");
+		}
 	}
 
 	@Override

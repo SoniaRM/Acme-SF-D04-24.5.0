@@ -30,9 +30,12 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 
 		int masterId;
 		Project project;
+		Manager manager;
 		masterId = super.getRequest().getData("masterId", int.class);
+
 		project = this.repository.findOneProjectById(masterId);
-		status = project != null && (!project.isDraftMode() || super.getRequest().getPrincipal().hasRole(project.getManager()));
+		manager = project == null ? null : project.getManager();
+		status = project != null && (!project.isDraftMode() || super.getRequest().getPrincipal().hasRole(project.getManager())) && super.getRequest().getPrincipal().getActiveRoleId() == manager.getId();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -47,6 +50,13 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 		Collection<UserStory> userStories;
 		userStories = objects.stream().map(ProjectUserStory::getUserStory).collect(Collectors.toList());
 
+		int projectId;
+		Project project;
+
+		projectId = super.getRequest().getData("masterId", int.class);
+		project = this.repository.findOneProjectById(projectId);
+		super.getResponse().addGlobal("project", project);
+
 		super.getBuffer().addData(userStories);
 	}
 
@@ -59,6 +69,7 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
 
 		super.getResponse().addData(dataset);
+
 	}
 
 }
