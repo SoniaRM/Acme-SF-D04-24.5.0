@@ -2,8 +2,6 @@ validation.risk.reference = A risk reference must follow the following pattern: 
 validation.sponsorship.code = A sponsorship code must follow one of the following patterns: A-XXX, AA-XXX or AAA-XXX, where A is a capital letter and X a number from 0 to 9
 validation.invoice.code = An invoice code must follow the following pattern: IN-XXXX-XXXX, where X is a number from 0 to 9
 
-# Claim
-validation.claim.code = A claim code must follow the following pattern: C-YYYY, where Y is a number from 0 to 9
 
 # Manager
 validation.project.code = A project code must follow the following pattern: XXX-YYYY, where X is a capital letter and Y is a number from 0 to 9

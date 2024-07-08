@@ -36,9 +36,7 @@ public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 	public void bind(final Claim object) {
 		assert object != null;
 
-		object.setInstantiationMoment(MomentHelper.getCurrentMoment());
-
-		super.bind(object, "code", "heading", "description", "department", "email", "link");
+		super.bind(object, "code", "instantiationMoment", "heading", "description", "department", "email", "link");
 	}
 
 	@Override
