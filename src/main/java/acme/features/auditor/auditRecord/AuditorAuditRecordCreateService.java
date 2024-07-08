@@ -76,14 +76,14 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 
 		if (!super.getBuffer().getErrors().hasErrors("initialPeriod")) {
 			boolean notNull = object.getCodeAudit().getExecution() != null;
-			Boolean timeConcordance = notNull && MomentHelper.isAfter(object.getInitialPeriod(), object.getCodeAudit().getExecution());
+			Boolean timeConcordance = notNull && MomentHelper.isAfterOrEqual(object.getInitialPeriod(), object.getCodeAudit().getExecution());
 			super.state(timeConcordance, "initialPeriod", "auditor.audit-record.form.error.badInitialDate");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("finalPeriod")) {
 			boolean notNull = object.getInitialPeriod() != null;
 			Boolean timeConcordance = notNull && MomentHelper.isAfter(object.getFinalPeriod(), object.getInitialPeriod());
-			super.state(timeConcordance, "finalPeriod", "auditor.audit-record.form.error.FinalAfterInitial");
+			super.state(timeConcordance, "finalPeriod", "auditor.audit-record.form.error.finalAfterInitialPeriod");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("finalPeriod")) {

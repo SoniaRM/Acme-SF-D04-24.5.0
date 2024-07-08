@@ -1,6 +1,8 @@
 
 package acme.features.auditor.auditRecord;
 
+import java.time.temporal.ChronoUnit;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -69,8 +71,31 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 	public void validate(final AuditRecord object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("initialPeriod"))
-			super.state(MomentHelper.isAfter(object.getFinalPeriod(), object.getInitialPeriod()), "initialPeriod", "auditor.audit-record.form.error.invalidFinalPeriod");
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			AuditRecord existing;
+
+			existing = this.repository.findOneAuditRecordByCode(object.getCode());
+			if (existing == null || existing.getId() != object.getId())
+				super.state(existing == null, "code", "developer.audit-record.form.error.duplicated");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("initialPeriod")) {
+			boolean notNull = object.getCodeAudit().getExecution() != null;
+			Boolean timeConcordance = notNull && MomentHelper.isAfterOrEqual(object.getInitialPeriod(), object.getCodeAudit().getExecution());
+			super.state(timeConcordance, "initialPeriod", "auditor.audit-record.form.error.badInitialDate");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("finalPeriod")) {
+			boolean notNull = object.getInitialPeriod() != null;
+			Boolean timeConcordance = notNull && MomentHelper.isAfter(object.getFinalPeriod(), object.getInitialPeriod());
+			super.state(timeConcordance, "finalPeriod", "auditor.audit-record.form.error.finalAfterInitialPeriod");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("finalPeriod")) {
+			boolean notNull = object.getInitialPeriod() != null;
+			Boolean goodDuration = notNull && MomentHelper.isLongEnough(object.getFinalPeriod(), object.getInitialPeriod(), 1, ChronoUnit.HOURS);
+			super.state(goodDuration, "finalPeriod", "auditor.audit-record.form.error.badDuration");
+		}
 	}
 
 	@Override

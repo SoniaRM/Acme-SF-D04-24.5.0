@@ -2,11 +2,13 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.CodeAudit;
@@ -59,13 +61,16 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 		Project project;
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOnePublishedProjectById(projectId);
-		super.bind(object, "code", "execution", "type", "correctiveActions", "mark", "link");
+		super.bind(object, "code", "execution", "type", "correctiveActions", "mark", "optionalLink");
 		object.setProject(project);
 	}
 
 	@Override
 	public void validate(final CodeAudit object) {
 		assert object != null;
+		Date lowerLimit;
+
+		lowerLimit = new Date(946681200000L); // 2000/01/01 00:00:00
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			CodeAudit existing;
@@ -73,10 +78,15 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 			super.state(existing == null, "code", "auditor.code-audit.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("project")) {
-			Boolean isDraftMode = this.repository.projectIsDraftMode(object.getProject().getId());
-			super.state(isDraftMode != null && !isDraftMode, "project", "auditor.codeAudit.form.error.notPublishedProject");
+		if (!super.getBuffer().getErrors().hasErrors("execution")) {
+			Date execution;
+			execution = object.getExecution();
+
+			if (execution != null)
+				super.state(MomentHelper.isAfterOrEqual(execution, lowerLimit), "execution", "auditor.code-audit.form.error.date-lower-limit");
+
 		}
+
 	}
 
 	@Override

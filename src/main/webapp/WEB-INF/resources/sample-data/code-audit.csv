@@ -1,10 +1,10 @@
 key,code,execution,type,corrective-actions,optional-link,draft-mode,key:project,key:auditor
 # Datos para code
-code-audit-01,AAA-001,2000/09/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
-code-audit-02,AA-002,2000/09/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
-code-audit-03,A-003,2000/09/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
-code-audit-03.1,ZZZ-999,2000/09/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
-code-audit-03.2,Z-999,2000/09/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
+code-audit-01,AAA-001,2000/07/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
+code-audit-02,AA-002,2000/07/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
+code-audit-03,A-003,2000/07/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
+code-audit-03.1,ZZZ-999,2000/07/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
+code-audit-03.2,Z-999,2000/07/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
 # Datos para execution
 code-audit-04,AAA-004,2000/01/01 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
 code-audit-05,AAA-005,2000/01/01 00:01,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
@@ -12,44 +12,44 @@ code-audit-05.1,AAA-105,2020/02/29 00:00,STATIC,Lorem ipsum,https://es.wikipedia
 code-audit-05.2,AAA-205,2022/07/30 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
 code-audit-05.3,AAA-305,2022/07/29 23:59,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
 # Datos de type
-code-audit-06,AAA-006,2000/09/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
-code-audit-07,AAA-007,2000/09/12 00:00,DYNAMIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
+code-audit-06,AAA-006,2000/07/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
+code-audit-07,AAA-007,2000/07/12 00:00,DYNAMIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
 # Datos de corrective-actions
-code-audit-08,AAA-008,2000/09/12 00:00,STATIC,L,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
-code-audit-09,AAA-009,2000/09/12 00:00,STATIC,Lo,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
-code-audit-10,AAA-010,2000/09/12 00:00,STATIC,LoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
-code-audit-11,AAA-011,2000/09/12 00:00,STATIC,LoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsu,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
-code-audit-12,AAA-012,2000/09/12 00:00,STATIC,æ¨£æœ¬æ¨™é¡Œ,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-02
-code-audit-13,AAA-013,2000/09/12 00:00,STATIC,貸んい建濯よ芝弾テソ,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-02
-code-audit-14,AAA-014,2000/09/12 00:00,STATIC,<p>This text is in HTML</p>,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-02
-code-audit-15,AAA-015,2000/09/12 00:00,STATIC,<script>alert('Hi')</script>,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-02
-code-audit-16,AAA-016,2000/09/12 00:00,STATIC,' or 'A'='A',https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
-code-audit-17,AAA-017,2000/09/12 00:00,STATIC,SELECT c FROM Contract OR 1=1,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
-code-audit-18,AAA-018,2000/09/12 00:00,STATIC,<h1>!</h1>,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
-code-audit-19,AAA-019,2000/09/12 00:00,STATIC,국민경제의 발전을,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
-code-audit-20,AAA-020,2000/09/12 00:00,STATIC,العظمى واعتلاء,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
+code-audit-08,AAA-008,2000/07/12 00:00,STATIC,L,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
+code-audit-09,AAA-009,2000/07/12 00:00,STATIC,Lo,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
+code-audit-10,AAA-010,2000/07/12 00:00,STATIC,LoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
+code-audit-11,AAA-011,2000/07/12 00:00,STATIC,LoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsumLoremipsu,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
+code-audit-12,AAA-012,2000/07/12 00:00,STATIC,æ¨£æœ¬æ¨™é¡Œ,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-02
+code-audit-13,AAA-013,2000/07/12 00:00,STATIC,貸んい建濯よ芝弾テソ,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-02
+code-audit-14,AAA-014,2000/07/12 00:00,STATIC,<p>This text is in HTML</p>,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-02
+code-audit-15,AAA-015,2000/07/12 00:00,STATIC,<script>alert('Hi')</script>,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-02
+code-audit-16,AAA-016,2000/07/12 00:00,STATIC,' or 'A'='A',https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
+code-audit-17,AAA-017,2000/07/12 00:00,STATIC,SELECT c FROM Contract OR 1=1,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
+code-audit-18,AAA-018,2000/07/12 00:00,STATIC,<h1>!</h1>,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
+code-audit-19,AAA-019,2000/07/12 00:00,STATIC,국민경제의 발전을,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
+code-audit-20,AAA-020,2000/07/12 00:00,STATIC,العظمى واعتلاء,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-01
 # Datos para optional-link
-code-audit-21,AAA-021,2000/09/12 00:00,STATIC,Lorem ipsum,,true,project-01,auditor-01
-code-audit-21.1,AAA-119,2000/09/12 00:00,STATIC,Lorem ipsum,ftp://www.example.com/myProfile,true,project-01,auditor-01
-code-audit-21.2,AAA-219,2000/09/12 00:00,STATIC,Lorem ipsum,https://www.example.com?ejemplo=ejemplo&id=4,true,project-01,auditor-01
-code-audit-21.3,AAA-319,2000/09/12 00:00,STATIC,Lorem ipsum,https://www.example.com?,true,project-01,auditor-01
-code-audit-21.4,AAA-419,2000/09/12 00:00,STATIC,Lorem ipsum,https://www.んい建濯よ芝.com,true,project-01,auditor-01
-code-audit-22,AAA-519,2000/09/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/CursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCurso,true,project-01,auditor-01
-code-audit-23,AAA-619,2000/09/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/CursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCurs,true,project-01,auditor-01
-code-audit-24,AAA-022,2000/09/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-02
-code-audit-25,AAA-023,2000/09/12 00:00,STATIC,Lorem ipsum,null,true,project-01,auditor-02
-code-audit-26,AAA-024,2000/09/12 00:00,STATIC,Lorem ipsum,https://www.lorem-ipsum.org,true,project-01,auditor-02
-code-audit-27,AAA-025,2000/09/12 00:00,STATIC,Lorem ipsum,ftp://www.lorem-ipsum.org,true,project-01,auditor-02
-code-audit-28,AAA-026,2000/09/12 00:00,STATIC,Lorem ipsum,http://www.lorem-ipsum.org/dolor/sit.html,true,project-01,auditor-02
-code-audit-29,AAA-027,2000/09/12 00:00,STATIC,Lorem ipsum,http://www.lorem-ipsum.org/dolor/sit.html#dolor,true,project-01,auditor-02
-code-audit-30,AAA-028,2000/09/12 00:00,STATIC,Lorem ipsum,http://example.org?a=1&b=2,true,project-01,auditor-02
-code-audit-31,AAA-029,2000/09/12 00:00,STATIC,Lorem ipsum,http://example.org?,true,project-01,auditor-02
-code-audit-32,AAA-030,2000/09/12 00:00,STATIC,Lorem ipsum,http://example.org?a,true,project-01,auditor-02
-code-audit-33,AAA-031,2000/09/12 00:00,STATIC,Lorem ipsum,http://example.org?a&b,true,project-01,auditor-02
-code-audit-34,AAA-032,2000/09/12 00:00,STATIC,Lorem ipsum,http://example.org/,true,project-01,auditor-02
-code-audit-35,AAA-033,2000/09/12 00:00,STATIC,Lorem ipsum,http://example.org/a,true,project-01,auditor-02
-code-audit-36,AAA-034,2000/09/12 00:00,STATIC,Lorem ipsum,http://example.org/a/b,true,project-01,auditor-02
-code-audit-37,AAA-035,2000/09/12 00:00,STATIC,Lorem ipsum,http://example.org/a/b?,true,project-01,auditor-02
-code-audit-38,AAA-036,2000/09/12 00:00,STATIC,Lorem ipsum,http://example.org/a/b?a&b,true,project-01,auditor-02
+code-audit-21,AAA-021,2000/07/12 00:00,STATIC,Lorem ipsum,,true,project-01,auditor-01
+code-audit-21.1,AAA-119,2000/07/12 00:00,STATIC,Lorem ipsum,ftp://www.example.com/myProfile,true,project-01,auditor-01
+code-audit-21.2,AAA-219,2000/07/12 00:00,STATIC,Lorem ipsum,https://www.example.com?ejemplo=ejemplo&id=4,true,project-01,auditor-01
+code-audit-21.3,AAA-319,2000/07/12 00:00,STATIC,Lorem ipsum,https://www.example.com?,true,project-01,auditor-01
+code-audit-21.4,AAA-419,2000/07/12 00:00,STATIC,Lorem ipsum,https://www.んい建濯よ芝.com,true,project-01,auditor-01
+code-audit-22,AAA-519,2000/07/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/CursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCurso,true,project-01,auditor-01
+code-audit-23,AAA-619,2000/07/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/CursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCursoCurs,true,project-01,auditor-01
+code-audit-24,AAA-022,2000/07/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,true,project-01,auditor-02
+code-audit-25,AAA-023,2000/07/12 00:00,STATIC,Lorem ipsum,null,true,project-01,auditor-02
+code-audit-26,AAA-024,2000/07/12 00:00,STATIC,Lorem ipsum,https://www.lorem-ipsum.org,true,project-01,auditor-02
+code-audit-27,AAA-025,2000/07/12 00:00,STATIC,Lorem ipsum,ftp://www.lorem-ipsum.org,true,project-01,auditor-02
+code-audit-28,AAA-026,2000/07/12 00:00,STATIC,Lorem ipsum,http://www.lorem-ipsum.org/dolor/sit.html,true,project-01,auditor-02
+code-audit-29,AAA-027,2000/07/12 00:00,STATIC,Lorem ipsum,http://www.lorem-ipsum.org/dolor/sit.html#dolor,true,project-01,auditor-02
+code-audit-30,AAA-028,2000/07/12 00:00,STATIC,Lorem ipsum,http://example.org?a=1&b=2,true,project-01,auditor-02
+code-audit-31,AAA-029,2000/07/12 00:00,STATIC,Lorem ipsum,http://example.org?,true,project-01,auditor-02
+code-audit-32,AAA-030,2000/07/12 00:00,STATIC,Lorem ipsum,http://example.org?a,true,project-01,auditor-02
+code-audit-33,AAA-031,2000/07/12 00:00,STATIC,Lorem ipsum,http://example.org?a&b,true,project-01,auditor-02
+code-audit-34,AAA-032,2000/07/12 00:00,STATIC,Lorem ipsum,http://example.org/,true,project-01,auditor-02
+code-audit-35,AAA-033,2000/07/12 00:00,STATIC,Lorem ipsum,http://example.org/a,true,project-01,auditor-02
+code-audit-36,AAA-034,2000/07/12 00:00,STATIC,Lorem ipsum,http://example.org/a/b,true,project-01,auditor-02
+code-audit-37,AAA-035,2000/07/12 00:00,STATIC,Lorem ipsum,http://example.org/a/b?,true,project-01,auditor-02
+code-audit-38,AAA-036,2000/07/12 00:00,STATIC,Lorem ipsum,http://example.org/a/b?a&b,true,project-01,auditor-02
 # Datos para draft-mode
-code-audit-39,AAA-037,2000/09/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,false,project-01,auditor-01
+code-audit-39,AAA-037,2000/07/12 00:00,STATIC,Lorem ipsum,https://es.wikipedia.org/wiki/Curso,false,project-01,auditor-01

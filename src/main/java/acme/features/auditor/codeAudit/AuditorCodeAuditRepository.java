@@ -3,6 +3,7 @@ package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -11,6 +12,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.AuditRecord;
 import acme.entities.CodeAudit;
 import acme.entities.Project;
+import acme.enumerated.Mark;
 import acme.roles.Auditor;
 
 @Repository
@@ -36,6 +38,9 @@ public interface AuditorCodeAuditRepository extends AbstractRepository {
 	@Query("select min(ar.initialPeriod) from AuditRecord ar where ar.codeAudit.id = :codeAuditId")
 	Date findValidExecutionDateBeforeInitial(int codeAuditId);
 	//
+
+	@Query("select ar.mark from AuditRecord ar where ar.codeAudit.id = :id AND ar.draftMode = false GROUP BY ar.mark ORDER BY COUNT(ar.mark) DESC")
+	List<Mark> findCodeAuditMark(int id);
 
 	@Query("select ca from CodeAudit ca where ca.auditor.id = :auditorId")
 	Collection<CodeAudit> findManyCodeAuditsByAuditorId(int auditorId);

@@ -37,3 +37,4 @@ auditor.code-audit.form.error.code =  This code is already used
 auditor.code-audit.form.error.draftMode =  You must publish all audit records before publishing the code audit
 auditor.code-audit.form.error.isEmpty = There is not enough audit records
 auditor.code-audit.form.error.badExecution = The execution date must be before than the minimum initial date of audit record
+auditor.code-audit.form.error.date-lower-limit = The execution date must be after or equal than 2000/01/01 00:00:00

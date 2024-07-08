@@ -28,27 +28,6 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 	@Override
 	public void authorise() {
 
-		/*
-		 * boolean status;
-		 * AuditRecord auditRecord;
-		 * CodeAudit codeAudit = null;
-		 * Principal principal;
-		 * int id;
-		 * int codeAuditId;
-		 * 
-		 * id = super.getRequest().getData("id", int.class);
-		 * auditRecord = this.repository.findOneAuditRecordById(id);
-		 * codeAuditId = auditRecord.getCodeAudit().getId();
-		 * 
-		 * if (auditRecord != null)
-		 * codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
-		 * 
-		 * principal = super.getRequest().getPrincipal();
-		 * status = codeAudit.getAuditor().getId() == principal.getActiveRoleId() && auditRecord != null && auditRecord.isDraftMode();
-		 * 
-		 * super.getResponse().setAuthorised(status);
-		 */
-
 		boolean status;
 		int auditRecordId;
 		AuditRecord object;
@@ -87,14 +66,14 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			AuditRecord isCodeUnique;
-			isCodeUnique = this.repository.findOneAuditRecordByCode(object.getCode());
-			super.state(isCodeUnique == null, "code", "auditor.audit-record.form.error.duplicated");
+			AuditRecord ar = this.repository.findOneAuditRecordByCode(object.getCode());
+			Boolean repeatedCode = ar == null || object.getId() == ar.getId();
+			super.state(repeatedCode, "code", "auditor.audit-record.form.error.duplicated");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("initialPeriod")) {
 			boolean notNull = object.getCodeAudit().getExecution() != null;
-			Boolean timeConcordance = notNull && MomentHelper.isAfter(object.getInitialPeriod(), object.getCodeAudit().getExecution());
+			Boolean timeConcordance = notNull && MomentHelper.isAfterOrEqual(object.getInitialPeriod(), object.getCodeAudit().getExecution());
 			super.state(timeConcordance, "initialPeriod", "auditor.audit-record.form.error.badInitialDate");
 		}
 
