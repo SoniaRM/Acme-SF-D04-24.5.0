@@ -2,8 +2,6 @@ key,code,title,abstract-project,indication,cost,link,draft-mode,key:manager
 # Datos para code
 project-01,AAA-0001,Lorem ipsum,Lorem ipsum,false,4,https://es.wikipedia.org/wiki/Curso,false,manager-01
 project-02,ZZZ-0002,lorem ipsum,Lorem ipsum,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
-project-02.1,ZZZ-9999,lorem ipsum,Lorem ipsum,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
-project-02.2,ZZZ-9998,lorem ipsum,Lorem ipsum,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
 # Datos para title
 project-03,AAA-0003,L,Lorem ipsum,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01
 project-04,AAA-0004,Lo,Lorem ipsum,false,4,https://es.wikipedia.org/wiki/Curso,true,manager-01

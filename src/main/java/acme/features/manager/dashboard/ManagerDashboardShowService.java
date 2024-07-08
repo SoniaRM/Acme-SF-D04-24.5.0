@@ -26,12 +26,12 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 
 	@Override
 	public void load() {
+		Manager manager;
 		int id;
 		id = super.getRequest().getPrincipal().getActiveRoleId();
+		manager = this.repository.findOneManagerByUserAccountId(id);
 		ManagerDashboard dashboard;
 
-		int projects = this.repository.findPublishedProjectsByManagerId(id);
-		int userStories = this.repository.findPublishedUserStoriesByManagerId(id);
 		int totalMustUserStory;
 		int totalShouldUserStory;
 		int totalCouldUserStory;
@@ -53,22 +53,14 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 		totalWontUserStory = this.repository.totalUserStoriesWithPriority(Priority.WONT, id);
 
 		avgEstimatedCostUserStory = this.repository.avgEstimatedCostUserStory(id);
+		devEstimatedCostUserStory = this.repository.devEstimatedCostUserStory(id);
 		minEstimatedCostUserStory = this.repository.minEstimatedCostUserStory(id);
 		maxEstimatedCostUserStory = this.repository.maxEstimatedCostUserStory(id);
 
-		if (userStories > 1)
-			devEstimatedCostUserStory = this.repository.devEstimatedCostUserStory(id);
-		else
-			devEstimatedCostUserStory = null;
-
 		avgCostProject = this.repository.avgCostProject(id);
+		devCostProject = this.repository.devCostProject(id);
 		minCostProject = this.repository.minCostProject(id);
 		maxCostProject = this.repository.maxCostProject(id);
-
-		if (projects > 1)
-			devCostProject = this.repository.devCostProject(id);
-		else
-			devCostProject = null;
 
 		dashboard = new ManagerDashboard();
 		dashboard.setTotalMustUserStory(totalMustUserStory);
