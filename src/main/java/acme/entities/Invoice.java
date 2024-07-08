@@ -9,12 +9,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -39,12 +41,11 @@ public class Invoice extends AbstractEntity {
 	@Pattern(regexp = "IN-[0-9]{4}-[0-9]{4}")
 	private String				code;
 
-	@Past
+	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	private Date				registrationTime;
 
-	@Past
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	private Date				dueDate;
@@ -52,11 +53,13 @@ public class Invoice extends AbstractEntity {
 	@NotNull
 	private Money				quantity;
 
-	@PositiveOrZero
+	@Range(min = 0, max = 100)
 	@NotNull
+	@Digits(integer = 3, fraction = 2)
 	private Double				tax;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	// Relationships -------------------------------------------------------------
