@@ -1,14 +1,11 @@
 
 package acme.features.developer.trainingSession;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
 import acme.entities.TrainingModule;
 import acme.entities.TrainingSession;
 import acme.roles.Developer;
@@ -32,8 +29,8 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 		trainingSessionId = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneTrainingSessionById(trainingSessionId);
 		trainingModule = object == null ? null : object.getTrainingModule();
-		status = super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper()) || object != null && !object.isDraftMode();
-
+		//		status = super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper()) && object != null && !object.isDraftMode();
+		status = trainingModule != null && trainingModule.isDraftMode() && object.isDraftMode() && super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper());
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -71,15 +68,12 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 		assert object != null;
 
 		Dataset dataset;
-		Collection<TrainingModule> trainingModules;
-		SelectChoices choices;
-
-		trainingModules = this.repository.findAllTrainingModules();
-		choices = SelectChoices.from(trainingModules, "code", object.getTrainingModule());
 
 		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link");
-		dataset.put("trainingModule", choices.getSelected().getKey());
-		dataset.put("trainingModules", choices);
+		dataset.put("masterId", object.getTrainingModule().getId());
+		dataset.put("draftMode", object.isDraftMode());
+		dataset.put("trainingModule", object.getTrainingModule().getCode());
+
 		super.getResponse().addData(dataset);
 	}
 
