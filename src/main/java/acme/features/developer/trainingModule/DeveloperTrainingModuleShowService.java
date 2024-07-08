@@ -57,31 +57,17 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		SelectChoices choices;
 		SelectChoices choicesLevel;
 
-		projects = this.repository.findManyProjectsAvailable();
+		projects = this.repository.findAllProjects();
 
 		choicesLevel = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
-		choices = SelectChoices.from(projects, "code", object.getProject());
+		choices = SelectChoices.from(projects, "title", object.getProject());
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "estimatedTotalTime", "updateMoment", "link");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "estimatedTotalTime", "updateMoment", "link", "project", "draftMode");
 		dataset.put("difficultyLevel", choicesLevel);
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 		dataset.put("creationMoment", object.getCreationMoment());
-		dataset.put("draftMode", object.isDraftMode());
 
 		super.getResponse().addData(dataset);
-
-		int trainingModuleId;
-		TrainingModule trainingModule;
-		final boolean show;
-		Developer developer;
-
-		trainingModuleId = super.getRequest().getData("id", int.class);
-		trainingModule = this.repository.findOneTrainingModuleById(trainingModuleId);
-		developer = object == null ? null : trainingModule.getDeveloper();
-		show = !trainingModule.isDraftMode() && super.getRequest().getPrincipal().getActiveRoleId() == developer.getId();
-
-		super.getResponse().addGlobal("show", show);
-
 	}
 }

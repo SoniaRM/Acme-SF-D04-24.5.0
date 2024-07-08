@@ -15,7 +15,7 @@
 	
 		
 	<jstl:choose>
-		<jstl:when test="${_command == 'show' && draftMode == false && show}">
+		<jstl:when test="${_command == 'show' && draftMode == false}">
             <acme:button code="developer.training-module.form.button.training-sessions" action="/developer/training-session/list-mine?masterId=${id}"/>
         </jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">

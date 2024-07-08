@@ -31,7 +31,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(indexes = {
-	@Index(columnList = "draftMode")
+	@Index(columnList = "code"), @Index(columnList = "draftMode")
 })
 public class TrainingModule extends AbstractEntity {
 
@@ -59,6 +59,7 @@ public class TrainingModule extends AbstractEntity {
 	private DifficultyLevel		difficultyLevel;
 
 	@PastOrPresent
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				updateMoment;
 

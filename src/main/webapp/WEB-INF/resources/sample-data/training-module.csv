@@ -9,8 +9,8 @@ training-module-03.2,Z-999,2000/09/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,h
 training-module-04,AAA-004,2000/01/01 00:00,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,3456,true,project-01,developer-01
 training-module-05,AAA-005,2000/01/01 00:01,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
 training-module-05.1,AAA-105,2020/02/29 00:00,Lorem ipsum,BASIC,2020/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
-training-module-05.2,AAA-205,2022/07/30 00:00,Lorem ipsum,BASIC,2022/07/30 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
-training-module-05.3,AAA-305,2022/07/29 23:59,Lorem ipsum,BASIC,2022/07/30 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+training-module-05.2,AAA-205,2022/07/16 00:00,Lorem ipsum,BASIC,2022/07/24 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
+training-module-05.3,AAA-305,2022/07/15 23:59,Lorem ipsum,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
 # Datos para details
 training-module-06,AAA-006,2000/09/12 00:00,L,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
 training-module-07,AAA-007,2000/09/12 00:00,Lo,BASIC,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
@@ -30,13 +30,9 @@ training-module-16.1,AAA-116,2000/09/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:00
 training-module-16,AAA-016,2000/09/12 00:00,Lorem ipsum,INTERMEDIATE,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,432,true,project-01,developer-01
 training-module-17,AAA-017,2000/09/12 00:00,Lorem ipsum,ADVANCED,2001/12/12 00:00,https://es.wikipedia.org/wiki/Curso,4,true,project-01,developer-01
 # Datos para update-moment
-training-module-18,AAA-018,2000/01/01 00:00,Lorem ipsum,BASIC,2000/01/01 00:00,https://es.wikipedia.org/wiki/Curso,765,true,project-01,developer-01
-training-module-18.3,AAA-038,2000/01/01 00:00,Lorem ipsum,BASIC,2000/01/01 00:01,https://es.wikipedia.org/wiki/Curso,765,true,project-01,developer-01
-training-module-18.4,AAA-048,2000/01/01 00:00,Lorem ipsum,BASIC,2020/02/29 00:00,https://es.wikipedia.org/wiki/Curso,765,true,project-01,developer-01
+training-module-18,AAA-018,2000/09/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,https://es.wikipedia.org/wiki/Curso,765,true,project-01,developer-01
 training-module-18.1,AAA-118,2000/09/12 00:00,Lorem ipsum,BASIC,2022/07/30 00:00,https://es.wikipedia.org/wiki/Curso,765,true,project-01,developer-01
 training-module-18.2,AAA-218,2000/09/12 00:00,Lorem ipsum,BASIC,2022/07/29 23:59,https://es.wikipedia.org/wiki/Curso,765,true,project-01,developer-01
-training-module-18.31,AAA-318,2000/09/12 00:00,Lorem ipsum,BASIC,null,https://es.wikipedia.org/wiki/Curso,765,true,project-01,developer-01
-training-module-18.41,AAA-418,2000/09/12 00:00,Lorem ipsum,BASIC,,https://es.wikipedia.org/wiki/Curso,765,true,project-01,developer-01
 # Datos para link
 training-module-19,AAA-019,2000/09/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,,4,true,project-01,developer-01
 training-module-19.1,AAA-119,2000/09/12 00:00,Lorem ipsum,BASIC,2000/12/12 00:01,ftp://www.example.com/myProfile,4,true,project-01,developer-01
@@ -64,7 +60,6 @@ training-module-24.13,AA-424,2000/09/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01
 # Datos para estimated-total-time
 training-module-25,AAA-025,2000/09/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,null,0,true,project-01,developer-02
 training-module-26,AAA-026,2000/09/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,null,1,true,project-01,developer-02
-training-module-26.1,AAA-126,2000/09/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,null,4000,true,project-01,developer-02
 training-module-27,AAA-027,2000/09/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,null,9999,true,project-01,developer-02
 training-module-28,AAA-028,2000/09/12 00:00,Lorem ipsum,BASIC,2001/12/12 00:01,null,10000,true,project-01,developer-02
 # Datos para draft-mode

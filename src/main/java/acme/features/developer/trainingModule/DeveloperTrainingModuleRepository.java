@@ -28,6 +28,7 @@ public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 
 	@Query("select p from Project p where p.draftMode = false")
 	Collection<Project> findManyProjectsAvailable();
+
 	//Create
 	@Query("select d from Developer d where d.id = :id")
 	Developer findOneDeveloperById(int id);

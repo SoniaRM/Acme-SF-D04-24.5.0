@@ -46,8 +46,6 @@ public class ManagerUserStoryListAllService extends AbstractService<Manager, Use
 		Dataset dataset;
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
-		String draftMode = object.isDraftMode() ? "✓" : "x";
-		dataset.put("draftMode", draftMode);
 
 		super.getResponse().addData(dataset);
 	}

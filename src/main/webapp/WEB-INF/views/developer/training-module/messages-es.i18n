@@ -41,4 +41,3 @@ developer.training-module.form.error.code =  Este codigo ya esta en uso
 developer.training-module.form.error.trainingModuleWithOutTrainingSessions = No se publicar el Tranining Module porque no tiene Training Sessions
 developer.training-module.form.error.trainingSessionInDraftMode = No se puede publicar el Training Module porque tiene Training Sessions en borrador
 developer.training-module.form.it-has-training-sessions-published = No se puede borrar el Training Module porque tiene Training Sessions publicadas
- developer.training-module.form.error.invalidUpdateMoment = Fecha invalida
