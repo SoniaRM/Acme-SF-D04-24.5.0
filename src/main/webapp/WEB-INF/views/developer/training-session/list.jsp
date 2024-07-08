@@ -11,4 +11,4 @@
 	<acme:list-column code="developer.training-session.list.label.training-module" path="trainingModule" width="10%"/>
 </acme:list>
 
-<acme:button code="developer.training-session.list.button.create" action="/developer/training-session/create"/>
+<acme:button test="${_command == 'list-mine' && showCreate}" code="developer.training-session.list.button.create" action="/developer/training-session/create?masterId=${masterId}"/>
