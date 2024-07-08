@@ -11,7 +11,7 @@
 	<acme:input-textbox code="developer.training-session.form.label.instructor" path="instructor"/>	
 	<acme:input-email code="developer.training-session.form.label.email" path="email"/>	
 	<acme:input-url code="developer.training-session.form.label.link" path="link"/>	
-	<acme:input-textbox code="developer.training-session.form.label.training-module" path="trainingModule" readonly = "true"/>
+	<acme:input-select code="developer.training-session.form.label.training-module" path="trainingModule" choices="${trainingModules}"/>
 		
 		
 	<jstl:choose>	 
@@ -21,7 +21,7 @@
 			<acme:submit code="developer.training-session.form.button.publish" action="/developer/training-session/publish"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="developer.training-session.form.button.create" action="/developer/training-session/create?masterId=${masterId}"/>
+			<acme:submit code="developer.training-session.form.button.create" action="/developer/training-session/create"/>
 		</jstl:when>			
 	</jstl:choose>
 </acme:form>

@@ -29,8 +29,6 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 		id = super.getRequest().getPrincipal().getActiveRoleId();
 		DeveloperDashboard dashboard;
 
-		int trainingModules = this.repository.findPublishedTrainingModulesByDeveloperId(id);
-
 		int totalTrainingModulesWithUpdateMoment;
 		int totalTrainingSessionsWithLink;
 
@@ -43,12 +41,7 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 		totalTrainingSessionsWithLink = this.repository.totalTrainingSessionsWithLink(id);
 
 		avgTimeTrainingModule = this.repository.avgTimeTrainingModule(id);
-
-		if (trainingModules > 1)
-			devTimeTrainingModule = this.repository.devTimeTrainingModule(id);
-		else
-			devTimeTrainingModule = null;
-
+		devTimeTrainingModule = this.repository.devTimeTrainingModule(id);
 		minTimeTrainingModule = this.repository.minTimeTrainingModule(id);
 		maxTimeTrainingModule = this.repository.maxTimeTrainingModule(id);
 

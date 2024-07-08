@@ -2,6 +2,7 @@
 package acme.features.developer.trainingSession;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.TrainingModule;
 import acme.entities.TrainingSession;
 import acme.roles.Developer;
@@ -53,7 +55,7 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 	public void bind(final TrainingSession object) {
 		assert object != null;
 
-		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link");
+		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "trainingModule");
 	}
 
 	@Override
@@ -67,12 +69,11 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 			if (existing != null)
 				super.state(existing.getId() == object.getId(), "code", "developer.training-session.form.error.duplicated");
 		}
-		/*
-		 * if (!super.getBuffer().getErrors().hasErrors("trainingModule")) {
-		 * super.state(object.getTrainingModule().isDraftMode(), "trainingModule", "developer.training-session.form.error.published-training-module");
-		 * super.state(object.getTrainingModule() != null, "trainingModule", "developer.training-session.form.error.null-training-module.");
-		 * }
-		 */
+
+		if (!super.getBuffer().getErrors().hasErrors("trainingModule")) {
+			super.state(object.getTrainingModule().isDraftMode(), "trainingModule", "developer.training-session.form.error.published-training-module");
+			super.state(object.getTrainingModule() != null, "trainingModule", "developer.training-session.form.error.null-training-module.");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("startPeriod") && object.getStartPeriod() != null) {
 
@@ -114,12 +115,15 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 		assert object != null;
 
 		Dataset dataset;
+		Collection<TrainingModule> trainingModules;
+		SelectChoices choices;
 
-		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link");
-		dataset.put("masterId", object.getTrainingModule().getId());
-		dataset.put("draftMode", object.isDraftMode());
-		dataset.put("trainingModule", object.getTrainingModule().getCode());
+		trainingModules = this.repository.findAllTrainingModules();
+		choices = SelectChoices.from(trainingModules, "code", object.getTrainingModule());
 
+		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "trainingModule", "draftMode");
+		dataset.put("trainingModule", choices.getSelected().getKey());
+		dataset.put("trainingModules", choices);
 		super.getResponse().addData(dataset);
 	}
 

@@ -26,13 +26,11 @@ public class DeveloperTrainingSessionListMineService extends AbstractService<Dev
 	public void authorise() {
 		boolean status;
 		int masterId;
-		Developer developer;
 		TrainingModule trainingModule;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		trainingModule = this.repository.findOneTrainingModuleById(masterId);
-		developer = trainingModule == null ? null : trainingModule.getDeveloper();
-		status = trainingModule != null && (!trainingModule.isDraftMode() || super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper())) && super.getRequest().getPrincipal().getActiveRoleId() == developer.getId();
+		status = trainingModule != null && (!trainingModule.isDraftMode() || super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper()));
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -56,27 +54,9 @@ public class DeveloperTrainingSessionListMineService extends AbstractService<Dev
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "draftMode", "trainingModule");
-		String draftMode = object.isDraftMode() ? "✓" : "x";
-		dataset.put("draftMode", draftMode);
 		dataset.put("trainingModule", object.getTrainingModule());
 
 		super.getResponse().addData(dataset);
-	}
-
-	@Override
-	public void unbind(final Collection<TrainingSession> objects) {
-		assert objects != null;
-
-		int masterId;
-		TrainingModule trainingModule;
-		boolean showCreate;
-
-		masterId = super.getRequest().getData("masterId", int.class);
-		trainingModule = this.repository.findOneTrainingModuleById(masterId);
-		showCreate = trainingModule.isDraftMode() && super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper());
-
-		super.getResponse().addGlobal("masterId", masterId);
-		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 
 }

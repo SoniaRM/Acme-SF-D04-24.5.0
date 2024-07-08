@@ -2,6 +2,7 @@
 package acme.features.developer.trainingSession;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.TrainingModule;
 import acme.entities.TrainingSession;
 import acme.roles.Developer;
@@ -26,27 +28,15 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 	@Override
 	public void authorise() {
 		final boolean status;
-		int masterId;
-		TrainingModule trainingModule;
-		masterId = super.getRequest().getData("masterId", int.class);
-		trainingModule = this.repository.findOneTrainingModuleById(masterId);
-
-		status = trainingModule != null && trainingModule.isDraftMode() && super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper());
+		status = super.getRequest().getPrincipal().hasRole(Developer.class);
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		TrainingSession object;
-		int masterId;
-		TrainingModule trainingModule;
-
-		masterId = super.getRequest().getData("masterId", int.class);
-		trainingModule = this.repository.findOneTrainingModuleById(masterId);
-
 		object = new TrainingSession();
 		object.setDraftMode(true);
-		object.setTrainingModule(trainingModule);
 
 		super.getBuffer().addData(object);
 	}
@@ -55,7 +45,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 	public void bind(final TrainingSession object) {
 		assert object != null;
 
-		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link");
+		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "trainingModule");
 	}
 
 	@Override
@@ -68,12 +58,11 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 			existing = this.repository.findOneTrainingSessionByCode(object.getCode());
 			super.state(existing == null, "code", "developer.training-session.form.error.duplicated");
 		}
-		/*
-		 * if (!super.getBuffer().getErrors().hasErrors("trainingModule")) {
-		 * super.state(object.getTrainingModule().isDraftMode(), "trainingModule", "developer.training-session.form.error.published-training-module");
-		 * super.state(object.getTrainingModule() != null, "trainingModule", "developer.training-session.form.error.null-training-module.");
-		 * }
-		 */
+
+		if (!super.getBuffer().getErrors().hasErrors("trainingModule")) {
+			super.state(object.getTrainingModule().isDraftMode(), "trainingModule", "developer.training-session.form.error.published-training-module");
+			super.state(object.getTrainingModule() != null, "trainingModule", "developer.training-session.form.error.null-training-module.");
+		}
 		if (!super.getBuffer().getErrors().hasErrors("startPeriod") && object.getStartPeriod() != null) {
 
 			Date maxStartPeriod;
@@ -118,12 +107,14 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		assert object != null;
 
 		Dataset dataset;
+		Collection<TrainingModule> trainingModules;
+		SelectChoices choices;
 
-		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link");
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
-		dataset.put("draftMode", object.isDraftMode());
-		dataset.put("trainingModule", object.getTrainingModule().getCode());
-
+		trainingModules = this.repository.findAllTrainingModules();
+		choices = SelectChoices.from(trainingModules, "code", object.getTrainingModule());
+		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "email", "link", "trainingModule");
+		dataset.put("trainingModule", choices.getSelected().getKey());
+		dataset.put("trainingModules", choices);
 		super.getResponse().addData(dataset);
 	}
 }
