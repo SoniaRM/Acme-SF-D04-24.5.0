@@ -2,6 +2,7 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,9 +29,12 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 
 	@Override
 	public void authorise() {
-		final boolean status;
-		status = super.getRequest().getPrincipal().hasRole(Auditor.class);
-		super.getResponse().setAuthorised(status);
+		/*
+		 * final boolean status;
+		 * status = super.getRequest().getPrincipal().hasRole(Auditor.class);
+		 * super.getResponse().setAuthorised(status);
+		 */
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -42,7 +46,7 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 		object = new CodeAudit();
 		object.setDraftMode(true);
 		object.setAuditor(auditor);
-		object.setExecution(MomentHelper.getCurrentMoment());  //Comprobar
+		//object.setExecution(MomentHelper.getCurrentMoment());  //Comprobar
 
 		super.getBuffer().addData(object);
 	}
@@ -51,13 +55,22 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 	public void bind(final CodeAudit object) {
 		assert object != null;
 
-		super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project");
+		//super.bind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project");
 
+		int projectId;
+		Project project;
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.repository.findOnePublishedProjectById(projectId);
+		super.bind(object, "code", "execution", "type", "correctiveActions", "mark", "optionalLink");
+		object.setProject(project);
 	}
 
 	@Override
 	public void validate(final CodeAudit object) {
 		assert object != null;
+		Date lowerLimit;
+
+		lowerLimit = new Date(946681200000L); // 2000/01/01 00:00:00
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			CodeAudit existing;
@@ -65,12 +78,21 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 			super.state(existing == null, "code", "auditor.code-audit.form.error.duplicated");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("execution")) {
+			Date execution;
+			execution = object.getExecution();
+
+			if (execution != null)
+				super.state(MomentHelper.isAfterOrEqual(execution, lowerLimit), "execution", "auditor.code-audit.form.error.date-lower-limit");
+
+		}
+
 	}
 
 	@Override
 	public void perform(final CodeAudit object) {
 		assert object != null;
-		object.setDraftMode(true);
+		//object.setDraftMode(true);
 		this.repository.save(object);
 	}
 
@@ -88,11 +110,11 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 		choices = SelectChoices.from(projects, "code", object.getProject());
 		choicesType = SelectChoices.from(Type.class, object.getType());
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "optionalLink", "project");
+		dataset = super.unbind(object, "code", "execution", "correctiveActions", "optionalLink", "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
+		dataset.put("type", choicesType.getSelected().getKey());
 		dataset.put("types", choicesType);
-		dataset.put("auditor", object.getAuditor());
 
 		super.getResponse().addData(dataset);
 

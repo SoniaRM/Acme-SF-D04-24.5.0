@@ -28,6 +28,7 @@ master.menu.anonymous.rubpergar-link = 77863706N: Pérez Garrido, Rubén
 master.menu.anonymous.claim-list = Lista de Claims
 master.menu.anonymous.training-module-list = Lista de Training Modules
 master.menu.anonymous.project-list = Lista de Proyectos
+master.menu.anonymous.code-audit-list = Lista de Code Audits
 
 # master.menu.authenticated ###################################################
 
@@ -112,3 +113,5 @@ master.menu.user-account.manager = Datos de manager
 master.menu.user-account.become-manager = Hazte manager
 master.menu.user-account.client = Datos de cliente
 master.menu.user-account.become-client = Hazte cliente
+master.menu.user-account.auditor = Datos de auditor
+master.menu.user-account.become-auditor = Hazte auditor

@@ -26,14 +26,16 @@ public class AuditorAuditRecordListMineService extends AbstractService<Auditor, 
 	public void authorise() {
 		boolean status;
 		int codeAuditId;
+		Auditor auditor;
 		CodeAudit codeAudit;
 
 		codeAuditId = super.getRequest().getData("codeAuditId", int.class);
 		codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
-
-		status = codeAudit != null && (!codeAudit.isDraftMode() || super.getRequest().getPrincipal().hasRole(codeAudit.getAuditor()));
+		auditor = codeAudit == null ? null : codeAudit.getAuditor();
+		status = codeAudit != null && (!codeAudit.isDraftMode() || super.getRequest().getPrincipal().hasRole(codeAudit.getAuditor())) && super.getRequest().getPrincipal().getActiveRoleId() == auditor.getId();
 
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -45,7 +47,6 @@ public class AuditorAuditRecordListMineService extends AbstractService<Auditor, 
 		objects = this.repository.findManyAuditRecordsByCodeAuditId(codeAuditId);
 
 		super.getBuffer().addData(objects);
-		super.getResponse().addGlobal("codeAuditId", codeAuditId);
 	}
 
 	@Override
@@ -54,8 +55,28 @@ public class AuditorAuditRecordListMineService extends AbstractService<Auditor, 
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "mark", "draftMode", "finalPeriod");
+		dataset = super.unbind(object, "code", "initialPeriod", "finalPeriod", "mark", "optionalLink", "draftMode", "codeAudit");
+		String draftMode = object.isDraftMode() ? "✓" : "x";
+		dataset.put("draftMode", draftMode);
+		dataset.put("codeAudit", object.getCodeAudit());
 
 		super.getResponse().addData(dataset);
 	}
+
+	@Override
+	public void unbind(final Collection<AuditRecord> objects) {
+		assert objects != null;
+
+		int masterId;
+		CodeAudit codeAudit;
+		boolean showCreate;
+
+		masterId = super.getRequest().getData("codeAuditId", int.class);
+		codeAudit = this.repository.findOneCodeAuditById(masterId);
+		showCreate = codeAudit.isDraftMode() && super.getRequest().getPrincipal().hasRole(codeAudit.getAuditor());
+
+		super.getResponse().addGlobal("codeAuditId", masterId);
+		super.getResponse().addGlobal("showCreate", showCreate);
+	}
+
 }
