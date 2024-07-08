@@ -2,6 +2,7 @@
 package acme.features.auditor.auditRecord;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -37,4 +38,6 @@ public interface AuditorAuditRecordRepository extends AbstractRepository {
 	@Query("select ar from AuditRecord ar where ar.codeAudit.id = :codeAuditId")
 	Collection<AuditRecord> findManyAuditRecordsByCodeAuditId(int codeAuditId);
 
+	@Query("select ca.execution from CodeAudit ca where ca.code = :code")
+	Date findExecutionDate(CodeAudit code);
 }

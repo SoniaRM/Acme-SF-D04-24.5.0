@@ -1,0 +1,12 @@
+any.code-audit.list.title = Code audit List
+any.code-audit.form.title = Code audit Form
+
+any.code-audit.list.label.code = Code
+any.code-audit.list.label.execution = Execution
+any.code-audit.list.label.type = Type
+any.code-audit.list.label.optionalLink = URL
+
+any.code-audit.form.label.code = Code
+any.code-audit.form.label.execution = Execution
+any.code-audit.form.label.type = Type
+any.code-audit.form.label.optionalLink = Link

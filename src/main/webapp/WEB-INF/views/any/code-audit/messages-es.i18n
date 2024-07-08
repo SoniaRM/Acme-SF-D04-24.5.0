@@ -1,0 +1,12 @@
+any.code-audit.list.title = Lista code audit
+any.code-audit.form.title = Detalles de Code audit
+
+any.code-audit.list.label.code = Codigo
+any.code-audit.list.label.execution = Ejecucion
+any.code-audit.list.label.type = Tipo
+any.code-audit.list.label.optionalLink = URL
+
+any.code-audit.form.label.code = Codigo
+any.code-audit.form.label.execution = Ejecucion
+any.code-audit.form.label.type = Tipo
+any.code-audit.form.label.optionalLink = URL
